@@ -1,0 +1,67 @@
+/* Empty. Add your own CSS if you like */
+.login-bg {
+
+background-color:#000000;
+
+}
+
+.input-fields{
+  
+border-radius: 50%;
+margin-top: 85%;
+}
+
+input.input-color{
+  color: white;
+}
+
+#sign-in-btn{
+border: none;
+background-color: #4d5b7e;
+border-radius: 85px;
+margin-top: 8%;
+
+}
+
+#signIn-psw-inputs{
+color: white;
+border: none;
+border-radius: 85px;
+background-color: #39383d;
+}
+
+.psw-input{
+border-radius: 85px;
+
+}
+
+/*ANGULAR FORM VALUDATION RED for invalid GREEN for Valid*/
+input.ng-touched.ng-invalid {
+  border-radius: 85px;
+  border: 1px solid #980000;
+  margin-right: 0%;
+  margin-left: -4%;
+
+}
+
+input.ng-touched.ng-valid {
+  border-radius: 85px;
+  border: 1px solid #009900;
+  margin-right: 0%;
+  margin-left: -4%;
+
+}
+
+/*MAP STYLES*/
+map {
+  display: inline-block;
+  float: right;
+
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.scroll {
+  height: 80%;
+}
+
