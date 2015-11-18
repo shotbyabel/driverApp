@@ -1,5 +1,5 @@
 // IIFE START //
-(function() { 
+(function() {
  'use strict';
 
 angular.module('starter.directives', [])
@@ -26,7 +26,7 @@ angular.module('starter.directives', [])
           return false;
           });
         }
-        
+
         if (document.readyState === 'complete') {
           initialize();
         } else {
