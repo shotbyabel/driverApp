@@ -41,6 +41,10 @@ angular.module('starter.controllers', [])
   };
 })
 
+// .controller('App2Ctrl', function($scope) {
+
+// });
+
 .controller('TodayCtrl', function($scope) {
   $scope.today = [
     { passName: 'Tom Jones', id: 1 },

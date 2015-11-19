@@ -24,6 +24,51 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
+ ///|||||||||||||||| 
+///OWNER AUTH-VIEWS
+//||||||||||||||||||
+.state('app2', {
+  url: '/app2',
+  abstract: true,
+  templateUrl: 'templates/menu-owner.html',
+  controller: 'LoginOwnerCtrl'
+  })
+
+.state('app2.easyBook', {
+    url: '/easyBook',
+    views: {
+        'menuContentOwner': {
+        templateUrl: 'templates/easyBook.html'
+        }
+      }
+    })
+
+  .state('app2.master-calendar', {
+      url: '/master-calendar',
+      views: {
+        'menuContentOwner': {
+          templateUrl: 'templates/master-calendar.html'
+        }
+      }
+    })
+
+      .state('app.master-settings', {
+      url: '/master-settings',
+      views: {
+        'menuContentOwner': {
+          templateUrl: 'templates/master-settings.html'
+        }
+      }
+    })
+
+
+ ///|||||||||||||||| 
+///OWNER AUTH-VIEWS
+//||||||||||||||||||
+
+ ///|||||||||||||||| 
+///DRIVER AUTH-VIEWS
+//||||||||||||||||||
     .state('app', {
     url: '/app',
     abstract: true,
@@ -86,15 +131,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
       }
     })
 
-  .state('app.easyBook', {
-      url: '/easyBook',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/easyBook.html'
-        }
-      }
-    })
-
     .state('app.profile', {
       url: '/profile',
       views: {
@@ -122,6 +158,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
       }
     }
   });
+   ///|||||||||||||||| 
+///DRIVER AUTH-VIEWS
+//||||||||||||||||||
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');
 });
+
+//test456 password
+//abelh
