@@ -3,7 +3,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives', 'ionic.ion.showWhen'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -34,6 +34,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
   controller: 'LoginOwnerCtrl'
   })
 
+  .state('app2.owner-today', {
+    url: '/owner-today',
+    views: {
+        'menuContentOwner': {
+          templateUrl: 'templates/owner-today.html',
+          controller: 'BookingsCtrl'
+        }
+      }
+    })  
+
 .state('app2.easyBook', {
     url: '/easyBook',
     views: {
@@ -43,24 +53,54 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
       }
     })
 
-  .state('app2.master-calendar', {
-      url: '/master-calendar',
+  .state('app2.owner-currentTrip', {
+    url: '/owner-currentTrip',
+    views: {
+        'menuContentOwner': {
+          templateUrl: 'templates/owner-currentTrip.html',
+          controller: 'LoginOwnerCtrl'
+        }
+      }
+    })  
+
+  .state('app2.owner-calendar', {
+      url: '/owner-calendar',
       views: {
         'menuContentOwner': {
-          templateUrl: 'templates/master-calendar.html'
+          templateUrl: 'templates/owner-calendar.html'
         }
       }
     })
 
-      .state('app.master-settings', {
-      url: '/master-settings',
+
+  .state('app2.owner-profile', {
+    url: '/owner-profile',
+    views: {
+        'menuContentOwner': {
+          templateUrl: 'templates/owner-profile.html',
+          controller: 'LoginOwnerCtrl'
+        }
+      }
+    })  
+
+      .state('app2.owner-settings', {
+      url: '/owner-settings',
       views: {
         'menuContentOwner': {
-          templateUrl: 'templates/master-settings.html'
+          templateUrl: 'templates/owner-settings.html'
         }
       }
     })
 
+  .state('app2.owner-map', {
+      url: '/owner-map',
+      views: {
+        'menuContentOwner': {
+          templateUrl: 'templates/owner-map.html',
+          controller: 'MapCtrl'
+        }
+      }
+    })
 
  ///|||||||||||||||| 
 ///OWNER AUTH-VIEWS
@@ -81,17 +121,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
     views: {
         'menuContent': {
           templateUrl: 'templates/today.html',
-          controller: 'TodayCtrl'
+          controller: 'BookingsCtrl'
         }
       }
     })
   
-    .state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'LoginCtrl'
+    .state('app.bookings', {
+    url: '/bookings',
+    views: {
+        'menuContent': {
+          templateUrl: 'templates/bookings.html',
+          controller: 'BookingsCtrl',
+          controllerAs:'vm'
+        }
+      }
+    })
+
+
+  // .state('login', {
+  //   url: '/login',
+  //   templateUrl: 'templates/login.html',
+  //   controller: 'LoginCtrl'
   
-  })
+  // })
 
   .state('app.login', {
       url: '/login',

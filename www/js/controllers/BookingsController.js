@@ -8,7 +8,6 @@
   $scope.today = [];
   $scope.test = 'jad';
 
-  // BookingsService.getBookings();  
   // $scope.today = BookingsService;
   // $scope.today = {
   //   'bookings':BookingsService.bookings
@@ -27,16 +26,17 @@
   console.log("Error!")
 });
 
+    $scope.startTrip = function() {
+      var bookingId = event.target.id;
+      BookingsService.startTrip(bookingId);
+    }
+
+    $scope.endTrip = function() {
+      var bookingId = event.target.id;
+      BookingsService.endTrip(bookingId);
+    }
 
   });
-
-
-
-
-
-
-
-
 
  // IIFE START //
 })();

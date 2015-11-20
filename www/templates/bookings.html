@@ -3,7 +3,20 @@
     <h3>Your Bookings</h3>
     <ion-list>
       <ion-item ng-repeat="booking in today">
+<<<<<<< HEAD
             {{booking.arrival_date}}
       </ion-item>
   </ion-content>
 </ion-view>
+=======
+            <h4>Arrive By: {{booking.arrival_date}} Address:{{booking.arrival_address}} </h4>
+            <button id={{booking.id}} class="button button-block button-positive Start-Trip" ng-click="startTrip()">
+              Start Trip
+            </button>
+            <button id={{booking.id}} class="button button-block button-negative End-Trip" ng-click="endTrip()">
+              End Trip
+            </button>
+      </ion-item>
+  </ion-content>
+</ion-view>
+>>>>>>> 07cb761e764cb13d4bd41286d022b7578fb3a4ff

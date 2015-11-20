@@ -1,0 +1,9 @@
+<ion-view view-title="Owner Today">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="passlist in today" href="#/app2/owner-today/{{passlist.id}}">
+        {{passlist.passName}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
