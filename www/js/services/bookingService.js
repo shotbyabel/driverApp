@@ -60,6 +60,20 @@ angular.module('starter')
 
     };
 
+  self.endTrip = function(bookingId) {
+      var deferred = $q.defer();
+      $http.get("http://localhost/apinew/bookings/" + bookingId + "/end_trip")
+      .success(function(data) { //
+        console.log(data);
+        deferred.resolve(true);
+      })
+      .error (function(msg) {
+        console.error(msg);
+        deferred.reject(false);
+      });
+
+    };
+
 
     });
 

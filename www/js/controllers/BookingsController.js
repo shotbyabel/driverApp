@@ -32,6 +32,11 @@
       BookingsService.startTrip(bookingId);
     }
 
+    $scope.endTrip = function() {
+      var bookingId = event.target.id;
+      BookingsService.endTrip(bookingId);
+    }
+
   });
  // IIFE START //
 })();
