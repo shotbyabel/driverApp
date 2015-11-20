@@ -41,20 +41,26 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('sideMenuCtl', function($scope, $state){
+
+  $scope.state = $state;
+   
+})
+
 // .controller('App2Ctrl', function($scope) {
 
 // });
 
-.controller('TodayCtrl', function($scope) {
-  $scope.today = [
-    { passName: 'Tom Jones', id: 1 },
-    { passName: 'Lady Gaga', id: 2 },
-    { passName: 'Madonna', id: 3 },
-    { passName: 'Justin Beiber', id: 4 },
-    { passName: 'Obama', id: 5 },
-    { passName: 'Random Lady', id: 6 }
-  ];
-})
+// .controller('TodayCtrl', function($scope) {
+//   $scope.today = [
+//     { passName: 'Tom Jones', id: 1 },
+//     { passName: 'Lady Gaga', id: 2 },
+//     { passName: 'Madonna', id: 3 },
+//     { passName: 'Justin Beiber', id: 4 },
+//     { passName: 'Obama', id: 5 },
+//     { passName: 'Random Lady', id: 6 }
+//   ];
+// })
 
 .controller('PassListCtrl', function($scope, $stateParams) {
 });

@@ -1,9 +1,14 @@
 <ion-view view-title="Today">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="passlist in today" href="#/app/today/{{passlist.id}}">
-        {{passlist.passName}}
+      <ion-item ng-repeat="booking in model.bookings">
+        {{booking.passName}}
       </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
+
+
+LINK
+
+<!--<ion-item ng-repeat="booking in model.bookings" href="#/app/today/{{booking.id}}"> -->
