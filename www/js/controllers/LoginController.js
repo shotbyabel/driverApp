@@ -11,7 +11,7 @@
        // - theLoginForm was not defined in the scope.
       if ($scope.loginForm.Username && $scope.loginForm.Password) {
 
- //SEND LOGIN CREDENTIALS TO API// 
+      //SEND LOGIN CREDENTIALS TO API// 
       var userLogin = $scope.loginForm.Username;
       var userPw = $scope.loginForm.Password;
 
@@ -21,11 +21,17 @@
          
         if(typeof(res) === "string") {
          alert("INVALID LOGIN");       
-         $state.go("app.login3");
+         $state.go("app.login");
        }  else {
           console.log("Login Credentials Submitted Succesfully!")
-          console.log(res);
-          $state.go("app.today");       
+          if(res.driver !== "null") $state.go("app.bookings"); 
+          if(res.admin === "1") $state.go("app2.today"); 
+
+          console.log(res.driver !== "null");
+          console.log(res.admin === "1");
+
+          // $state.go("app.today"); 
+
         }
         }).error(function(data) {          
           console.log("Failed, Please check your API end point!")       
