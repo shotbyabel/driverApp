@@ -1,5 +1,5 @@
 // IIFE START //
-(function() { 
+(function() {
  'use strict';
 
  angular.module('starter')
@@ -8,7 +8,7 @@
   $scope.today = [];
   $scope.test = 'jad';
 
-  // BookingsService.getBookings();  
+  // BookingsService.getBookings();
   // $scope.today = BookingsService;
   // $scope.today = {
   //   'bookings':BookingsService.bookings
@@ -27,16 +27,11 @@
   console.log("Error!")
 });
 
+    $scope.startTrip = function() {
+      var bookingId = event.target.id;
+      BookingsService.startTrip(bookingId);
+    }
 
   });
-
-
-
-
-
-
-
-
-
  // IIFE START //
 })();
