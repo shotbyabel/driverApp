@@ -6,7 +6,7 @@
  .controller("BookingsCtrl", function($scope, BookingsService) {
 
   $scope.today = [];
-  $scope.test = 'jad';
+  $scope.test = 'scope test';
 
   // $scope.today = BookingsService;
   // $scope.today = {
