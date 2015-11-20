@@ -1,5 +1,5 @@
 // IIFE START //
-(function() {
+(function() { 
  'use strict';
 //REMEMBER: this 'BookingsService can be injected accross controllers'
 angular.module('starter')
@@ -17,7 +17,6 @@ angular.module('starter')
         // arrival_address
         //arrival_date
         //car_id
-
         .success(function success (data) {
           console.log(data);
 
@@ -53,7 +52,7 @@ angular.module('starter')
   self.startTrip = function(bookingId) {
       var deferred = $q.defer();
       $http.get("http://localhost/apinew/bookings/" + bookingId + "/start_trip")
-      .success(function(data) { //
+      .success(function(data) { 
         console.log(data);
         deferred.resolve(true);
       })
@@ -61,13 +60,13 @@ angular.module('starter')
         console.error(msg);
         deferred.reject(false);
       });
-
+// 
     };
 
   self.endTrip = function(bookingId) {
       var deferred = $q.defer();
       $http.get("http://localhost/apinew/bookings/" + bookingId + "/end_trip")
-      .success(function(data) { //
+      .success(function(data) {
         console.log(data);
         deferred.resolve(true);
       })
@@ -77,8 +76,7 @@ angular.module('starter')
       });
 
     };
-
+});
 
  // IIFE START //
 })();
-
