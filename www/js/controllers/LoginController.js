@@ -24,8 +24,8 @@
          $state.go("app.login");
        }  else {
           console.log("Login Credentials Submitted Succesfully!")
-          if(res.driver !== "null") $state.go("app.map"); 
-          if(res.admin === "1") $state.go("app2.master-calendar"); 
+          if(res.driver !== "null") $state.go("app.bookings"); 
+          if(res.admin === "1") $state.go("app2.today"); 
 
           console.log(res.driver !== "null");
           console.log(res.admin === "1");
