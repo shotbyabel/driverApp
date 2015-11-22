@@ -13,29 +13,27 @@ angular.module('starter')
         //create 'defer object'
         var deferred = $q.defer();
 
-        $http.get("http://localhost/apinew/bookings/1456")
-        // arrival_address
-        //arrival_date
-        //car_id
+        $http.get("http://localhost/apinew/bookings/1454")
         .success(function success (data) {
-          console.log(data);
+          console.log(data); //entire bookings object console log
+          // console.log(data.length);
 
-          var bookingData = data.forEach(function(trip) {
-            self.bookings.push({
-              arrival_date: trip.arrival_date
-            });
-          })
-
-          console.log(self.bookings);
-
-          self.bookings = data;
+self.bookings = data;
           // var bookingData = data.forEach(function(trip) {
           //   self.bookings.push({
           //     arrival_date: trip.arrival_date
           //   });
           // })
-          console.log(data);
 
+          // var passengerCount = data.forEach(function(passCount) {
+          //   self.bookings.push({
+          //     length: passCount.length
+          //   });
+          // })
+
+          // console.log(self.bookings);//arrival date console log here.
+          
+          // console.log(data);
           // self.bookings = data.results; //assign the bookings[] results
           // console.log(self.bookings);
           deferred.resolve(true);
@@ -49,9 +47,44 @@ angular.module('starter')
         return deferred.promise;//promise has a '.then' functions -> 
       };
 
+
+
+    ///|||||||||||||||||||||||||||||||||||||||
+   ///geo-location function|||||||||||||||||||
+  //||||||||||||||||||||||||||||||||||||||||||
+      // $http.get("http://localhost/apinew/usergeolocation/1456/1/1/1")
+
+   // self.driverCurrentGPS = function () {
+   //      //create 'defer object'
+   //      var deferred = $q.defer();
+
+   //      $http.get("http://localhost/apinew/usergeolocation/1456/1/1/1")
+   //      .success(function success (data) {
+   //        // console.log(data);
+
+   //        // console.log(self.bookings);
+   //        self.bookings = data;
+
+   //        // self.bookings = data.results; //assign the bookings[] results
+   //        // console.log(self.bookings);
+   //        deferred.resolve(data);
+
+   //      })
+   //      .error(function error (smg) {
+   //        console.error(msg);
+   //        deferred.reject(false);
+   //      })
+
+   //      return deferred.promise;//promise has a '.then' functions -> 
+   //    };     
+
+
+/////////////////////////
+//START-END trips//////
   self.startTrip = function(bookingId) {
       var deferred = $q.defer();
       $http.get("http://localhost/apinew/bookings/" + bookingId + "/start_trip")
+
       .success(function(data) { 
         console.log(data);
         deferred.resolve(true);
@@ -76,6 +109,8 @@ angular.module('starter')
       });
 
     };
+
+
 });
 
  // IIFE START //
