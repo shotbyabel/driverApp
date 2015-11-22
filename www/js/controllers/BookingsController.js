@@ -7,6 +7,7 @@
 
   $scope.today = [];
   $scope.test = 'scope test';
+  $scope.dailyPassengers = 0;
 
   // $scope.today = BookingsService;
   // $scope.today = {
@@ -20,23 +21,28 @@
       console.log(data);
       if(data){
         $scope.today = BookingsService.bookings;
+        $scope.dailyPassengers = BookingsService.bookings.length;
+        
       }
-  //   $scope.today = BookingsService.bookings;
-}, function error (data) {
-  console.log("Error!")
-});
+
+    }, function error (data) {
+      console.log("Error!")
+    });
 
     $scope.startTrip = function() {
+      //driverLocationService.startDriverTrip(bookingId, userId);
       var bookingId = event.target.id;
       BookingsService.startTrip(bookingId);
     }
 
     $scope.endTrip = function() {
+    //driverLocationService.stopDriverTrip(bookingId, userId);
       var bookingId = event.target.id;
       BookingsService.endTrip(bookingId);
     }
 
-  });
-
+    //driverLoc by the minute
+    
+})
  // IIFE START //
 })();

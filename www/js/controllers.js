@@ -47,6 +47,7 @@ angular.module('starter.controllers', [])
    
 })
 
+
 // .controller('App2Ctrl', function($scope) {
 
 // });

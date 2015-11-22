@@ -1,14 +1,32 @@
-<ion-view view-title="Today">
+<ion-view view-title="TODAY">
   <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="booking in model.bookings">
-        {{booking.passName}}
-      </ion-item>
-    </ion-list>
+  <h3 class="dayofthe-week">Wednesday</h3>
+    <div class="daily-count">{{dailyPassengers}}</div>
+    <ion-content class="today-client-bubble" scroll="false">
+
+      <img class="bubble" src="/img/todayscreenBubble.png" alt="">
+
   </ion-content>
+  
+
+  <ion-list class="list-position"> 
+
+      <ion-item class="item-avatar items-bg"
+      ng-repeat="booking in today">
+
+        <img class="icon-man" src="/img/icon-man-div.png" alt="">
+        <h4 class="passenger-name">
+            Passenger {{booking.customer_id}}</h4>
+          <p class="passenger-details">
+            {{booking.arrival_date | date:"MM/dd/yyyy @ h:mma"}}</p>
+      </ion-item> 
+    </ion-list>
+
+
+
+    
+
 </ion-view>
 
 
-LINK
 
-<!--<ion-item ng-repeat="booking in model.bookings" href="#/app/today/{{booking.id}}"> -->
