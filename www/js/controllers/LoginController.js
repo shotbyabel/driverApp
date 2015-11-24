@@ -25,6 +25,7 @@
        }  else {
           console.log(res);
           console.log("Login Credentials Submitted Succesfully!")
+
           if(res.driver !== "null") $state.go("app.today", {user_id: res.id, driver_id: res.driver.id});
           if(res.admin === "1") $state.go("app2.owner-calendar");
 
