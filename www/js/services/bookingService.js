@@ -1,4 +1,6 @@
-(function() { 
+
+// IIFE START //
+(function() {
  'use strict';
 angular.module('starter')
 .service("BookingsService", function($http, $q) {
@@ -8,11 +10,11 @@ angular.module('starter')
 
   self.getBookings = function () {
         //create 'defer object'
+        console.log(self);
         var deferred = $q.defer();
-
-        $http.get("http://localhost/apinew/bookings/1454")
+        $http.get("http://localhost/apinew/bookings/" + self.user_id)
         .success(function success (data) {
-          console.log(data); //entire bookings object console log
+          console.log(data[0].customer_id); //entire bookings object console log
           // console.log(data.length);
 
   self.bookings = data;
@@ -29,7 +31,7 @@ angular.module('starter')
           // })
 
           // console.log(self.bookings);//arrival date console log here.
-          
+
           // console.log(data);
           // self.bookings = data.results; //assign the bookings[] results
           // console.log(self.bookings);
@@ -41,16 +43,16 @@ angular.module('starter')
           deferred.reject(false);
         })
 
-        return deferred.promise;//promise has a '.then' functions -> 
+        return deferred.promise;//promise has a '.then' functions ->
       };
 
-/////////////////////////
+
 //START-END trips//////
   self.startTrip = function(bookingId) {
       var deferred = $q.defer();
       $http.get("http://localhost/apinew/bookings/" + bookingId + "/start_trip")
 
-      .success(function(data) { 
+      .success(function(data) {
         console.log(data);
         deferred.resolve(true);
       })
@@ -58,7 +60,7 @@ angular.module('starter')
         console.error(msg);
         deferred.reject(false);
       });
-// 
+//
     };
 
   self.endTrip = function(bookingId) {

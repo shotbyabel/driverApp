@@ -24,7 +24,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
- ///|||||||||||||||| 
+ ///||||||||||||||||
 ///OWNER AUTH-VIEWS
 //||||||||||||||||||
 .state('app2', {
@@ -42,7 +42,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
           controller: 'BookingsCtrl'
         }
       }
-    })  
+    })
 
 .state('app2.easyBook', {
     url: '/easyBook',
@@ -61,7 +61,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
           controller: 'LoginOwnerCtrl'
         }
       }
-    })  
+    })
 
   .state('app2.owner-calendar', {
       url: '/owner-calendar',
@@ -81,7 +81,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
           controller: 'LoginOwnerCtrl'
         }
       }
-    })  
+    })
 
       .state('app2.owner-settings', {
       url: '/owner-settings',
@@ -102,11 +102,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       }
     })
 
- ///|||||||||||||||| 
+ ///||||||||||||||||
 ///OWNER AUTH-VIEWS
 //||||||||||||||||||
 
- ///|||||||||||||||| 
+ ///||||||||||||||||
 ///DRIVER AUTH-VIEWS
 //||||||||||||||||||
     .state('app', {
@@ -117,7 +117,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   })
 
   .state('app.today', {
-    url: '/today',
+    url: '/today/:user_id/:driver_id',
     views: {
         'menuContent': {
           templateUrl: 'templates/today.html',
@@ -125,7 +125,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
         }
       }
     })
-  
+
     .state('app.bookings', {
     url: '/bookings',
     views: {
@@ -142,7 +142,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   //   url: '/login',
   //   templateUrl: 'templates/login.html',
   //   controller: 'LoginCtrl'
-  
+
   // })
 
   .state('app.login', {
@@ -164,7 +164,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
         }
       }
     })
-  
+
  .state('app.current-trip', {
     url: '/current-trip',
     views: {
@@ -210,7 +210,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       }
     }
   });
-   ///|||||||||||||||| 
+   ///||||||||||||||||
 ///DRIVER AUTH-VIEWS
 //||||||||||||||||||
   // if none of the above states are matched, use this as the fallback
