@@ -8,18 +8,17 @@
 
   </ion-content>
   
-
   <ion-list class="list-position"> 
 
       <ion-item class="item-avatar items-bg"
-      ng-repeat="booking in today">
-
+           ng-repeat="booking in today">
         <img class="icon-man" src="/img/icon-man-div.png" alt="">
-        <h4 class="passenger-name">
-            Passenger {{booking.customer_id}}</h4>
-          <p class="passenger-details">
-            {{booking.arrival_date | date:"MM/dd/yyyy @ h:mma"}}</p>
+          <h4 class="passenger-name">
+              Passenger {{booking.customer_id}}</h4>
+           <p class="passenger-details">
+              {{booking.arrival_date | date:"MM/dd/yyyy @ h:mma"}}</p>
       </ion-item> 
+    
     </ion-list>
 
 
