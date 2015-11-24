@@ -3,7 +3,7 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, $stateParams, BookingsService) {
+ .controller("BookingsCtrl", function($scope, $stateParams, BookingsService, driverLocationService) {
   console.log($stateParams);
 
   $scope.today = [];
@@ -11,8 +11,8 @@
   $scope.dailyPassengers = null;
 
   // BookingsService.user_id = $stateParams.user_id;
-  BookingsService.user_id = '1454';
-  BookingsService.driver_id = $stateParams.driver_id;
+  BookingsService.user_id = '1108';
+  // BookingsService.driver_id = $stateParams.driver_id;
   console.log($scope);
 
   // $scope.today = BookingsService;
@@ -37,15 +37,15 @@
 
     $scope.startTrip = function() {
       // console.log(self);
-      var userId = 1108;
-      driverLocationService.startDriverTrip(bookingId, userId);
+      // var userId = 1108;
+      driverLocationService.startDriverTrip(bookingId, BookingsService.user_id);
       var bookingId = event.target.id;
       BookingsService.startTrip(bookingId);
     }
 
     $scope.endTrip = function() {
-      var userId = 1108;
-    driverLocationService.stopDriverTrip(bookingId, userId);
+      // var userId = 1108;
+    driverLocationService.stopDriverTrip(bookingId, BookingsService.user_id);
       var bookingId = event.target.id;
       BookingsService.endTrip(bookingId);
     }

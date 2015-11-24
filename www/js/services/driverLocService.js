@@ -23,6 +23,7 @@
            $http.get(url + requestData)
            .success(function success (data) {
             if(data){
+              console.log(data);
               deferred.resolve(true);
             }
           })
