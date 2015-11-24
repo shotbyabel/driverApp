@@ -3,11 +3,11 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, BookingsService) {
+ .controller("BookingsCtrl", function($scope, BookingsService, driverLocationService) {
 
   $scope.today = [];
   $scope.test = 'scope test';
-  $scope.dailyPassengers = 0;
+  $scope.dailyPassengers = null;
 
   // $scope.today = BookingsService;
   // $scope.today = {
@@ -30,13 +30,16 @@
     });
 
     $scope.startTrip = function() {
-      //driverLocationService.startDriverTrip(bookingId, userId);
+      // console.log(self);
+      var userId = 1108;
+      driverLocationService.startDriverTrip(bookingId, userId);
       var bookingId = event.target.id;
       BookingsService.startTrip(bookingId);
     }
 
     $scope.endTrip = function() {
-    //driverLocationService.stopDriverTrip(bookingId, userId);
+      var userId = 1108;
+    driverLocationService.stopDriverTrip(bookingId, userId);
       var bookingId = event.target.id;
       BookingsService.endTrip(bookingId);
     }
