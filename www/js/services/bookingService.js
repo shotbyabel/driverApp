@@ -1,5 +1,5 @@
 // IIFE START //
-(function() { 
+(function() {
  'use strict';
 //REMEMBER: this 'BookingsService can be injected accross controllers'
 angular.module('starter')
@@ -32,7 +32,7 @@ self.bookings = data;
           // })
 
           // console.log(self.bookings);//arrival date console log here.
-          
+
           // console.log(data);
           // self.bookings = data.results; //assign the bookings[] results
           // console.log(self.bookings);
@@ -44,7 +44,7 @@ self.bookings = data;
           deferred.reject(false);
         })
 
-        return deferred.promise;//promise has a '.then' functions -> 
+        return deferred.promise;//promise has a '.then' functions ->
       };
 
 
@@ -75,8 +75,8 @@ self.bookings = data;
    //        deferred.reject(false);
    //      })
 
-   //      return deferred.promise;//promise has a '.then' functions -> 
-   //    };     
+   //      return deferred.promise;//promise has a '.then' functions ->
+   //    };
 
 
 /////////////////////////
@@ -85,7 +85,7 @@ self.bookings = data;
       var deferred = $q.defer();
       $http.get("http://localhost/apinew/bookings/" + bookingId + "/start_trip")
 
-      .success(function(data) { 
+      .success(function(data) {
         console.log(data);
         deferred.resolve(true);
       })
@@ -93,7 +93,7 @@ self.bookings = data;
         console.error(msg);
         deferred.reject(false);
       });
-// 
+//
     };
 
   self.endTrip = function(bookingId) {

@@ -1,10 +1,10 @@
 // IIFE START //
-(function() { 
+(function() {
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, BookingsService) {
-
+ .controller("BookingsCtrl", function($scope, $stateParams, BookingsService) {
+  console.log($stateParams);
   $scope.today = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = 0;
@@ -22,7 +22,7 @@
       if(data){
         $scope.today = BookingsService.bookings;
         $scope.dailyPassengers = BookingsService.bookings.length;
-        
+
       }
 
     }, function error (data) {
@@ -42,7 +42,7 @@
     }
 
     //driverLoc by the minute
-    
+
 })
  // IIFE START //
 })();
