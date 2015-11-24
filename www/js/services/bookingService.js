@@ -10,11 +10,11 @@ angular.module('starter')
 
   self.getBookings = function () {
         //create 'defer object'
+        console.log(self);
         var deferred = $q.defer();
-
-        $http.get("http://localhost/apinew/bookings/1454")
+        $http.get("http://localhost/apinew/bookings/" + self.user_id)
         .success(function success (data) {
-          console.log(data); //entire bookings object console log
+          console.log(data[0].customer_id); //entire bookings object console log
           // console.log(data.length);
 
   self.bookings = data;

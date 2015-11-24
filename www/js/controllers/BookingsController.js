@@ -10,6 +10,11 @@
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
 
+  // BookingsService.user_id = $stateParams.user_id;
+  BookingsService.user_id = '1454';
+  BookingsService.driver_id = $stateParams.driver_id;
+  console.log($scope);
+
   // $scope.today = BookingsService;
   // $scope.today = {
   //   'bookings':BookingsService.bookings
@@ -18,7 +23,7 @@
     //AFTER $http service we call our function in the Ctrl?
     BookingsService.getBookings().then(function success (data) {
       console.log("Success!");
-      console.log($scope.test);
+      console.log($scope);
       console.log(data);
       if(data){
         $scope.today = BookingsService.bookings;
