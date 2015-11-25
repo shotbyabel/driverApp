@@ -1,18 +1,19 @@
 <ion-view view-title="TODAY">
   <ion-content>
-  <h3 class="dayofthe-week">Wednesday</h3>
+  <h3 class="dayOftheWeek">{{dayofWeek}}</h3>
     <div class="daily-count">{{dailyPassengers}}</div>
     <ion-content class="today-client-bubble" scroll="false">
 
       <img class="bubble" src="/img/todayscreenBubble.png" alt="">
 
   </ion-content>
-  
+
   <ion-list class="list-position"> 
 
-      <ion-item class="item-avatar items-bg"
-           ng-repeat="booking in today">
-        <img class="icon-man" src="/img/icon-man-div.png" alt="">
+      <ion-item  class="item-avatar items-bg"
+           ng-repeat="booking in today"
+           >
+        <img id={{booking.id}} class="icon-man" src="/img/icon-man-div.png" alt=""ng-click="tripInfo()">
           <h4 class="passenger-name">
               Passenger {{booking.customer_id}}</h4>
            <p class="passenger-details">

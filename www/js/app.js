@@ -103,7 +103,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     })
 
  ///||||||||||||||||
-///OWNER AUTH-VIEWS
+///END-OWNER AUTH-VIEWS
 //||||||||||||||||||
 
  ///||||||||||||||||
@@ -116,6 +116,18 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     controller: 'AppCtrl'
   })
 
+
+  .state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/login.html',
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+
+
   .state('app.today', {
     url: '/today/:user_id/:driver_id',
     views: {
@@ -126,7 +138,17 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       }
     })
 
-    .state('app.bookings', {
+ .state('app.trip-details', {
+    url: '/trip-details',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/trip-details.html',
+        controller: 'BookingsCtrl'
+      }
+    }
+  })
+
+  .state('app.bookings', {
     url: '/bookings',
     views: {
         'menuContent': {
@@ -144,16 +166,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   //   controller: 'LoginCtrl'
 
   // })
-
-  .state('app.login', {
-      url: '/login',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/login.html',
-          controller: 'LoginCtrl'
-        }
-      }
-    })
 
   .state('app.map', {
       url: '/map',
@@ -219,3 +231,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
 
 //test456 password
 //abelh
+
+
+
+
+
+

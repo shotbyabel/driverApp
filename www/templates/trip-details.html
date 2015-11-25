@@ -1,17 +1,28 @@
-<ion-modal-view>
+<ion-modal-view class="trip-modal">
+
   <ion-header-bar>
-    <h3 class="title">Passenger Trip info</h3>
+    <h3 class="title">{{booking.customer_id}}</h3>
     <div class="buttons">
-      <button class="button button-clear" ng-click="closeModal()">Close</button>
+      <button class="button button-assertive" ng-click="closetripInfo()">CLOSE</button>
     </div>
   </ion-header-bar>
   <ion-content>
+
+    
+<p>PICK UP LOCATION</p>
+<p>OPTIONS</p>
+
     
 
-      <button id={{booking.id}} 
-              class="button button-block button-positive Start-Trip" 
-              ng-click="startTrip()">Start Trip
-      </button>
 
+      <button  
+              class="button button-block button-positive Start-Trip" 
+              ng-click="startTrip()">Slide to Start Trip
+      </button>
+      <button
+              class="button button-block button-negative End-Trip" 
+              ng-click="endTrip()">
+        End Trip
+      </button>
   </ion-content>
 </ion-modal-view>

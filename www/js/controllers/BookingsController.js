@@ -3,7 +3,7 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, $stateParams, BookingsService, driverLocationService) {
+ .controller("BookingsCtrl", function($scope, $stateParams, $ionicModal, BookingsService, driverLocationService) {
   console.log($stateParams);
 
   $scope.today = [];
@@ -14,12 +14,42 @@
   BookingsService.user_id = '1108';
   // BookingsService.driver_id = $stateParams.driver_id;
   console.log($scope);
-
   // $scope.today = BookingsService;
   // $scope.today = {
   //   'bookings':BookingsService.bookings
     // 'bookings': []
   // };
+////////////////////////////////////////////  
+///getDAY of Week 
+var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var today = new Date;
+$scope.dayofWeek = days[today.getDay()];
+
+// console.log(dayofWeek);
+
+ ////////////////////////////////// 
+///START trip-details modal
+    $ionicModal.fromTemplateUrl('templates/trip-details.html', {
+    scope: $scope
+  }).then(function(modal) {
+    
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closetripInfo = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the trip-details modal
+  $scope.tripInfo = function() {
+      $scope.bookingId = event.target.id;
+          console.log($scope.bookingId);
+    $scope.modal.show();
+  };
+ /// finish trip-details modal
+//////////////////////////////////////////
+
     //AFTER $http service we call our function in the Ctrl?
     BookingsService.getBookings().then(function success (data) {
       console.log("Success!");
@@ -36,18 +66,16 @@
     });
 
     $scope.startTrip = function() {
-      // console.log(self);
+      console.log($scope);
       // var userId = 1108;
-      driverLocationService.startDriverTrip(bookingId, BookingsService.user_id);
-      var bookingId = event.target.id;
-      BookingsService.startTrip(bookingId);
+      driverLocationService.startDriverTrip($scope.bookingId, BookingsService.user_id);
+      BookingsService.startTrip($scope.bookingId);
     }
 
     $scope.endTrip = function() {
       // var userId = 1108;
-    driverLocationService.stopDriverTrip(bookingId, BookingsService.user_id);
-      var bookingId = event.target.id;
-      BookingsService.endTrip(bookingId);
+    driverLocationService.stopDriverTrip($scope.bookingId, BookingsService.user_id);
+      BookingsService.endTrip($scope.bookingId);
     }
 
     //driverLoc by the minute

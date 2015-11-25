@@ -49,7 +49,7 @@
         }, 3000)
       }
 
-      self.stopDriverTrip = function(){
+      self.stopDriverTrip = function(booking_id, user_id){
         $interval.cancel(driverTripTimer);
       };
 
