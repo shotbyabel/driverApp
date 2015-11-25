@@ -9,11 +9,13 @@
   $scope.today = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
+  // $scope.
 
   // BookingsService.user_id = $stateParams.user_id;
   BookingsService.user_id = '1108';
+  BookingsService.customer_id = '26';
   // BookingsService.driver_id = $stateParams.driver_id;
-  console.log($scope);
+
   // $scope.today = BookingsService;
   // $scope.today = {
   //   'bookings':BookingsService.bookings
@@ -53,17 +55,26 @@ $scope.dayofWeek = days[today.getDay()];
     //AFTER $http service we call our function in the Ctrl?
     BookingsService.getBookings().then(function success (data) {
       console.log("Success!");
-      console.log($scope);
       console.log(data);
       if(data){
         $scope.today = BookingsService.bookings;
-        $scope.dailyPassengers = BookingsService.bookings.length;
+        $scope.dailyPassengers = BookingsService.bookings.length;            
 
       }
 
     }, function error (data) {
       console.log("Error!")
     });
+
+    BookingsService.getNames().then(function success (data) {
+      console.log(data);
+      if(data) {
+        $scope.customerNames = BookingsService.customerNames
+      }
+    })
+
+   
+        
 
     $scope.startTrip = function() {
       console.log($scope);
