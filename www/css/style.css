@@ -1,7 +1,8 @@
 /* Empty. Add your own CSS if you like */
 .pane{
 
-background-image: url("/img/screenbgtemplate.png");  
+background-image: url("/img/screenbgtemplate.png");
+
 
 }
 
@@ -15,7 +16,7 @@ background: none;
 /**************************/
 /*T O D A Y SCREEN STYLES*/
 
-.dayofthe-week {
+.dayOftheWeek {
 
   text-align: center;
   color: white;
@@ -158,6 +159,13 @@ input.ng-touched.ng-valid {
   margin-right: 0%;
   margin-left: -4%;
 
+}
+
+
+.trip-modal{
+
+  background-color: black;
+  opacity: .85;
 }
 
 /*********************/
