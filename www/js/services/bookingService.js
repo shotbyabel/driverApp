@@ -7,44 +7,42 @@ angular.module('starter')
 
   var self = this;
   self.bookings = [];
+  self.customerNames = [];
 
   self.getBookings = function () {
-        //create 'defer object'
-        console.log(self);
-        var deferred = $q.defer();
-        $http.get("http://localhost/apinew/bookings/" + self.user_id)
-        .success(function success (data) {
-          console.log(data[0].customer_id); //entire bookings object console log
-          // console.log(data.length);
+    //create 'defer object'
+    console.log(self);
+    var deferred = $q.defer();
+    $http.get("http://localhost/apinew/bookings/" + self.user_id)
+    .success(function success (data) {
+      // console.log(data); //entire bookings object console log
+      self.bookings = data;//entire bookings object
+      deferred.resolve(true);
+      })
+    .error(function error (msg) {
+      console.error(msg);
+      deferred.reject(false);
+      })
+    return deferred.promise;//promise has a '.then' functions ->
+    };
 
-  self.bookings = data;
-          // var bookingData = data.forEach(function(trip) {
-          //   self.bookings.push({
-          //     arrival_date: trip.arrival_date
-          //   });
-          // })
 
-          // var passengerCount = data.forEach(function(passCount) {
-          //   self.bookings.push({
-          //     length: passCount.length
-          //   });
-          // })
+          
+    self.getNames = function () {
+      var deferred = $q.defer();
+      $http.get("http://localhost/apinew/getname/" + self.customer_id)
+      .success(function success (data) {
+        console.log(data);
+        self.customerNames = data;
+        deferred.resolve(true);
+      })
+      .error(function error (msg) {
+        console.error(msg);
+        deferred.reject(false);
+      })
+      return deferred.promise;
+    };      
 
-          // console.log(self.bookings);//arrival date console log here.
-
-          // console.log(data);
-          // self.bookings = data.results; //assign the bookings[] results
-          // console.log(self.bookings);
-          deferred.resolve(true);
-
-        })
-        .error(function error (smg) {
-          console.error(msg);
-          deferred.reject(false);
-        })
-
-        return deferred.promise;//promise has a '.then' functions ->
-      };
 
 
 //START-END trips//////
@@ -77,7 +75,7 @@ angular.module('starter')
 
     };
 
-});
+});//bookingService close
 
  // IIFE START //
 })();
