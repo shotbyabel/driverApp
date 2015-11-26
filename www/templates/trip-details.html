@@ -1,28 +1,35 @@
 <ion-modal-view class="trip-modal">
 
-  <ion-header-bar>
-    <h3 class="title">{{booking.customer_id}}</h3>
+  <ion-header-bar dark class="bar-dark" id="modal-bar">
+    <h3 class="title">{{customerNames}}</h3>
     <div class="buttons">
-      <button class="button button-assertive" ng-click="closetripInfo()">CLOSE</button>
+      <button class="button button-assertive" ng-click="closetripInfo()">X</button>
     </div>
   </ion-header-bar>
+
   <ion-content>
 
+    <div class="list card" id="tripditz1">
+      <div class="item item-avatar" id="tripditz1" >
+        <h3 class="title">{{customerNames}}</h3>
+          <p>{{booking.departing_address}}</p>
+      </div>
+
+      <div class="item item-body items-bg">
+        <img class="trip-map" src="/img/fakemap.png" alt="">
+      </div>
+    <ion-item class="items-bg">
+      <p class="modal-text">PICKUP LOCATION</p>
+      <p class="modal-text">OPTIONS</p>
+        <button class="button button-block button-balanced Start-Trip" 
+                ng-click="startTrip()">Slide to Start Trip
+        </button>
+    </ion-item>      
+
+    </div>
     
-<p>PICK UP LOCATION</p>
-<p>OPTIONS</p>
-
-    
 
 
-      <button  
-              class="button button-block button-positive Start-Trip" 
-              ng-click="startTrip()">Slide to Start Trip
-      </button>
-      <button
-              class="button button-block button-negative End-Trip" 
-              ng-click="endTrip()">
-        End Trip
-      </button>
   </ion-content>
+
 </ion-modal-view>
