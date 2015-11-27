@@ -13,6 +13,90 @@ background: none;
 
 }
 
+/*************************/
+/*L O G I N  - S T A T E*/
+
+.driver-logo{
+
+text-align: center;
+
+}
+
+div.input-fields{
+ margin-top: 25%
+
+}
+
+#sign-in-btn {
+border: none;
+background-color: #4d5b7e;
+border-radius: 85px;
+margin-top: 8%;
+
+}
+
+#signIn-psw-inputs{
+color: white;
+border: none;
+border-radius: 85px;
+background-color: #39383d;
+}
+
+.psw-input{
+border-radius: 85px;
+
+}
+
+/*ANGULAR FORM VALUDATION RED for invalid GREEN for Valid*/
+input.ng-touched.ng-invalid {
+  border-radius: 85px;
+  border: 1px solid #980000;
+  margin-right: 0%;
+  margin-left: -4%;
+
+}
+
+input.ng-touched.ng-valid {
+  border-radius: 85px;
+  border: 1px solid #009900;
+  margin-right: 0%;
+  margin-left: -4%;
+
+}
+
+.trip-modal{
+
+  background-color: black;
+  opacity: .90;
+  border-bottom: 1px;
+
+}
+
+#modal-bar{
+background-color: black;
+opacity: 1;  
+}
+
+#tripditz1{
+background-color: black;
+
+}
+
+
+p.modal-text {
+font-size: 0.70em;
+text-align: center;
+color: white;
+font-weight: 700;  
+}
+
+h3.title{
+color: white;
+font-size: 2.0em;
+font-variant: small-caps;
+
+
+}
 /**************************/
 /*T O D A Y SCREEN STYLES*/
 
@@ -49,21 +133,20 @@ background: none;
 
 .bubble {
 
-  height: 50em;
-  width: 30em;
-  margin-top: 0%;
-  margin-bottom: 10%;
-
+  height: 35%;
+  width: 35%;
 }
 
 /*this number is generated from the BookingsController.js
 $scope.dailyPassengers = BookingsService.bookings.length;*/
-.daily-count {
 
-font-size: 5.0em;
+div.daily-count {
+font-size: 4.25em;
 color: white;
-margin-left: 44%;
-margin-top: 20%;
+text-align: center;
+margin-top: -25%;
+/*margin-left: 44%;*/
+/*margin-bottom: 29%;*/
 
 
 }
@@ -120,53 +203,7 @@ input.input-color {
 
 }
 
-/*************************/
-/*L O G I N  - S T A T E*/
 
-#sign-in-btn {
-
-border: none;
-background-color: #4d5b7e;
-border-radius: 85px;
-margin-top: 8%;
-
-}
-
-#signIn-psw-inputs{
-color: white;
-border: none;
-border-radius: 85px;
-background-color: #39383d;
-}
-
-.psw-input{
-border-radius: 85px;
-
-}
-
-/*ANGULAR FORM VALUDATION RED for invalid GREEN for Valid*/
-input.ng-touched.ng-invalid {
-  border-radius: 85px;
-  border: 1px solid #980000;
-  margin-right: 0%;
-  margin-left: -4%;
-
-}
-
-input.ng-touched.ng-valid {
-  border-radius: 85px;
-  border: 1px solid #009900;
-  margin-right: 0%;
-  margin-left: -4%;
-
-}
-
-
-.trip-modal{
-
-  background-color: black;
-  opacity: .85;
-}
 
 /*********************/
 /*M A P  - S T A T E*/
