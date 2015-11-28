@@ -3,8 +3,9 @@
  'use strict';
 
   angular.module('starter')
-    .controller('LoginCtrl', function ($scope, $http, $state) {
+    .controller('LoginCtrl', function ($scope, $http, $state, $ionicLoading) {
 
+    // $ionicLoading.show({template: 'Fetching your passengers...'});
     $scope.loginForm ={}
     $scope.onSubmit = function () {
 
@@ -35,10 +36,14 @@
         }
         }).error(function(data) {
           console.log("Failed, Please check your API end point!")
-        });
+        })
       }
     };
   });
+
+// .then(function () {
+//           $ionicLoading.hide();
+//         });
 
 // IIFE START //
 })();

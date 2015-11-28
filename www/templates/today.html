@@ -32,12 +32,13 @@
                  ng-repeat="booking in today">
         <img id={{booking.id}} 
              class="icon-man" src="/img/icon-man-div.png" alt=""ng-click="tripInfo()">
-          <h4 class="passenger-name">
+          <div class="passenger-info">
+            <h4 class="passenger-name">
               {{customerNames}}</h4>
 
-           <p class="passenger-details">
+            <p class="passenger-details">
               {{booking.arrival_date | date:"MM/dd/yyyy @ h:mma"}}</p>
-
+          </div> 
       </ion-item> 
     
     </ion-list>

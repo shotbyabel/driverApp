@@ -35,6 +35,7 @@ angular.module('starter')
         console.log(data);
         self.customerNames = data;
         deferred.resolve(true);
+        
       })
       .error(function error (msg) {
         console.error(msg);
