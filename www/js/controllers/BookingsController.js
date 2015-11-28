@@ -13,7 +13,7 @@
 
   // BookingsService.user_id = $stateParams.user_id;
   BookingsService.user_id = '1236';
-  // BookingsService.customer_id = '268';
+  BookingsService.customer_id = '78';
   // BookingsService.driver_id = $stateParams.driver_id;
 
   // $scope.today = BookingsService;

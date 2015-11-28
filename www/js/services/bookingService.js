@@ -9,6 +9,7 @@ angular.module('starter')
   self.bookings = [];
   self.customerNames = [];
 
+//GET FROM ARRAY
   self.getBookings = function () {
     //create 'defer object'
     console.log(self);
@@ -25,8 +26,6 @@ angular.module('starter')
       })
     return deferred.promise;//promise has a '.then' functions ->
     };
-
-
           
     self.getNames = function () {
       var deferred = $q.defer();
