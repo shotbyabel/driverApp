@@ -12,8 +12,8 @@
   // $scope.
 
   // BookingsService.user_id = $stateParams.user_id;
-  BookingsService.user_id = '1108';
-  BookingsService.customer_id = '26';
+  BookingsService.user_id = '1236';
+  BookingsService.customer_id = '78';
   // BookingsService.driver_id = $stateParams.driver_id;
 
   // $scope.today = BookingsService;
@@ -53,9 +53,10 @@ $scope.dayofWeek = days[today.getDay()];
 ///SWIPE-RIGHT from trip-details TO current-trip .state//////
 
 $scope.onSwipeRight = function() {
-  $state.go('app.current-trip.html');
+//function chaining NEEDS TO BE REFACTOR- errors  
+  $scope.closetripInfo(); 
+  $state.go('app.current-trip').closetripInfo();
 }
-
 ////////////////////////////////////////////////////////////
 //AFTER $http service we call our function in the Ctrl?
   BookingsService.getBookings().then(function success (data) {
