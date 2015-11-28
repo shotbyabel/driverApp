@@ -29,8 +29,8 @@ div.input-fields{
 
 #sign-in-btn {
 border: none;
-background-color: #4d5b7e;
-border-radius: 85px;
+background-color: #4d5b7e !important;
+border-radius: 85px !important;
 margin-top: 8%;
 
 }
@@ -38,8 +38,8 @@ margin-top: 8%;
 #signIn-psw-inputs{
 color: white;
 border: none;
-border-radius: 85px;
-background-color: #39383d;
+border-radius: 85px !important;
+background-color: #39383d !important;
 }
 
 .psw-input{
@@ -63,6 +63,41 @@ input.ng-touched.ng-valid {
   margin-left: -4%;
 
 }
+
+.whole-menu{
+
+background-image: url("/img/driversidemenu.png");
+width: 100%;
+height: 100%;
+}
+
+.driver-menu .list{
+/*background-color: transparent !important;*/
+margin-top: 60%;
+margin-left: 15%;
+
+}
+
+.item {
+  color: white;
+  border: none;
+  background-color: transparent !important;
+  padding-top: 0%;
+  /*position: static;*/
+
+/*replaced from MAIN IONIC SCSS FILE #6020 (used to by white)*/
+}
+
+.menu-categories{
+
+/*margin-top: 60%;
+margin-left: 15%;*/
+
+
+}
+
+
+
 
 .trip-modal{
 
@@ -151,6 +186,8 @@ margin-top: -25%;
 
 }
 
+
+
 /*should include passenger names and times for trips*/
 .list-position {
   position: absolute;
@@ -165,7 +202,7 @@ margin-top: -25%;
 background: transparent;
 border-top: none;
 border-bottom-style:outset;
-border-bottom:;
+border-bottom:1px solid grey;
 
 }
 
@@ -173,6 +210,11 @@ border-bottom:;
 .icon-man {
 
 width: 4.5em;
+
+}
+
+.passenger-info{
+padding-top:5%;
 
 }
 
@@ -204,6 +246,47 @@ input.input-color {
 }
 
 
+.current-trip-details {
+color: white;
+background-color: black;
+height: 25%;
+width: 100%;
+
+}
+
+
+.ionicIcons{
+font-size: 2em;
+
+}
+
+.trip-buttons{
+text-align: center;
+margin-top: 20%;
+
+}
+
+.trip-text{
+text-align: center;
+font-variant: small-caps;
+font-weight: 700;
+margin-top: 5%;
+
+}
+/*********************/
+/*S E T T I N G S*/
+
+li.item {
+  padding-top: 2.5%;
+  border-bottom:1px solid grey;
+
+}
+
+ul.list{
+
+margin-top: 50%;  
+
+}
 
 /*********************/
 /*M A P  - S T A T E*/

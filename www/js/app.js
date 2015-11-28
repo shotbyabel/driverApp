@@ -148,6 +148,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     }
   })
 
+  .state('app.current-trip', {
+    url: '/current-trip',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/current-trip.html',
+        controller: 'BookingsCtrl'
+      }
+    }
+  })
+
   .state('app.bookings', {
     url: '/bookings',
     views: {
@@ -176,15 +186,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
         }
       }
     })
-
- .state('app.current-trip', {
-    url: '/current-trip',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/current-trip.html'
-      }
-    }
-  })
 
   .state('app.calendar', {
       url: '/calendar',

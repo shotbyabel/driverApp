@@ -3,8 +3,8 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, $stateParams, $ionicModal, BookingsService, driverLocationService) {
-  console.log($stateParams);
+ .controller("BookingsCtrl", function($scope, $stateParams, $state, $ionicModal, BookingsService, driverLocationService) {
+  // console.log($stateParams);
 
   $scope.today = [];
   $scope.test = 'scope test';
@@ -26,9 +26,6 @@
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var today = new Date;
 $scope.dayofWeek = days[today.getDay()];
-
-// console.log(dayofWeek);
-
  ////////////////////////////////// 
 ///START trip-details modal
     $ionicModal.fromTemplateUrl('templates/trip-details.html', {
@@ -52,13 +49,21 @@ $scope.dayofWeek = days[today.getDay()];
  /// finish trip-details modal
 //////////////////////////////////////////
 
-    //AFTER $http service we call our function in the Ctrl?
-    BookingsService.getBookings().then(function success (data) {
-      console.log("Success!");
-      console.log(data);
-      if(data){
-        $scope.today = BookingsService.bookings;
-        $scope.dailyPassengers = BookingsService.bookings.length;            
+//////////////////////////////////////////////////////////////
+///SWIPE-RIGHT from trip-details TO current-trip .state//////
+
+$scope.onSwipeRight = function() {
+  $state.go('app.current-trip.html');
+}
+
+////////////////////////////////////////////////////////////
+//AFTER $http service we call our function in the Ctrl?
+  BookingsService.getBookings().then(function success (data) {
+    console.log("Success!");
+    console.log(data);
+    if(data){
+      $scope.today = BookingsService.bookings;
+      $scope.dailyPassengers = BookingsService.bookings.length;            
 
       }
 
