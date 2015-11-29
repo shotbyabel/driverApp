@@ -3,7 +3,7 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, $stateParams, $state, $ionicModal, BookingsService, driverLocationService) {
+ .controller("BookingsCtrl", function($scope, $stateParams, $state, $ionicModal, $q, BookingsService, driverLocationService) {
   // console.log($stateParams);
 
   $scope.today = [];
@@ -52,8 +52,18 @@ $scope.dayofWeek = days[today.getDay()];
 //////////////////////////////////////////////////////////////
 ///SWIPE-RIGHT from trip-details TO current-trip .state//////
 
+// $scope.onSwipeRight = function() {
+//   var deferred = $q.defer();
+//     deferred.resolve('res');
+//     $state.go('app.current-trip');
+//     return deferred.promise;
+// }
+
+// onSwipeRight().then(function(res) {
+//   $scope.closetripInfo();
+// },null);
 $scope.onSwipeRight = function() {
-//function chaining NEEDS TO BE REFACTOR- errors  
+  //function chaining NEEDS TO BE REFACTOR- errors  
   $scope.closetripInfo(); 
   $state.go('app.current-trip').closetripInfo();
 }
