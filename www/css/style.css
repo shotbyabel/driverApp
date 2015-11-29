@@ -2,29 +2,23 @@
 .pane{
 
 background-image: url("/img/screenbgtemplate.png");
-
-
 }
 
 .temp{
 
 text-align: center;
 background: none;
-
 }
 
 /*************************/
 /*L O G I N  - S T A T E*/
 
 .driver-logo{
-
 text-align: center;
-
 }
 
 div.input-fields{
  margin-top: 25%
-
 }
 
 #sign-in-btn {
@@ -32,7 +26,6 @@ border: none;
 background-color: #4d5b7e !important;
 border-radius: 85px !important;
 margin-top: 8%;
-
 }
 
 #signIn-psw-inputs{
@@ -63,6 +56,11 @@ input.ng-touched.ng-valid {
   margin-left: -4%;
 
 }
+/*************************/
+
+
+/*************************/
+/*S I D E - M E N U*/
 
 .whole-menu{
 
@@ -93,18 +91,16 @@ margin-left: 15%;
 /*margin-top: 60%;
 margin-left: 15%;*/
 
-
 }
 
 
-
+/*************************/
+/*T R I P  -  D E T A I L S  - S T A T E*/
 
 .trip-modal{
-
-  background-color: black;
-  opacity: .90;
-  border-bottom: 1px;
-
+background-color: black;
+opacity: .90;
+border-bottom: 1px;
 }
 
 #modal-bar{
@@ -114,192 +110,237 @@ opacity: 1;
 
 #tripditz1{
 background-color: black;
-
 }
 
+.item.item-body#currentTrip-map{
+text-align: center;
+}
 
 p.modal-text {
-font-size: 0.70em;
+font-size: 0.85em;
 text-align: center;
 color: white;
-font-weight: 700;  
+font-weight: 400;  
 }
 
-h3.title{
+h4.title{
 color: white;
-font-size: 2.0em;
+font-size: 1.85em;
 font-variant: small-caps;
-
-
 }
+
+.button.button-balanced#swipe-toStart{
+font-size: 1.25em;
+background: transparent;  
+}
+
 /**************************/
 /*T O D A Y SCREEN STYLES*/
 
 .dayOftheWeek {
 
-  text-align: center;
-  color: white;
-  font-size: 2.5em;
-  font-weight: 200;  
-
+text-align: center;
+color: white;
+font-size: 2.5em;
+font-weight: 200;  
 }
-
 
 .today-client-bubble {
 
-  display: -webkit-flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-          align-items: center;
-  -webkit-align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
+display: -webkit-flex;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-ms-flex-align: center;
+         align-items: center;
+-webkit-align-items: center;
+-webkit-box-pack: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+-webkit-justify-content: center;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+    -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-flex-direction: column;
+-webkit-flex-direction: column;
 }
 
 .bubble {
-
-  height: 35%;
-  width: 35%;
+height: 35%;
+width: 35%;
 }
 
 /*this number is generated from the BookingsController.js
 $scope.dailyPassengers = BookingsService.bookings.length;*/
-
 div.daily-count {
 font-size: 4.25em;
 color: white;
 text-align: center;
+/*MIGHT NEED TO UPDATE THIS margin-top*/
 margin-top: -25%;
 /*margin-left: 44%;*/
 /*margin-bottom: 29%;*/
-
-
 }
-
-
 
 /*should include passenger names and times for trips*/
 .list-position {
   position: absolute;
   top: 50%;
   width: 100%;
-
 }
 
 /*ion items class rows with no BG*/
 .items-bg {
-
 background: transparent;
 border-top: none;
 border-bottom-style:outset;
 border-bottom:1px solid grey;
-
 }
 
 /*later on we can pass photos here instead of icons*/
 .icon-man {
-
 width: 4.5em;
-
 }
 
 .passenger-info{
 padding-top:5%;
-
 }
 
 h4.passenger-name {
-  
-font-size: 1.15em;
+font-size: 1.05em;
 color: white;
 font-weight: 700;
-
 }
 
 p.passenger-details {
-
-  color: white;
-  font-weight: 300;
-
+color: white;
+font-weight: 400;
 }
 
+/**************************/
+/*L O G I N - I N P U T */
+
 .input-fields {
-  
 border-radius: 50%;
 margin-top: 85%;
-
 }
 
 input.input-color {
-  color: white;
-
+color: white;
 }
 
+/**************************/
+/*C U R R E N T - T R I P  -  D E T A I L S  
+- S T A T E*/
 
 .current-trip-details {
 color: white;
+/*font-size: 1em;*/
 background-color: black;
 height: 25%;
 width: 100%;
-
 }
-
+/*PROFILE ion ICONS*/
 
 .ionicIcons{
-font-size: 2em;
+font-size: 1.50em;
+}
+
+.current-trip-icons{
+font-size: 1.75em;
+margin-top: 2%;
 
 }
 
 .trip-buttons{
 text-align: center;
 margin-top: 20%;
+}
 
+span.currentrip-txt-btn{
+font-size: 1.15em;
+font-weight: 500;
+margin-right: 2%;
+/*font-variant: small-caps;*/
+/*margin-top: 0%;
+margin-left: 0%;  
+padding-top: 4%;*/
+}
+
+i.modalIcons{
+font-size: 1.50em;
+color: darkgrey;
+margin-left: 25%;
 }
 
 .trip-text{
 text-align: center;
-font-variant: small-caps;
+/*font-variant: small-caps;*/
 font-weight: 700;
 margin-top: 5%;
+}
+
+p.modal-text#options-text{
+padding-top: 5%;  
 
 }
+
+.items-bg#modalDetails{
+margin-top: 10%;  
+}
+
+div.tripDetail-fonts{
+color: darkgrey;
+font-weight: 500;  
+text-align: center;
+}
+
+
 /*********************/
 /*S E T T I N G S*/
 
 li.item {
-  padding-top: 2.5%;
+  padding-top: 3.5%;
   border-bottom:1px solid grey;
-
 }
 
 ul.list{
-
 margin-top: 50%;  
-
 }
-
-
 
 div.profile-card{
 background-color: #60759e;  
-
 }
 
 img .profile-pic{
 text-align: center;
-
 }
 
+/*********************/
+/*P R O F I L E  - S T A T E*/
+
+span.profile-fonts{
+margin-left: 5%;
+margin-top: 2%;  
+font-size: 0.65em;
+font-weight: 700;
+color: darkgrey;
+}
+
+.items-bg-profile {
+padding-top: 5%;  
+background: transparent;
+border-top: none;
+border-bottom-style:outset;
+border-bottom:1px solid grey;
+}
+
+.profile-inputs{
+margin-left:10%;
+margin-right:0%;
+
+}
 /*********************/
 /*M A P  - S T A T E*/
 
