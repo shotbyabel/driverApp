@@ -1,7 +1,8 @@
 (function() {
  'use strict';
 
- angular.module('CalendarCtrl', function ($scope, $cordovaCalendar) {
+angular.module('starter')
+ .controller('CalendarCtrl', function ($scope, $cordovaCalendar) {
 
     $scope.createEvent = function() {
         $cordovaCalendar.createEvent({
