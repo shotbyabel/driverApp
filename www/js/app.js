@@ -192,11 +192,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       views: {
         'menuContent': {
           templateUrl: 'templates/calendar.html',
-          controller: 'CalendarCtrl'
-            
-          }])
+          controller: 'CalendarCtrl'            
+          }
         }
-      }
     })
 
     .state('app.profile', {
