@@ -19,7 +19,7 @@
 
           var requestData = user_id + '/' + latitude + '/' +
            longitude + '/' + booking_id;
-
+           console.log(requestData);
            $http.get(url + requestData)
            .success(function success (data) {
             if(data){

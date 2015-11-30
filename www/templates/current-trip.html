@@ -1,48 +1,43 @@
 <!-- <body ng-app="starter" ng-controller="MapCtrl"> -->
 <ion-view view-title="ON TRIP">
-    <ion-header-bar dark class="bar-dark">
-      <h1 class="title"></h1>
-    </ion-header-bar>
+  <ion-header-bar dark class="bar-dark">
+    <h1 class="title"></h1>
+  </ion-header-bar>
 
-    <ion-content scroll="false">
+  <ion-content scroll="false">
+    <map on-create="mapCreated(map)" class="current-map"></map>
 
-        <map on-create="mapCreated(map)" class="current-map"></map>
+   <div row row-center class="trip-text">
+    <div>
+      <p>ARRIVAL :{{driver_arrival_time}}</p>
+      <p>{{arrival_address}}</p>
+    </div>
+  </div> 
 
-    </ion-content>
-    
-    <ion-content class="current-trip-details">
-    
-     <div row row-center class="trip-text">
-      <div>
-        <p>ARRIVAL :{{driver_arrival_time}}</p>
-        <p>{{arrival_address}}</p>
-      </div>
-     </div> 
-        
-        <div row row-center class="trip-buttons">
-          <div class="col col-center">
-            <button id={{booking.id}} 
-                    class="button button-outline button-light" 
-                    ng-click="">
-                  
-                  <span class="currentrip-txt-btn">CONTACT CLIENT</span>
-                  <i class="ion-iphone current-trip-icons"></i>
-            </button>
-    
-          <button id={{booking.id}} 
-                   class="button button-outline button-light End-Trip" 
-                   ng-click="endTrip()">
-                   
-                   <span class="currentrip-txt-btn">END TRIP</span>
-                   <i class="ion-ios-close current-trip-icons"></i>
-          </button>
-          </div>
-        </div> 
-      
-    </ion-content>
+  <div row row-center class="trip-buttons">
+    <div class="col col-center">
+      <button id={{booking.id}} 
+        class="button button-outline button-light" 
+        ng-click="">
 
-    <ion-footer-bar class="bar-stable">
-      <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
-    </ion-footer-bar>
+        <span class="currentrip-txt-btn">CONTACT CLIENT</span>
+        <i class="ion-iphone current-trip-icons"></i>
+      </button>
+
+      <button id={{booking.id}} 
+       class="button button-outline button-light End-Trip" 
+       ng-click="endTrip()">
+
+       <span class="currentrip-txt-btn">END TRIP</span>
+       <i class="ion-ios-close current-trip-icons"></i>
+     </button>
+   </div>
+ </div> 
+
+</ion-content>
+
+<ion-footer-bar class="bar-stable">
+  <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
+</ion-footer-bar>
 <!--  </body> -->
 </ion-view>
