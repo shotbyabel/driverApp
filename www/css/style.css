@@ -40,6 +40,11 @@ border-radius: 85px;
 
 }
 
+div.login-form-iPhone5fix{
+margin-top: -10%;
+
+}
+
 /*ANGULAR FORM VALUDATION RED for invalid GREEN for Valid*/
 input.ng-touched.ng-invalid {
   border-radius: 85px;
@@ -95,7 +100,7 @@ margin-left: 15%;*/
 
 
 /*************************/
-/*T R I P  -  D E T A I L S  - S T A T E*/
+/*T R I P  -  D E T A I L S  - MODAL*/
 
 .trip-modal{
 background-color: black;
@@ -147,7 +152,7 @@ padding-top: 0%;
 
 .button.button-balanced#swipe-toStart{
 font-size: 1.25em;
-background: transparent;
+background: darkgreen;
 
 }
 
@@ -268,9 +273,9 @@ width: 100%;
 }
 /*PROFILE ion ICONS*/
 
-.ionicIcons{
+/*.ionicIcons{
 font-size: 1.50em;
-}
+}*/
 
 .current-trip-icons{
 font-size: 1.50em;
@@ -284,9 +289,9 @@ margin-top: 18%;
 }
 
 span.currentrip-txt-btn{
-font-size: 1.15em;
-font-weight: 500;
-margin-right: 2%;
+font-size: 1.05em;
+font-weight: 300;
+margin-right: 0%;
 /*font-variant: small-caps;*/
 /*margin-top: 0%;
 margin-left: 0%;  
@@ -361,6 +366,11 @@ border-bottom:1px solid grey;
 margin-left:10%;
 margin-right:0%;
 
+}
+
+.profile-list{
+margin-top: -10%;
+margin-bottom: 0%;
 }
 /*********************/
 /*M A P  - S T A T E*/
