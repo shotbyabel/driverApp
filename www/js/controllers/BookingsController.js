@@ -3,31 +3,42 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, $stateParams, $state, $ionicModal, $q, BookingsService, driverLocationService) {
-  // console.log($stateParams);
+ .controller("BookingsCtrl", function($scope, $stateParams, $state, $ionicModal, $q, 
+                                      BookingsService, driverLocationService, UserService) {
 
   $scope.today = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
-  // $scope.
+//To be used when we want to do something on the page load
+//Example get data from server, etc..
+  $scope.$on('$ionicView.enter', function(){
 
-  // BookingsService.user_id = $stateParams.user_id;
-  BookingsService.user_id = '1236';
-  BookingsService.customer_id = '78';
-  // BookingsService.driver_id = $stateParams.driver_id;
+  console.log('here');
+  console.log(UserService.user);
+  BookingsService.user_id = UserService.user.id;
+  BookingsService.getBookings().then(function success (data) {
+    console.log("Success!");
+    console.log(data);
+    if(data){
+      $scope.today = BookingsService.bookings;
+      $scope.customers = BookingsService.bookingsCustomers;
+      // console.log($scope.customers);
+      $scope.dailyPassengers = BookingsService.bookings.length;            
+      }
 
-  // $scope.today = BookingsService;
-  // $scope.today = {
-  //   'bookings':BookingsService.bookings
-    // 'bookings': []
-  // };
-////////////////////////////////////////////  
-///getDAY of Week 
+    }, function error (data) {
+      console.log("Error!")
+    });
+});
+
+////////////////////////// 
+///GET DAY OF THE WEEK///
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var today = new Date;
+
 $scope.dayofWeek = days[today.getDay()];
  ////////////////////////////////// 
-///START trip-details modal
+ ///START trip-details modal
     $ionicModal.fromTemplateUrl('templates/trip-details.html', {
     scope: $scope
   }).then(function(modal) {
@@ -46,66 +57,29 @@ $scope.dayofWeek = days[today.getDay()];
           console.log($scope.bookingId);
     $scope.modal.show();
   };
- /// finish trip-details modal
-//////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////
 ///SWIPE-RIGHT from trip-details TO current-trip .state//////
-
-// $scope.onSwipeRight = function() {
-//   var deferred = $q.defer();
-//     deferred.resolve('res');
-//     $state.go('app.current-trip');
-//     return deferred.promise;
-// }
-
-// onSwipeRight().then(function(res) {
-//   $scope.closetripInfo();
-// },null);
 $scope.onSwipeRight = function() {
-  //function chaining NEEDS TO BE REFACTOR- errors  
-  $scope.closetripInfo(); 
-  $state.go('app.current-trip').closetripInfo();
+  $scope.closetripInfo();
+  $scope.startTrip(); 
+  $state.go('app.current-trip');
 }
-////////////////////////////////////////////////////////////
-//AFTER $http service we call our function in the Ctrl?
-  BookingsService.getBookings().then(function success (data) {
-    console.log("Success!");
-    console.log(data);
-    if(data){
-      $scope.today = BookingsService.bookings;
-      $scope.dailyPassengers = BookingsService.bookings.length;            
-
-      }
-
-    }, function error (data) {
-      console.log("Error!")
-    });
-
-    BookingsService.getNames().then(function success (data) {
-      console.log(data);
-      if(data) {
-        $scope.customerNames = BookingsService.customerNames
-      }
-    })
-
-   
-        
+////////////////////////////////////
+/// START & END driver trips
 
     $scope.startTrip = function() {
       console.log($scope);
-      // var userId = 1108;
+      //updated w/user_id
       driverLocationService.startDriverTrip($scope.bookingId, BookingsService.user_id);
       BookingsService.startTrip($scope.bookingId);
     }
 
     $scope.endTrip = function() {
-      // var userId = 1108;
-    driverLocationService.stopDriverTrip($scope.bookingId, BookingsService.user_id);
-      BookingsService.endTrip($scope.bookingId);
+      //updated w/user_id
+      driverLocationService.stopDriverTrip($scope.bookingId, BookingsService.user_id);
+      BookingsService.endTrip(BookingsService.currentBookingTripId);
     }
-
-    //driverLoc by the minute
 
 })
  // IIFE START //

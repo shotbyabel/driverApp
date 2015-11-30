@@ -34,7 +34,7 @@
              class="icon-man" src="/img/icon-man-div.png" alt=""ng-click="tripInfo()">
           <div class="passenger-info">
             <h4 class="passenger-name">
-              {{customerNames}}</h4>
+              {{customers[$index][0].first_name}} {{customers[$index][0].last_name}} </h4>
 
             <p class="passenger-details">
               {{booking.arrival_date | date:"MM/dd/yyyy @ h:mma"}}</p>
