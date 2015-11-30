@@ -3,7 +3,7 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, $stateParams, $state, $ionicModal, $q, 
+ .controller("BookingsCtrl", function($scope, $stateParams, $state, $ionicModal, $q,
                                       BookingsService, driverLocationService, UserService) {
 
   $scope.today = [];
@@ -15,7 +15,7 @@
 
   console.log('here');
   console.log(UserService.user);
-  BookingsService.user_id = UserService.user.id;
+  BookingsService.driver_id = UserService.user.driver_id;
   BookingsService.getBookings().then(function success (data) {
     console.log("Success!");
     console.log(data);
@@ -23,7 +23,7 @@
       $scope.today = BookingsService.bookings;
       $scope.customers = BookingsService.bookingsCustomers;
       // console.log($scope.customers);
-      $scope.dailyPassengers = BookingsService.bookings.length;            
+      $scope.dailyPassengers = BookingsService.bookings.length;
       }
 
     }, function error (data) {
@@ -31,18 +31,18 @@
     });
 });
 
-////////////////////////// 
+//////////////////////////
 ///GET DAY OF THE WEEK///
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var today = new Date;
 
 $scope.dayofWeek = days[today.getDay()];
- ////////////////////////////////// 
+ //////////////////////////////////
  ///START trip-details modal
     $ionicModal.fromTemplateUrl('templates/trip-details.html', {
     scope: $scope
   }).then(function(modal) {
-    
+
     $scope.modal = modal;
   });
 
@@ -62,7 +62,7 @@ $scope.dayofWeek = days[today.getDay()];
 ///SWIPE-RIGHT from trip-details TO current-trip .state//////
 $scope.onSwipeRight = function() {
   $scope.closetripInfo();
-  $scope.startTrip(); 
+  $scope.startTrip();
   $state.go('app.current-trip');
 }
 ////////////////////////////////////

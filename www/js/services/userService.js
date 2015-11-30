@@ -1,4 +1,4 @@
-angular.module('starter') 
+angular.module('starter')
   .service('UserService', function(){
 //set up ONLY for drivers ATM
     var self = this;
@@ -12,9 +12,9 @@ angular.module('starter')
 //save as 'userObject'
     self.save = function(userObject) {
       self.user.id = userObject.id;
-      self.user.driver_id = userObject.driver.driver_id;
+      self.user.driver_id = userObject.driver.id;
       self.user.name = userObject.Fullname;
       self.user.email = userObject.email;
       self.user.phone = userObject.mobile;
-    }    
+    }
   });
