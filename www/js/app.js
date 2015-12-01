@@ -145,7 +145,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   })
 
   .state('app.current-trip', {
-    url: '/current-trip',
+    url: '/current-trip/:booking_id',
     views: {
       'menuContent': {
         templateUrl: 'templates/current-trip.html',
