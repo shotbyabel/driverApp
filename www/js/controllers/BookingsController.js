@@ -55,8 +55,9 @@ $scope.dayofWeek = days[today.getDay()];
 
   // Open the trip-details modal
   $scope.tripInfo = function() {
-      $scope.bookingId = event.target.id;
-          console.log($scope.bookingId);
+      $scope.bookingIndex = event.target.id;
+      $scope.currentBooking = $scope.today[$scope.bookingIndex];
+      $scope.currentCustomer = $scope.customers[$scope.bookingIndex];
     $scope.modal.show();
   };
 

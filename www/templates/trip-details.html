@@ -3,7 +3,7 @@
   <ion-header-bar dark class="bar-dark" id="modal-bar">
     <h3 class="title">Trip Details</h3>
     <div class="buttons">
-      <button class="button button-outline" 
+      <button class="button button-outline"
               ng-click="closetripInfo()">
               <i class="ion-close-round ionicIcons"></i>
       </button>
@@ -14,30 +14,30 @@
 
     <div class="list card" id="tripditz1">
       <div class="item item-avatar" id="tripditz1" >
-        <h4 class="title">{{customerNames}}</h4>
+        <h4 class="title">{{currentCustomer[0].first_name + " " + currentCustomer[0].last_name}}</h4>
           <p>{{booking.departing_address}}</p>
       </div>
 
       <div class="item item-body items-bg" id="currentTrip-map">
         <img class="trip-map" src="/img/fakemap.png" alt="">
       </div>
-        
+
         <ion-item class="items-bg" id="modalDetails">
-          
-          <p class="modal-text">PICKUP LOCATION</p>
+
+          <p class="modal-text" id="options-text">PICKUP LOCATION</p>
             <i class="ion-location modalIcons"></i>
-              <div class="tripDetail-fonts">{{arrival_address}}7080 Hollywood Blvd.</div>
-          
-          <p class="modal-text" id="options-text">OPTIONS</p>
+              <div class="tripDetail-fonts">{{today[0].departing_address}}</div>
+
+          <p class="modal-text" id="options-text">DROPOFF LOCATION</p>
             <i class="ion-person-add modalIcons"></i>
-              <div class="tripDetail-fonts">{{}}</div>
+              <div class="tripDetail-fonts">{{today[0].arrival_address}}</div>
         <!-- I NEED TO CONNECT THIS starTrip function to SLIDER -->
-<!--         <button class="button button-block button-balanced Start-Trip" 
+<!--         <button class="button button-block button-balanced Start-Trip"
                 ng-click="startTrip()">PUSH TO START TRIP
         </button> -->
 
         <!-- ui-sref=“app.current-trip" -->
-    </ion-item>      
+        </ion-item>
     </div>
             <button id="swipe-toStart" class="button button-block button-balanced"
                 on-swipe-right="onSwipeRight()">SLIDE RIGHT to START TRIP

@@ -29,8 +29,8 @@
     <ion-list class="list-position">
 
       <ion-item  class="item-avatar items-bg"
-                 ng-repeat="booking in today">
-        <img id={{booking.id}}
+                 ng-repeat="($index, booking) in today">
+        <img id={{$index}} value={{customers[$index][0].first_name}} {{customers[$index][0].last_name}}
              class="icon-man" src="/img/icon-man-div.png" alt=""ng-click="tripInfo()">
           <div class="passenger-info">
             <h4 class="passenger-name">
