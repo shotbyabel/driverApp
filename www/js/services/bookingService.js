@@ -33,7 +33,6 @@ angular.module('starter')
 //START-END trips//////
   self.startTrip = function(bookingId) {
     //store the id for the trip to be used later..
-    self.currentBookingTripId = bookingId;
 
       var deferred = $q.defer();
       $http.get("http://localhost/apinew/bookings/" + bookingId + "/start_trip")
