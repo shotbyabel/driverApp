@@ -58,7 +58,7 @@ $scope.dayofWeek = days[today.getDay()];
       $scope.bookingIndex = event.target.id;
       $scope.currentBooking = $scope.today[$scope.bookingIndex];
       $scope.currentCustomer = $scope.customers[$scope.bookingIndex];
-    $scope.modal.show();
+    $scope.modal.show($scope);
   };
 
 //////////////////////////////////////////////////////////////
@@ -66,22 +66,23 @@ $scope.dayofWeek = days[today.getDay()];
 $scope.onSwipeRight = function() {
   $scope.closetripInfo();
   $scope.startTrip();
-  $state.go('app.current-trip');
+  console.log($scope.currentBooking.id);
+  $state.go('app.current-trip', {booking_id: $scope.currentBooking.id});
 }
 ////////////////////////////////////
 /// START & END driver trips
 
     $scope.startTrip = function() {
-      console.log($scope);
       //updated w/user_id
-      driverLocationService.startDriverTrip($scope.bookingId, BookingsService.user_id);
-      BookingsService.startTrip($scope.bookingId);
+      driverLocationService.startDriverTrip($scope.currentBooking.id, UserService.user.id);
+      BookingsService.startTrip($scope.currentBooking.id);
     }
 
     $scope.endTrip = function() {
+      $scope.booking_id = $stateParams.booking_id
       //updated w/user_id
-      driverLocationService.stopDriverTrip($scope.bookingId, BookingsService.user_id);
-      BookingsService.endTrip(BookingsService.currentBookingTripId);
+      driverLocationService.stopDriverTrip($scope.booking_id, UserService.user.id);
+      BookingsService.endTrip($scope.booking_id);
     }
 
 })

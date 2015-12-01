@@ -26,11 +26,11 @@
 
           <p class="modal-text" id="options-text">PICKUP LOCATION</p>
             <i class="ion-location modalIcons"></i>
-              <div class="tripDetail-fonts">{{today[0].departing_address}}</div>
+              <div class="tripDetail-fonts">{{currentBooking.departing_address}}</div>
 
           <p class="modal-text" id="options-text">DROPOFF LOCATION</p>
             <i class="ion-person-add modalIcons"></i>
-              <div class="tripDetail-fonts">{{today[0].arrival_address}}</div>
+              <div class="tripDetail-fonts">{{currentBooking.arrival_address}}</div>
         <!-- I NEED TO CONNECT THIS starTrip function to SLIDER -->
 <!--         <button class="button button-block button-balanced Start-Trip"
                 ng-click="startTrip()">PUSH TO START TRIP
