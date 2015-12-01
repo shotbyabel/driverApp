@@ -3,7 +3,9 @@
  'use strict';
 
 angular.module('starter')
-  .controller('MapCtrl', function($scope, $ionicLoading, driverLocationService){
+  .controller('MapCtrl', function($scope, $ionicSideMenuDelegate, $ionicLoading, driverLocationService){
+
+  $ionicSideMenuDelegate.canDragContent(true);
 
     $scope.mapCreated = function(map) {
       $scope.map = map;
@@ -23,7 +25,7 @@ angular.module('starter')
 //       };
 //       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 //     }
-// ////from ngCordova DOCS//////   
+// ////from ngCordova DOCS//////
 
     $scope.loading = $ionicLoading.show({
       content: 'Getting your location...',
