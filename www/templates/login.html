@@ -1,38 +1,55 @@
+<ion-view class="login-bg" name="login-view">
+  <ion-content class="padding" scroll="false">
 
-<ion-view class="login-bg" view-title="" name="login-view">
-  <ion-content class="padding">
+<div class="row row-center">
+  <div class="col col-center driver-logo">
+
+    <img class="login-logo" src="/img/logo-driver.png">
+
+  </div>
+</div>
+
+  <!-- L O G I N - F O R M  -->
+  <div class="row">
+    <div class="col login-form-iPhone5fix">
+
     <form name="theLoginForm" class="login-form" id="loginForm" ng-submit="onSubmit(theLoginForm)" novalidate="novalidate">
-  
+
+
+
         <div class="list input-fields"
           ng-class="{ 'has-error' : theLoginForm.username.$touched && theLoginForm.username.$invalid, 'has-success': theLoginForm.username.$touched && theLoginForm.username.$valid}">
             <label for="username" class="item item-input" id="signIn-psw-inputs">
-            <input 
-            type="text" 
+            <input
+            type="text"
             ng-model="loginForm.Username"
-            class="input-color signIn-input" 
-            placeholder="Username" 
+            class="input-color signIn-input"
+            placeholder="Username"
             required="required"></label>
          <p ng-show="theLoginForm.username.$invalid && !theLoginForm.username.$pristine"
             class="help-block">Username is Required!.></p>
-        </div>        
+        </div>
 
         <div
-          ng-class="{ 'has-error' : theLoginForm.password.$touched && theLoginForm.password.$invalid, 'has-success': theLoginForm.password.$touched && theLoginForm.password.$valid}">          
+          ng-class="{ 'has-error' : theLoginForm.password.$touched && theLoginForm.password.$invalid, 'has-success': theLoginForm.password.$touched && theLoginForm.password.$valid}">
           <label for="password" class="item item-input" id="signIn-psw-inputs">
-          <input  
+
+          <input
           type="password"
           class="input-color"
-          ng-model="loginForm.Password" 
+          ng-model="loginForm.Password"
           placeholder="Password"></label>
        <p ng-show="theLoginForm.password.$invalid && !theLoginForm.password.$pristine"
-          class="help-block">Your Password is required!.</p><!--bootstrap form validation classes--> 
-     
+          class="help-block">Your Password is required!.</p><!--bootstrap form validation classes-->
+
       </div>
       <!--LOGIN button-->
-        <a href="#" class="button button-block button-positive" id="sign-in-btn" ng-click="onSubmit()">login</a>
+        <a href="#" class="button button-block button-positive" id="sign-in-btn" ng-click="onSubmit()">Sign In</a>
 
-    </form>    
-
+    </form>
+    </div>
+   </div>
+<!-- L O G I N - F O R M  -->
       <!-- <pre>{{ theLoginForm | json }}</pre> -->
 
   </ion-content>

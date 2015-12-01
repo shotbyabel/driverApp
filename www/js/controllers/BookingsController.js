@@ -1,48 +1,88 @@
 // IIFE START //
-(function() { 
+(function() {
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, BookingsService) {
+ .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q,
+                                      BookingsService, driverLocationService, UserService) {
+
+  $ionicSideMenuDelegate.canDragContent(true);
 
   $scope.today = [];
   $scope.test = 'scope test';
-  $scope.dailyPassengers = 0;
+  $scope.dailyPassengers = null;
+//To be used when we want to do something on the page load
+//Example get data from server, etc..
+  $scope.$on('$ionicView.enter', function(){
 
-  // $scope.today = BookingsService;
-  // $scope.today = {
-  //   'bookings':BookingsService.bookings
-    // 'bookings': []
-  // };
-    //AFTER $http service we call our function in the Ctrl?
-    BookingsService.getBookings().then(function success (data) {
-      console.log("Success!");
-      console.log($scope.test);
-      console.log(data);
-      if(data){
-        $scope.today = BookingsService.bookings;
-        $scope.dailyPassengers = BookingsService.bookings.length;
-        
+  console.log('here');
+  console.log(UserService.user);
+  BookingsService.driver_id = UserService.user.driver_id;
+  BookingsService.getBookings().then(function success (data) {
+    console.log("Success!");
+    console.log(data);
+    if(data){
+      $scope.today = BookingsService.bookings;
+      $scope.customers = BookingsService.bookingsCustomers;
+      // console.log($scope.customers);
+      $scope.dailyPassengers = BookingsService.bookings.length;
       }
 
     }, function error (data) {
       console.log("Error!")
     });
+});
+
+//////////////////////////
+///GET DAY OF THE WEEK///
+var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var today = new Date;
+
+$scope.dayofWeek = days[today.getDay()];
+ //////////////////////////////////
+ ///START trip-details modal
+    $ionicModal.fromTemplateUrl('templates/trip-details.html', {
+    scope: $scope
+  }).then(function(modal) {
+
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closetripInfo = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the trip-details modal
+  $scope.tripInfo = function() {
+      $scope.bookingId = event.target.id;
+          console.log($scope.bookingId);
+    $scope.modal.show();
+  };
+
+//////////////////////////////////////////////////////////////
+///SWIPE-RIGHT from trip-details TO current-trip .state//////
+$scope.onSwipeRight = function() {
+  $scope.closetripInfo();
+  $scope.startTrip();
+  $state.go('app.current-trip');
+}
+////////////////////////////////////
+/// START & END driver trips
 
     $scope.startTrip = function() {
-      //driverLocationService.startDriverTrip(bookingId, userId);
-      var bookingId = event.target.id;
-      BookingsService.startTrip(bookingId);
+      console.log($scope);
+      //updated w/user_id
+      driverLocationService.startDriverTrip($scope.bookingId, BookingsService.user_id);
+      BookingsService.startTrip($scope.bookingId);
     }
 
     $scope.endTrip = function() {
-    //driverLocationService.stopDriverTrip(bookingId, userId);
-      var bookingId = event.target.id;
-      BookingsService.endTrip(bookingId);
+      //updated w/user_id
+      driverLocationService.stopDriverTrip($scope.bookingId, BookingsService.user_id);
+      BookingsService.endTrip(BookingsService.currentBookingTripId);
     }
 
-    //driverLoc by the minute
-    
 })
  // IIFE START //
 })();

@@ -24,7 +24,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
- ///|||||||||||||||| 
+ ///||||||||||||||||
 ///OWNER AUTH-VIEWS
 //||||||||||||||||||
 .state('app2', {
@@ -42,7 +42,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
           controller: 'BookingsCtrl'
         }
       }
-    })  
+    })
 
 .state('app2.easyBook', {
     url: '/easyBook',
@@ -61,7 +61,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
           controller: 'LoginOwnerCtrl'
         }
       }
-    })  
+    })
 
   .state('app2.owner-calendar', {
       url: '/owner-calendar',
@@ -81,7 +81,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
           controller: 'LoginOwnerCtrl'
         }
       }
-    })  
+    })
 
       .state('app2.owner-settings', {
       url: '/owner-settings',
@@ -102,11 +102,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       }
     })
 
- ///|||||||||||||||| 
-///OWNER AUTH-VIEWS
+ ///||||||||||||||||
+///END-OWNER AUTH-VIEWS
 //||||||||||||||||||
 
- ///|||||||||||||||| 
+ ///||||||||||||||||
 ///DRIVER AUTH-VIEWS
 //||||||||||||||||||
     .state('app', {
@@ -116,8 +116,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     controller: 'AppCtrl'
   })
 
+
+  .state('login', {
+      url: '/login',
+          templateUrl: 'templates/login.html',
+          controller: 'LoginCtrl'
+    })
+
+
   .state('app.today', {
-    url: '/today',
+    url: '/today/:user_id/:driver_id',
     views: {
         'menuContent': {
           templateUrl: 'templates/today.html',
@@ -125,8 +133,28 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
         }
       }
     })
-  
-    .state('app.bookings', {
+
+ .state('app.trip-details', {
+    url: '/trip-details',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/trip-details.html',
+        controller: 'BookingsCtrl'
+      }
+    }
+  })
+
+  .state('app.current-trip', {
+    url: '/current-trip',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/current-trip.html',
+        controller: 'BookingsCtrl'
+      }
+    }
+  })
+
+  .state('app.bookings', {
     url: '/bookings',
     views: {
         'menuContent': {
@@ -142,18 +170,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   //   url: '/login',
   //   templateUrl: 'templates/login.html',
   //   controller: 'LoginCtrl'
-  
-  // })
 
-  .state('app.login', {
-      url: '/login',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/login.html',
-          controller: 'LoginCtrl'
-        }
-      }
-    })
+  // })
 
   .state('app.map', {
       url: '/map',
@@ -164,23 +182,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
         }
       }
     })
-  
- .state('app.current-trip', {
-    url: '/current-trip',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/current-trip.html'
-      }
-    }
-  })
 
   .state('app.calendar', {
       url: '/calendar',
       views: {
         'menuContent': {
-          templateUrl: 'templates/calendar.html'
+          templateUrl: 'templates/calendar.html',
+          controller: 'CalendarCtrl'
+          }
         }
-      }
     })
 
     .state('app.profile', {
@@ -210,12 +220,18 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       }
     }
   });
-   ///|||||||||||||||| 
+   ///||||||||||||||||
 ///DRIVER AUTH-VIEWS
 //||||||||||||||||||
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  $urlRouterProvider.otherwise('/login');
 });
 
 //test456 password
 //abelh
+
+
+
+
+
+

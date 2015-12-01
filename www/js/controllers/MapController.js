@@ -3,7 +3,9 @@
  'use strict';
 
 angular.module('starter')
-  .controller('MapCtrl', function($scope, $ionicLoading){
+  .controller('MapCtrl', function($scope, $ionicSideMenuDelegate, $ionicLoading, driverLocationService){
+
+  $ionicSideMenuDelegate.canDragContent(true);
 
     $scope.mapCreated = function(map) {
       $scope.map = map;
@@ -15,11 +17,19 @@ angular.module('starter')
       if (!$scope.map) {
         return;
       }
+// ////from ngCordova DOCS//////
+//       function showMap(coords) {
+//         var mapOptions = {
+//         center: {lat: coords.latitude, lng: coords.longitue},
+//         zoom: 8
+//       };
+//       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+//     }
+// ////from ngCordova DOCS//////
 
     $scope.loading = $ionicLoading.show({
       content: 'Getting your location...',
       showBackdrop: false
-
 
     });
 
@@ -34,6 +44,16 @@ angular.module('starter')
     }, function (error) {
       alert('Unable to get your location G: ' + error.message);
     });
+// ////from ngCordova DOCS//////
+//       driverLocationService.getPosition()
+//         .then(function(position) {
+//         $scope.coords = position.coords;
+//         showMap(position.coords);
+//       }, function(err) {
+//         console.log('getCurrentPosition error: ' + angular.toJson(err));
+//       });
+// ////from ngCordova DOCS//////
+
   };
 });
 

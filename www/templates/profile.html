@@ -1,5 +1,46 @@
-<ion-view view-title="profile">
+<ion-view view-title="Driver Profile">
   <ion-content>
-    <h1>Driver's Profile</h1>
+    
+    <div class="list card profile-card">
+      <div class="item item-thumbnail-left">
+        <img class="profile-pic" src="">          
+      </div>
+    </div>
+
+
+
+    <ion-list class="list-position profile-list"> 
+
+      <ion-item class="items-bg-profile">
+      <i class="ion-person ionicIcons"></i>
+       <span class="profile-fonts">NAME</span>
+        <div>{{name}}</div>
+        </ion-item> 
+    
+          <ion-item class="items-bg-profile">
+          <i class="ion-email ionicIcons"></i>
+          <span class="profile-fonts">EMAIL</span>
+            <div>{{email}}</div>
+            </ion-item>
+
+          <ion-item class="items-bg-profile">
+          <i class="ion-ios-locked ionicIcons"></i>
+          <span class="profile-fonts">PASSWORD</span>
+            <div class="profile-inputs">{{password}}*******</div>
+          </ion-item>  
+
+          <ion-item class="items-bg-profile">
+          <i class="ion-iphone ionicIcons"></i>
+          <span class="profile-fonts">PHONE</span>
+            <div>{{phone}}</div>
+          </ion-item> 
+
+      <ion-item class="items-bg-profile">
+      <i class="ion-location ionicIcons"></i>
+        <span class="profile-fonts">ADDRESS</span>
+          <div>{{address}}</div>
+      </ion-item> 
+
+    </ion-list>
   </ion-content>
 </ion-view>

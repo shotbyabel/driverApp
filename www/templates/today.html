@@ -1,31 +1,52 @@
 <ion-view view-title="TODAY">
   <ion-content>
-  <h3 class="dayofthe-week">Wednesday</h3>
-    <div class="daily-count">{{dailyPassengers}}</div>
-    <ion-content class="today-client-bubble" scroll="false">
 
-      <img class="bubble" src="/img/todayscreenBubble.png" alt="">
+    <h3 class="dayOftheWeek">{{dayofWeek}}</h3>
 
-  </ion-content>
-  
+      <div class="row responsive-sm">
 
-  <ion-list class="list-position"> 
+        <div class="col col-50" >
 
-      <ion-item class="item-avatar items-bg"
-      ng-repeat="booking in today">
+          <div class="today-client-bubble" scroll="false">
 
-        <img class="icon-man" src="/img/icon-man-div.png" alt="">
-        <h4 class="passenger-name">
-            Passenger {{booking.customer_id}}</h4>
-          <p class="passenger-details">
-            {{booking.arrival_date | date:"MM/dd/yyyy @ h:mma"}}</p>
-      </ion-item> 
+            <img class="bubble" src="/img/todayscreenBubble.png" alt="">
+
+          </div>
+
+        </div>
+
+       </div>
+
+        <div class="row responsive-sm">
+          <div class="col col-50" >
+            <div class="daily-count">{{dailyPassengers}}</div>
+          </div>
+       </div>
+
+
+
+
+    <ion-list class="list-position">
+
+      <ion-item  class="item-avatar items-bg"
+                 ng-repeat="booking in today">
+        <img id={{booking.id}}
+             class="icon-man" src="/img/icon-man-div.png" alt=""ng-click="tripInfo()">
+          <div class="passenger-info">
+            <h4 class="passenger-name">
+              {{customers[$index][0].first_name}} {{customers[$index][0].last_name}} </h4>
+
+            <p class="passenger-details">
+              <b>DATE: </b>{{booking.driver_departing_time}}</br>
+              <b>PICKUP: </b>{{booking.departing_address}}</br>
+              <b>DEST: </b>{{booking.arrival_address }}</br>
+            </p>
+          </div>
+      </ion-item>
+
     </ion-list>
 
-
-
-    
-
+</ion-content>
 </ion-view>
 
 

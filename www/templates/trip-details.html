@@ -1,17 +1,47 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h3 class="title">Passenger Trip info</h3>
+<ion-modal-view class="trip-modal">
+
+  <ion-header-bar dark class="bar-dark" id="modal-bar">
+    <h3 class="title">Trip Details</h3>
     <div class="buttons">
-      <button class="button button-clear" ng-click="closeModal()">Close</button>
+      <button class="button button-outline" 
+              ng-click="closetripInfo()">
+              <i class="ion-close-round ionicIcons"></i>
+      </button>
     </div>
   </ion-header-bar>
+
   <ion-content>
-    
 
-      <button id={{booking.id}} 
-              class="button button-block button-positive Start-Trip" 
-              ng-click="startTrip()">Start Trip
-      </button>
+    <div class="list card" id="tripditz1">
+      <div class="item item-avatar" id="tripditz1" >
+        <h4 class="title">{{customerNames}}</h4>
+          <p>{{booking.departing_address}}</p>
+      </div>
 
+      <div class="item item-body items-bg" id="currentTrip-map">
+        <img class="trip-map" src="/img/fakemap.png" alt="">
+      </div>
+        
+        <ion-item class="items-bg" id="modalDetails">
+          
+          <p class="modal-text">PICKUP LOCATION</p>
+            <i class="ion-location modalIcons"></i>
+              <div class="tripDetail-fonts">{{arrival_address}}7080 Hollywood Blvd.</div>
+          
+          <p class="modal-text" id="options-text">OPTIONS</p>
+            <i class="ion-person-add modalIcons"></i>
+              <div class="tripDetail-fonts">{{}}</div>
+        <!-- I NEED TO CONNECT THIS starTrip function to SLIDER -->
+<!--         <button class="button button-block button-balanced Start-Trip" 
+                ng-click="startTrip()">PUSH TO START TRIP
+        </button> -->
+
+        <!-- ui-sref=“app.current-trip" -->
+    </ion-item>      
+    </div>
+            <button id="swipe-toStart" class="button button-block button-balanced"
+                on-swipe-right="onSwipeRight()">SLIDE RIGHT to START TRIP
+        </button>
   </ion-content>
+
 </ion-modal-view>
