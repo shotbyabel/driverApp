@@ -117,14 +117,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
   })
 
 
-  .state('app.login', {
+  .state('login', {
       url: '/login',
-      views: {
-        'menuContent': {
           templateUrl: 'templates/login.html',
           controller: 'LoginCtrl'
-        }
-      }
     })
 
 
@@ -192,7 +188,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       views: {
         'menuContent': {
           templateUrl: 'templates/calendar.html',
-          controller: 'CalendarCtrl'            
+          controller: 'CalendarCtrl'
           }
         }
     })
@@ -228,7 +224,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
 ///DRIVER AUTH-VIEWS
 //||||||||||||||||||
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  $urlRouterProvider.otherwise('/login');
 });
 
 //test456 password

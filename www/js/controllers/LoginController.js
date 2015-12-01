@@ -3,7 +3,9 @@
  'use strict';
 
   angular.module('starter')
-    .controller('LoginCtrl', function ($scope, $http, $state, $ionicLoading, UserService) {
+    .controller('LoginCtrl', function ($scope, $ionicSideMenuDelegate, $http, $state, $ionicLoading, UserService) {
+
+    $ionicSideMenuDelegate.canDragContent(false);
 
     $scope.loginForm ={}
     $scope.onSubmit = function () {
@@ -22,7 +24,7 @@
         $ionicLoading.hide();
         if(typeof(res) === "string") {
          alert("INVALID LOGIN");
-         $state.go("app.login");
+         $state.go("login");
        }  else {
           console.log(res);
           UserService.save(res);

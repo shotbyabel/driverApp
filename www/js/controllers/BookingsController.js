@@ -3,8 +3,10 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, $stateParams, $state, $ionicModal, $q,
+ .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q,
                                       BookingsService, driverLocationService, UserService) {
+
+  $ionicSideMenuDelegate.canDragContent(true);
 
   $scope.today = [];
   $scope.test = 'scope test';
