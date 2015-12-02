@@ -86,25 +86,6 @@ $scope.onSwipeRight = function() {
       BookingsService.endTrip($scope.booking_id);
     }
 
-/////////////////////////////////
-////Logout Pop-up    
-  $scope.showConfirm = function() {
-     var confirmPopup = $ionicPopup.confirm({
-       title: 'EXIT?',
-       template: 'Are you sure you want to Log out?'
-     });
-     confirmPopup.then(function(res) {
-       if(res) {
-         console.log('Direct to Login state-OUT');
-       } else {
-         console.log('Return to previous screen,menu?');
-       }
-     });
-   };
-
-
-
-
 })
  // IIFE START //
 })();
