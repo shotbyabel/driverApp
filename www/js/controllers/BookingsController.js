@@ -58,7 +58,7 @@ $scope.dayofWeek = days[today.getDay()];
       $scope.bookingIndex = event.target.id;
       $scope.currentBooking = $scope.today[$scope.bookingIndex];
       $scope.currentCustomer = $scope.customers[$scope.bookingIndex];
-    $scope.modal.show($scope);
+      $scope.modal.show($scope);
   };
 
 //////////////////////////////////////////////////////////////
@@ -68,6 +68,7 @@ $scope.onSwipeRight = function() {
   $scope.startTrip();
   console.log($scope.currentBooking.id);
   $state.go('app.current-trip', {booking_id: $scope.currentBooking.id});
+
 }
 ////////////////////////////////////
 /// START & END driver trips

@@ -5,34 +5,57 @@
   </ion-header-bar>
 
   <ion-content scroll="false">
-    <map on-create="mapCreated(map)" class="current-map"></map>
 
-   <div row row-center class="trip-text">
-    <div>
-      <p>ARRIVAL :{{driver_arrival_time}}</p>
-      <p>{{arrival_address}}</p>
+      <div class="item item-avatar" id="tripditz1" >
+        <h4 class="title">{{currentCustomer[0].first_name + " " + currentCustomer[0].last_name}}</h4>
+          <p>{{booking.departing_address}}</p>
+      </div>
+
+    <div class="item item-body">
+
+      <div ng-controller="MapCtrl" class="col col-center col-100" >
+        <map id='map'></map>
+      </div>
+
+      <div ng-controller="BookingsCtrl">
+      <p class="modal-text" id="options-text">
+        <i class="ion-location modalIcons"></i>
+        PICKUP LOCATION
+      </p>
+
+      <div class="tripDetail-fonts">{{currentBooking.departing_address}}</div>
+
+      <p class="modal-text text-center" id="options-text">
+        <i class="ion-location modalIcons"></i>
+        DROPOFF LOCATION
+      </p>
+
+      <div class="tripDetail-fonts">{{currentBooking.arrival_address}}</div>
+
     </div>
-  </div> 
+
 
   <div row row-center class="trip-buttons">
     <div class="col col-center">
-      <button id={{booking.id}} 
-        class="button button-outline button-light" 
+      <button id={{booking.id}}
+        class="button button-outline button-light"
         ng-click="">
 
         <span class="currentrip-txt-btn">CONTACT CLIENT</span>
         <i class="ion-iphone current-trip-icons"></i>
       </button>
 
-      <button id={{booking.id}} 
-       class="button button-outline button-light End-Trip" 
+      <button id={{booking.id}}
+       class="button button-outline button-light End-Trip"
        ng-click="endTrip()">
 
        <span class="currentrip-txt-btn">END TRIP</span>
        <i class="ion-ios-close current-trip-icons"></i>
      </button>
    </div>
- </div> 
+ </div>
+
+</div>
 
 </ion-content>
 
