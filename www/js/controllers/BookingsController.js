@@ -3,7 +3,7 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q,
+ .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q, $timeout,
                                       BookingsService, driverLocationService, UserService) {
 
   $ionicSideMenuDelegate.canDragContent(true);
@@ -85,6 +85,25 @@ $scope.onSwipeRight = function() {
       driverLocationService.stopDriverTrip($scope.booking_id, UserService.user.id);
       BookingsService.endTrip($scope.booking_id);
     }
+
+/////////////////////////////////
+////Logout Pop-up    
+  $scope.showConfirm = function() {
+     var confirmPopup = $ionicPopup.confirm({
+       title: 'EXIT?',
+       template: 'Are you sure you want to Log out?'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+         console.log('Direct to Login state-OUT');
+       } else {
+         console.log('Return to previous screen,menu?');
+       }
+     });
+   };
+
+
+
 
 })
  // IIFE START //
