@@ -18,8 +18,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    if (window.plugin) {
-    map = window.plugin.google.maps.Map;//.getMap(div);
+    if (!window.plugins) {
+    window.plugins = {};
     }
   });
 })

@@ -13,11 +13,11 @@
 
     <div class="item item-body">
 
-      <div class="col col-center col-100" >
-        <map on-create="mapCreated(map)" id='map'></map>
+      <div ng-controller="MapCtrl" class="col col-center col-100" >
+        <map id='map'></map>
       </div>
 
-
+      <div ng-controller="BookingsCtrl">
       <p class="modal-text" id="options-text">
         <i class="ion-location modalIcons"></i>
         PICKUP LOCATION
@@ -54,6 +54,8 @@
      </button>
    </div>
  </div>
+
+</div>
 
 </ion-content>
 

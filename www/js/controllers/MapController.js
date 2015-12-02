@@ -3,60 +3,46 @@
  'use strict';
 
 angular.module('starter')
-  .controller('MapCtrl', function($scope, $ionicSideMenuDelegate, $ionicLoading, driverLocationService){
+  .controller('MapCtrl', function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, BookingsService, driverLocationService){
 
-  $ionicSideMenuDelegate.canDragContent(true);
+  $ionicSideMenuDelegate.canDragContent(true)
 
-    $scope.mapCreated = function(map) {
-      $scope.map = map;
-      $scope.infoWindow = new google.maps.InfoWindow({map: map});
+  var options = {timeout: 10000, enableHighAccuracy: true};
+
+  $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+
+    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    console.log(latLng);
+    var mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    $scope.centerOnMe = function () {
-      console.log("Centering");
-      if (!$scope.map) {
-        return;
-      }
-// ////from ngCordova DOCS//////
-//       function showMap(coords) {
-//         var mapOptions = {
-//         center: {lat: coords.latitude, lng: coords.longitue},
-//         zoom: 8
-//       };
-//       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-//     }
-// ////from ngCordova DOCS//////
+    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-    $scope.loading = $ionicLoading.show({
-      content: 'Getting your location...',
-      showBackdrop: false
+    //Wait until the map is loaded
+    google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+
+      var marker = new google.maps.Marker({
+          map: $scope.map,
+          animation: google.maps.Animation.DROP,
+          position: latLng
+      });
+
+      var infoWindow = new google.maps.InfoWindow({
+          content: "This is You!"
+      });
+
+      google.maps.event.addListener(marker, 'click', function () {
+          infoWindow.open($scope.map, marker);
+      });
 
     });
 
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      console.log('Got pos', pos);
-      $scope.infoWindow.setPosition(pos.coords.latitude, pos.coords.longitude);
-      $scope.infoWindow.setContent('You');
-      $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-
-
-      $scope.loading.hide();
-    }, function (error) {
-      alert('Unable to get your location G: ' + error.message);
-    });
-// ////from ngCordova DOCS//////
-//       driverLocationService.getPosition()
-//         .then(function(position) {
-//         $scope.coords = position.coords;
-//         showMap(position.coords);
-//       }, function(err) {
-//         console.log('getCurrentPosition error: ' + angular.toJson(err));
-//       });
-// ////from ngCordova DOCS//////
-
-  };
+  }, function(error){
+    console.log("Could not get location");
+  });
 });
-
-
  // IIFE START //
 })();

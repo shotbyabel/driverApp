@@ -59,7 +59,6 @@ $scope.dayofWeek = days[today.getDay()];
       $scope.currentBooking = $scope.today[$scope.bookingIndex];
       $scope.currentCustomer = $scope.customers[$scope.bookingIndex];
       $scope.modal.show($scope);
-      plugin.google.maps.Map.getMap(document.getElementById("map"));
   };
 
 //////////////////////////////////////////////////////////////
@@ -69,7 +68,6 @@ $scope.onSwipeRight = function() {
   $scope.startTrip();
   console.log($scope.currentBooking.id);
   $state.go('app.current-trip', {booking_id: $scope.currentBooking.id});
-  plugin.google.maps.Map.getMap(document.getElementById("currentTrip-map"));
 
 }
 ////////////////////////////////////
