@@ -51,14 +51,14 @@
           Settings
         </ion-item>
 
-        <ion-item menu-close href="#/app/map">
+<!--         <ion-item menu-close href="#/app/map">
         <i class="ion-ios-location-outline"></i>
           Map
-        </ion-item>
+        </ion-item> -->
 
-        <ion-item menu-close href="#/app/login">
-        <i class="icon ion-person"></i>
-          Login
+        <ion-item menu-close ng-controller="PopupCtrl">
+        <i class="ion-log-out" ng-click="showConfirm()"></i>
+          Logout
         </ion-item>
 
       </ion-list>
