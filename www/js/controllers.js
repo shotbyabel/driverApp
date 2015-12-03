@@ -12,7 +12,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('sideMenuCtl', function($scope, $state){
+.controller('sideMenuCtl', function($scope, $state, UserService){
   $scope.state = $state;
 
 })
@@ -23,22 +23,10 @@ angular.module('starter.controllers', [])
 
 ////////////////////////////////////
 //TEMP-LOG OUT POP UP
-.controller('PopupCtrl',function($scope, $ionicPopup, $timeout, $state, $http) {
+.controller('PopupCtrl',function($scope, $ionicPopup, $timeout, $state, $http, LoginService) {
 
     $scope.showConfirm = function() {
-     var confirmPopup = $ionicPopup.confirm({
-       title: 'EXIT?',
-       template: 'Are you sure you want to Log out?'
-     });
-     confirmPopup.then(function(res) {
-       if(res) {
-          $state.go("login");
-          // $http.get("http://localhost/users/logout");
-         // console.log('Direct to Login state-OUT');
-       } else {
-         console.log('Return to previous screen,menu?');
-       }
-     });
+    LoginService.logout(); //inject the LoginService into the controller's logout functions
    };
 });  
 

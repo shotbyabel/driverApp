@@ -128,7 +128,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'ionic.i
 
 
   .state('app.today', {
-    url: '/today/:user_id/:driver_id',
+    url: '/today', //old */:user_id/:driver_id*
+    params : {UserService: null,},
     views: {
         'menuContent': {
           templateUrl: 'templates/today.html',

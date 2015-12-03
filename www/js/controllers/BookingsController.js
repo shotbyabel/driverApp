@@ -15,9 +15,9 @@
 //Example get data from server, etc..
   $scope.$on('$ionicView.enter', function(){
 
-  console.log('here');
-  console.log(UserService.user);
-  BookingsService.driver_id = UserService.user.driver_id;
+  // console.log('here');
+  console.log(UserService);
+  BookingsService.driver_id = UserService.driver.id;
   BookingsService.getBookings().then(function success (data) {
     console.log("Success!");
     console.log(data);
@@ -61,6 +61,6 @@ $scope.dayofWeek = days[today.getDay()];
       BookingsService.currentCustomer = $scope.customers[$scope.bookingIndex];
       $state.go('app.current-trip');
   };
-});
+
  // IIFE START //
 })();
