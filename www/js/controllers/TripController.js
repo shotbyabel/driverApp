@@ -6,6 +6,8 @@ angular.module('starter')
   .controller('TripCtrl', function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, BookingsService, driverLocationService, UserService){
   $ionicSideMenuDelegate.canDragContent(true)
 
+  $ionicLoading.show({template: 'Loading Your Trip Info...'});
+
   $scope.currentBooking = BookingsService.currentBooking;
   $scope.currentCustomer = BookingsService.currentCustomer;
 
@@ -26,6 +28,9 @@ angular.module('starter')
 
     //Wait until the map is loaded
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+
+      $ionicLoading.hide();
+
 
       var marker = new google.maps.Marker({
           map: $scope.map,
