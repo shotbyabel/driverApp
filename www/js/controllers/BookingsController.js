@@ -3,7 +3,7 @@
  'use strict';
 
  angular.module('starter')
- .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q,
+ .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q, $timeout,
                                       BookingsService, driverLocationService, UserService) {
 
   $ionicSideMenuDelegate.canDragContent(true);
