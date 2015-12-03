@@ -3,7 +3,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ngCordova', 'ngStorage','starter.controllers', 'starter.directives', 'ionic.ion.showWhen'])
+angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'ionic.ion.showWhen'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -100,7 +100,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage','starter.controller
       views: {
         'menuContentOwner': {
           templateUrl: 'templates/owner-map.html',
-          controller: 'MapCtrl'
+          controller: 'TripCtrl'
         }
       }
     })
@@ -149,11 +149,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage','starter.controller
   })
 
   .state('app.current-trip', {
-    url: '/current-trip/:booking_id',
+    url: '/current-trip/',
     views: {
       'menuContent': {
         templateUrl: 'templates/current-trip.html',
-        controller: 'BookingsCtrl'
+        controller: 'TripCtrl'
       }
     }
   })
@@ -182,7 +182,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage','starter.controller
       views: {
         'menuContent': {
           templateUrl: 'templates/map.html',
-          controller: 'MapCtrl'
+          controller: 'TripCtrl'
         }
       }
     })
@@ -201,7 +201,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage','starter.controller
       url: '/profile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/profile.html'
+          templateUrl: 'templates/profile.html',
+          controller: 'BookingsCtrl'
         }
       }
     })

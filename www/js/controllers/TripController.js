@@ -3,16 +3,19 @@
  'use strict';
 
 angular.module('starter')
-  .controller('MapCtrl', function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, BookingsService, driverLocationService){
-
+  .controller('TripCtrl', function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, BookingsService, driverLocationService, UserService){
   $ionicSideMenuDelegate.canDragContent(true)
+
+  $scope.currentBooking = BookingsService.currentBooking;
+  $scope.currentCustomer = BookingsService.currentCustomer;
+
+  console.log($scope);
 
   var options = {timeout: 10000, enableHighAccuracy: true};
 
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    console.log(latLng);
     var mapOptions = {
       center: latLng,
       zoom: 15,
@@ -43,6 +46,27 @@ angular.module('starter')
   }, function(error){
     console.log("Could not get location");
   });
+
+  //////////////////////////////////////////////////////////////
+///SWIPE-RIGHT from trip-details TO current-trip .state//////
+$scope.onSwipeRight = function() {
+  $scope.startTrip();
+}
+////////////////////////////////////
+/// START & END driver trips
+
+    $scope.startTrip = function() {
+      //updated w/user_id
+      driverLocationService.startDriverTrip($scope.currentBooking.id, UserService.user.id);
+      BookingsService.startTrip($scope.currentBooking.id);
+    }
+
+    $scope.endTrip = function() {
+      //updated w/user_id
+      driverLocationService.stopDriverTrip($scope.currentBooking.id, UserService.user.id);
+      BookingsService.endTrip($scope.currentBooking.id);
+    }
+
 });
  // IIFE START //
 })();

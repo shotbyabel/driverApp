@@ -4,29 +4,21 @@
     <h3 class="dayOftheWeek">{{dayofWeek}}</h3>
 
       <div class="row responsive-sm">
-
         <div class="col col-50" >
-
           <div class="today-client-bubble" scroll="false">
-
             <img class="bubble" src="/img/todayscreenBubble.png" alt="">
-
           </div>
-
         </div>
+      </div>
 
-       </div>
-
-        <div class="row responsive-sm">
-          <div class="col col-50" >
-            <div class="daily-count">{{dailyPassengers}}</div>
-          </div>
-       </div>
-
-
-
+      <div class="row responsive-sm">
+        <div class="col col-50" >
+          <div class="daily-count">{{dailyPassengers}}</div>
+        </div>
+      </div>
 
     <ion-list class="list-position">
+
 
       <ion-item  class="item-avatar items-bg"
                  ng-repeat="($index, booking) in today">
@@ -42,12 +34,13 @@
               <b>PICKUP: </b>{{booking.departing_address}}</br>
               <b>DEST: </b>{{booking.arrival_address }}</br>
             </p>
+
+
           </div>
       </ion-item>
-
     </ion-list>
 
-</ion-content>
+  </ion-content>
 </ion-view>
 
 
