@@ -4,49 +4,39 @@
     <h3 class="dayOftheWeek">{{dayofWeek}}</h3>
 
       <div class="row responsive-sm">
-
         <div class="col col-50" >
-
           <div class="today-client-bubble" scroll="false">
-
             <img class="bubble" src="/img/todayscreenBubble.png" alt="">
-
           </div>
-
         </div>
+      </div>
 
-       </div>
-
-        <div class="row responsive-sm">
-          <div class="col col-50" >
-            <div class="daily-count">{{dailyPassengers}}</div>
-          </div>
-       </div>
-
-
-
+      <div class="row responsive-sm">
+        <div class="col col-50" >
+          <div class="daily-count">{{dailyPassengers}}</div>
+        </div>
+      </div>
 
     <ion-list class="list-position">
+      <ion-item  class="item-avatar items-bg" ng-repeat="($index, booking) in today">
+        <img id={{$index}} value={{customers[$index][0].first_name}}
+          {{customers[$index][0].last_name}} class="icon-man" src="/img/icon-man-div.png"
+          alt=""ng-click="tripInfo()">
+        <div class="passenger-info">
+          <h4 class="passenger-name">
+              {{customers[$index][0].first_name}} {{customers[$index][0].last_name}}
+          </h4>
 
-      <ion-item  class="item-avatar items-bg"
-                 ng-repeat="($index, booking) in today">
-        <img id={{$index}} value={{customers[$index][0].first_name}} {{customers[$index][0].last_name}}
-             class="icon-man" src="/img/icon-man-div.png" alt=""ng-click="tripInfo()">
-          <div class="passenger-info">
-            <h4 class="passenger-name">
-              {{customers[$index][0].first_name}} {{customers[$index][0].last_name}} </h4>
-
-            <p class="passenger-details">
-              <b>DATE: </b>{{booking.driver_departing_time}}</br>
-              <b>PICKUP: </b>{{booking.departing_address}}</br>
-              <b>DEST: </b>{{booking.arrival_address }}</br>
-            </p>
+          <p class="passenger-details">
+            <b>DATE: </b>{{booking.driver_departing_time}}</br>
+            <b>PICKUP: </b>{{booking.departing_address}}</br>
+            <b>DEST: </b>{{booking.arrival_address }}</br>
+          </p>
           </div>
       </ion-item>
-
     </ion-list>
 
-</ion-content>
+  </ion-content>
 </ion-view>
 
 
