@@ -15,9 +15,9 @@
 //Example get data from server, etc..
   $scope.$on('$ionicView.enter', function(){
 
-  console.log('here');
-  console.log(UserService.user);
-  BookingsService.driver_id = UserService.user.driver_id;
+  // console.log('here');
+  console.log(UserService);
+  BookingsService.driver_id = UserService.driver.id;
   BookingsService.getBookings().then(function success (data) {
     console.log("Success!");
     console.log(data);
@@ -72,17 +72,17 @@ $scope.onSwipeRight = function() {
 }
 ////////////////////////////////////
 /// START & END driver trips
-
     $scope.startTrip = function() {
-      //updated w/user_id
-      driverLocationService.startDriverTrip($scope.currentBooking.id, UserService.user.id);
+      //updated w/user .id  //no longer using .user -injecting userService self.id, self.first_name, etc. etc.
+      driverLocationService.startDriverTrip($scope.currentBooking.id, UserService.id);
+      // driverLocationService.startDriverTrip($scope.currentBooking.id, UserService.user.id);
       BookingsService.startTrip($scope.currentBooking.id);
     }
 
     $scope.endTrip = function() {
       $scope.booking_id = $stateParams.booking_id
       //updated w/user_id
-      driverLocationService.stopDriverTrip($scope.booking_id, UserService.user.id);
+      driverLocationService.stopDriverTrip($scope.booking_id, UserService.id);
       BookingsService.endTrip($scope.booking_id);
     }
 
