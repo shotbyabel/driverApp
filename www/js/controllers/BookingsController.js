@@ -7,7 +7,7 @@
                                       BookingsService, driverLocationService, UserService) {
 
   $ionicSideMenuDelegate.canDragContent(true);
-
+  console.log($scope);
   $scope.today = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
@@ -24,6 +24,7 @@
     if(data){
       $scope.today = BookingsService.bookings;
       $scope.customers = BookingsService.bookingsCustomers;
+      $scope.user = UserService.user
       // console.log($scope.customers);
       $scope.dailyPassengers = BookingsService.bookings.length;
       }
@@ -56,36 +57,10 @@ $scope.dayofWeek = days[today.getDay()];
   // Open the trip-details modal
   $scope.tripInfo = function() {
       $scope.bookingIndex = event.target.id;
-      $scope.currentBooking = $scope.today[$scope.bookingIndex];
-      $scope.currentCustomer = $scope.customers[$scope.bookingIndex];
-      $scope.modal.show($scope);
+      BookingsService.currentBooking = $scope.today[$scope.bookingIndex];
+      BookingsService.currentCustomer = $scope.customers[$scope.bookingIndex];
+      $state.go('app.current-trip');
   };
-
-//////////////////////////////////////////////////////////////
-///SWIPE-RIGHT from trip-details TO current-trip .state//////
-$scope.onSwipeRight = function() {
-  $scope.closetripInfo();
-  $scope.startTrip();
-  console.log($scope.currentBooking.id);
-  $state.go('app.current-trip', {booking_id: $scope.currentBooking.id});
-
-}
-////////////////////////////////////
-/// START & END driver trips
-
-    $scope.startTrip = function() {
-      //updated w/user_id
-      driverLocationService.startDriverTrip($scope.currentBooking.id, UserService.user.id);
-      BookingsService.startTrip($scope.currentBooking.id);
-    }
-
-    $scope.endTrip = function() {
-      $scope.booking_id = $stateParams.booking_id
-      //updated w/user_id
-      driverLocationService.stopDriverTrip($scope.booking_id, UserService.user.id);
-      BookingsService.endTrip($scope.booking_id);
-    }
-
-})
+});
  // IIFE START //
 })();
