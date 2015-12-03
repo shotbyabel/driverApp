@@ -11,6 +11,7 @@ angular.module('starter.directives', [])
     },
     link: function ($scope, $element, $attr) {
       function initialize() {
+        console.log($scope);
         var mapOptions = {
           center: new google.maps.LatLng(34.1010728, -118.34441029999999),
           zoom: 16,

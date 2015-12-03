@@ -7,7 +7,7 @@
                                       BookingsService, driverLocationService, UserService) {
 
   $ionicSideMenuDelegate.canDragContent(true);
-
+  console.log($scope);
   $scope.today = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
@@ -56,10 +56,9 @@ $scope.dayofWeek = days[today.getDay()];
   // Open the trip-details modal
   $scope.tripInfo = function() {
       $scope.bookingIndex = event.target.id;
-      $scope.currentBooking = $scope.today[$scope.bookingIndex];
-      $scope.currentCustomer = $scope.customers[$scope.bookingIndex];
+      BookingsService.currentBooking = $scope.today[$scope.bookingIndex];
+      BookingsService.currentCustomer = $scope.customers[$scope.bookingIndex];
       $state.go('app.current-trip');
-      console.log($scope);
   };
 
 //////////////////////////////////////////////////////////////

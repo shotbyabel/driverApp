@@ -1,71 +1,69 @@
 <!-- <body ng-app="starter" ng-controller="MapCtrl"> -->
 <ion-view view-title="ON TRIP">
+
   <ion-header-bar dark class="bar-dark">
     <h1 class="title"></h1>
   </ion-header-bar>
 
   <ion-content>
 
-      <div ng-controller="BookingsCtrl" class="item item-avatar" id="tripditz1" >
-        <h4 class="title">{{$scope.today}}</h4>
-          <p>{{booking.departing_address}}</p>
+      <div class="item item-avatar" id="tripditz1" >
+        <h4 class="title">Hello</h4>
+        <h4 class="title">{{currentCustomer[0].first_name + " " + currentCustomer[0].last_name}}</h4>
       </div>
 
-    <div class="item item-body">
+      <div class="item item-body">
 
-      <div ng-controller="MapCtrl" class="col col-center col-100" >
+      <div class="col col-center col-100" >
         <map id='map'></map>
       </div>
 
-      <div ng-controller="BookingsCtrl">
-      <p class="modal-text" id="options-text">
-        <i class="ion-location modalIcons"></i>
-        PICKUP LOCATION
-      </p>
+      <div>
+        <p class="modal-text" id="options-text">
+          <i class="ion-location modalIcons"></i>
+          PICKUP LOCATION
+        </p>
 
-      <div class="tripDetail-fonts">{{currentBooking.departing_address}}</div>
+        <div class="tripDetail-fonts">{{currentBooking.departing_address}}</div>
 
-      <p class="modal-text text-center" id="options-text">
-        <i class="ion-location modalIcons"></i>
-        DROPOFF LOCATION
-      </p>
+        <p class="modal-text text-center" id="options-text">
+          <i class="ion-location modalIcons"></i>
+          DROPOFF LOCATION
+        </p>
 
-      <div class="tripDetail-fonts">{{currentBooking.arrival_address}}</div>
+        <div class="tripDetail-fonts">{{currentBooking.arrival_address}}</div>
 
+        <div row row-center class="trip-buttons">
+          <div class="col col-center">
+
+            <button id={{booking.id}}
+              class="button button-outline button-light"
+              ng-click="">
+              <span class="currentrip-txt-btn">CONTACT CLIENT</span>
+              <i class="ion-iphone current-trip-icons"></i>
+            </button>
+
+            <button id="swipe-toStart" class="button button-block button-balanced"
+                      on-swipe-right="onSwipeRight()">
+                SLIDE RIGHT to START TRIP
+            </button>
+
+            <button id={{booking.id}}
+             class="button button-outline button-light End-Trip"
+             ng-click="endTrip()">
+            <span class="currentrip-txt-btn">END TRIP</span>
+             <i class="ion-ios-close current-trip-icons"></i>
+           </button>
+
+          </div>
+        </div>
+      </div>
     </div>
 
+  </ion-content>
 
-  <div row row-center class="trip-buttons">
-    <div class="col col-center">
+  <ion-footer-bar class="bar-stable">
+    <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
+  </ion-footer-bar>
 
-      <button id={{booking.id}}
-        class="button button-outline button-light"
-        ng-click="">
-        <span class="currentrip-txt-btn">CONTACT CLIENT</span>
-        <i class="ion-iphone current-trip-icons"></i>
-      </button>
-
-      <button id="swipe-toStart" class="button button-block button-balanced"
-                on-swipe-right="onSwipeRight()">
-          SLIDE RIGHT to START TRIP
-      </button>
-
-      <button id={{booking.id}}
-       class="button button-outline button-light End-Trip"
-       ng-click="endTrip()">
-      <span class="currentrip-txt-btn">END TRIP</span>
-       <i class="ion-ios-close current-trip-icons"></i>
-     </button>
-
-   </div>
- </div>
-
-</div>
-
-</ion-content>
-
-<ion-footer-bar class="bar-stable">
-  <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
-</ion-footer-bar>
-<!--  </body> -->
 </ion-view>

@@ -152,7 +152,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     views: {
       'menuContent': {
         templateUrl: 'templates/current-trip.html',
-        controller: 'BookingsCtrl'
+        controller: 'MapCtrl'
       }
     }
   })

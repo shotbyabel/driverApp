@@ -4,15 +4,18 @@
 
 angular.module('starter')
   .controller('MapCtrl', function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, BookingsService, driverLocationService){
-
   $ionicSideMenuDelegate.canDragContent(true)
+
+  $scope.currentBooking = BookingsService.currentBooking;
+  $scope.currentCustomer = BookingsService.currentCustomer;
+
+  console.log($scope);
 
   var options = {timeout: 10000, enableHighAccuracy: true};
 
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    console.log(latLng);
     var mapOptions = {
       center: latLng,
       zoom: 15,
