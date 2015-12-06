@@ -60,7 +60,8 @@ $scope.dayofWeek = days[today.getDay()];
       BookingsService.currentBooking = $scope.today[$scope.bookingIndex];
       BookingsService.currentCustomer = $scope.customers[$scope.bookingIndex];
       $state.go('app.current-trip');
+      // UserService.isDriver <-- 
   };
-
+});
  // IIFE START //
 })();
