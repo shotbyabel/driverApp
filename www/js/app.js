@@ -3,7 +3,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'ionic.ion.showWhen'])
+angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'starter.controllers', 'ionic.ion.showWhen'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -47,14 +47,14 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'ionic.i
       }
     })
 
-.state('app2.easyBook', {
-    url: '/easyBook',
-    views: {
-        'menuContentOwner': {
-        templateUrl: 'templates/easyBook.html'
-        }
-      }
-    })
+// .state('app2.easyBook', {
+//     url: '/easyBook',
+//     views: {
+//         'menuContentOwner': {
+//         templateUrl: 'templates/easyBook.html'
+//         }
+//       }
+//     })
 
   .state('app2.owner-currentTrip', {
     url: '/owner-currentTrip',
@@ -112,13 +112,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'ionic.i
  ///||||||||||||||||
 ///DRIVER AUTH-VIEWS
 //||||||||||||||||||
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
-
 
   .state('login', {
       url: '/login',
@@ -126,9 +125,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'ionic.i
           controller: 'LoginCtrl'
     })
 
-
   .state('app.today', {
-    url: '/today/:user_id/:driver_id',
+    url: '/today', //old */:user_id/:driver_id*
+    params : {UserService: null,},
     views: {
         'menuContent': {
           templateUrl: 'templates/today.html',
@@ -137,18 +136,28 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'ionic.i
       }
     })
 
- .state('app.trip-details', {
-    url: '/trip-details',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/trip-details.html',
-        controller: 'BookingsCtrl'
-      }
-    }
-  })
+  .state('app.easyBook', {
+      url: '/easyBook',
+      views: {
+          'menuContent': {
+          templateUrl: 'templates/easyBook.html'
+          }
+        }
+      })
+
+  .state('app.trip-details', {
+     url: '/trip-details',
+     views: {
+       'menuContent': {
+         templateUrl: 'templates/trip-details.html',
+         controller: 'BookingsCtrl'
+       }
+     }
+   })
 
   .state('app.current-trip', {
     url: '/current-trip/',
+    
     views: {
       'menuContent': {
         templateUrl: 'templates/current-trip.html',

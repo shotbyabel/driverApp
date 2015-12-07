@@ -62,13 +62,13 @@ $scope.onSwipeRight = function() {
 
     $scope.startTrip = function() {
       //updated w/user_id
-      driverLocationService.startDriverTrip($scope.currentBooking.id, UserService.user.id);
+      driverLocationService.startDriverTrip($scope.currentBooking.id, UserService.id);
       BookingsService.startTrip($scope.currentBooking.id);
     }
 
     $scope.endTrip = function() {
       //updated w/user_id
-      driverLocationService.stopDriverTrip($scope.currentBooking.id, UserService.user.id);
+      driverLocationService.stopDriverTrip($scope.currentBooking.id, UserService.id);
       BookingsService.endTrip($scope.currentBooking.id);
     }
 

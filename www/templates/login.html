@@ -14,9 +14,6 @@
     <div class="col login-form-iPhone5fix">
 
     <form name="theLoginForm" class="login-form" id="loginForm" ng-submit="onSubmit(theLoginForm)" novalidate="novalidate">
-
-
-
         <div class="list input-fields"
           ng-class="{ 'has-error' : theLoginForm.username.$touched && theLoginForm.username.$invalid, 'has-success': theLoginForm.username.$touched && theLoginForm.username.$valid}">
             <label for="username" class="item item-input" id="signIn-psw-inputs">
@@ -38,13 +35,14 @@
           type="password"
           class="input-color"
           ng-model="loginForm.Password"
+          required
           placeholder="Password"></label>
        <p ng-show="theLoginForm.password.$invalid && !theLoginForm.password.$pristine"
           class="help-block">Your Password is required!.</p><!--bootstrap form validation classes-->
 
       </div>
-      <!--LOGIN button-->
-        <a href="#" class="button button-block button-positive" id="sign-in-btn" ng-click="onSubmit()">Sign In</a>
+      <!--**6** cleaned up this code---LOGIN button-->
+        <button class="button button-block button-positive" id="sign-in-btn">Sign In</button>
 
     </form>
     </div>

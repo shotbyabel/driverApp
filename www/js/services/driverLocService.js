@@ -46,7 +46,7 @@
         ///CODE TO TRY & GET THE TIMER WORKING
         driverTripTimer = $interval(function(){
           self.updateDriverLocation(booking_id, user_id);
-        }, 3000)
+        }, 7000)
       }
 
       self.stopDriverTrip = function(booking_id, user_id){
