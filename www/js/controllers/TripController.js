@@ -61,6 +61,7 @@ $scope.onSwipeRight = function() {
 
     $scope.startTrip = function() {
       //updated w/user_id
+
       tripService.startDriverTrip($scope.currentBooking.id, UserService.id);
       BookingsService.startTrip($scope.currentBooking.id);
     }
