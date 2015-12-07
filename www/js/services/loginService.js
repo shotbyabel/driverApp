@@ -26,7 +26,7 @@
     };//login()
 
 
-//**3** brought logout() insert PopUp code from PopUpCtrl found in controllers.js
+//**use logout function in menu.html & controller.js 
     self.logout = function() {
       var confirmPopup = $ionicPopup.confirm({
         title: 'EXIT?',
