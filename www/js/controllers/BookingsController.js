@@ -4,7 +4,7 @@
 
  angular.module('starter')
  .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q, $timeout,
-                                      BookingsService, driverLocationService, UserService) {
+                                      BookingsService, tripService, UserService) {
 
   $ionicSideMenuDelegate.canDragContent(true);
   console.log($scope);

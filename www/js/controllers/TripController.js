@@ -3,7 +3,7 @@
  'use strict';
 
 angular.module('starter')
-  .controller('TripCtrl', function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, BookingsService, driverLocationService, UserService){
+  .controller('TripCtrl', function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, BookingsService, tripService, UserService){
   $ionicSideMenuDelegate.canDragContent(true)
 
   $ionicLoading.show({template: 'Loading Your Trip Info...'});
@@ -30,7 +30,6 @@ angular.module('starter')
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
       $ionicLoading.hide();
-
 
       var marker = new google.maps.Marker({
           map: $scope.map,
@@ -62,13 +61,13 @@ $scope.onSwipeRight = function() {
 
     $scope.startTrip = function() {
       //updated w/user_id
-      driverLocationService.startDriverTrip($scope.currentBooking.id, UserService.id);
+      tripService.startDriverTrip($scope.currentBooking.id, UserService.id);
       BookingsService.startTrip($scope.currentBooking.id);
     }
 
     $scope.endTrip = function() {
       //updated w/user_id
-      driverLocationService.stopDriverTrip($scope.currentBooking.id, UserService.id);
+      tripService.stopDriverTrip($scope.currentBooking.id, UserService.id);
       BookingsService.endTrip($scope.currentBooking.id);
     }
 
