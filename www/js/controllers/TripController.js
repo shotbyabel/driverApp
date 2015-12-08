@@ -53,15 +53,16 @@ angular.module('starter')
 
   //////////////////////////////////////////////////////////////
 ///SWIPE-RIGHT from trip-details TO current-trip .state//////
-$scope.onSwipeRight = function() {
-  $scope.startTrip();
-}
+  $scope.onSwipeRight = function() {
+    document.getElementById('endTrip').style.display = 'inline-block';
+    document.getElementById('startTrip').style.display = 'none';
+    $scope.startTrip();
+  }
 ////////////////////////////////////
 /// START & END driver trips
 
     $scope.startTrip = function() {
       //updated w/user_id
-
       tripService.startDriverTrip($scope.currentBooking.id, UserService.id);
       BookingsService.startTrip($scope.currentBooking.id);
     }
@@ -70,6 +71,8 @@ $scope.onSwipeRight = function() {
       //updated w/user_id
       tripService.stopDriverTrip($scope.currentBooking.id, UserService.id);
       BookingsService.endTrip($scope.currentBooking.id);
+      document.getElementById('endTrip').style.display = 'none';
+      document.getElementById('startTrip').style.display = 'inline-block';
     }
 
 });
