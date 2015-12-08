@@ -1,51 +1,45 @@
 // IIFE START //
 (function() {
- 'use strict';
+  'use strict';
 
-  angular.module('starter')
-    .controller('LoginCtrl', function ($scope, $ionicSideMenuDelegate, $http, $state, $ionicLoading, UserService) {
+  angular.module('starter').controller('LoginCtrl',
+    function($scope, $ionicSideMenuDelegate, $http, $state, $ionicLoading, UserService, LoginService) {
 
-    $ionicSideMenuDelegate.canDragContent(false);
+      $ionicSideMenuDelegate.canDragContent(false);
 
-    $scope.loginForm ={}
-    $scope.onSubmit = function () {
+      $scope.loginForm = {}//values bind directly to object.. so we dont have scope issues 
 
-       // - theLoginForm was not defined in the scope.
-      if ($scope.loginForm.Username && $scope.loginForm.Password) {
-      $ionicLoading.show({template: 'Fetching your passengers...'});
-
-      //SEND LOGIN CREDENTIALS TO API//
-      var userLogin = $scope.loginForm.Username;
-      var userPw = $scope.loginForm.Password;
-
-      //PHP BACK END TEST
-       $http.get("http://localhost/apinew/login" + "/" + userLogin + "/" + userPw)
-        .success(function (res) {
-        $ionicLoading.hide();
-        if(typeof(res) === "string") {
-         alert("INVALID LOGIN");
-         $state.go("login");
-       }  else {
-          console.log(res);
-          UserService.save(res);
-          console.log("Login Credentials Submitted Succesfully!")
-
-          if(res.admin) $state.go("app2.owner-calendar");
-          if(res.driver) $state.go("app.today", {user_id: res.id, driver_id: res.driver.id});
-
-
-          // $state.go("app.today");
-
+      $scope.onSubmit = function() {
+        var userLogin = $scope.loginForm.Username;
+        var userPw = $scope.loginForm.Password;
+    //**5** moved & got rid of the conditionals *if (res.adming), (res.driver) $state.go(app.today)
+        if (!userLogin || !userPw) {
+          alert('Missing Fields!');
+          return false;
         }
-        }).error(function(data) {
-          $ionicLoading.hide();
-          console.log("Failed, Please check your API end point!")
-        })
-      }
-    };
-  });
 
-
-// IIFE START //
+        $ionicLoading.show({
+          template: 'Fetching your passengers...'
+        });
+        
+        //**4**inject LoginService - $http get req. was moved to LogingService
+        // we are calling login() from loginService line 8
+        LoginService.login(userLogin, userPw).then(function(response) {
+          $ionicLoading.hide();//$ionicLoading
+          if (!response) {//if LoginService = false..
+            alert('Something went wrong!');
+            return;
+          }
+      //new login logic using UserService object line 61 UserService
+          if (UserService.isAdmin()) {
+            $state.go("app.calendar");
+          }
+      //new login logic using UserService object line 54 UserService
+          if (UserService.isDriver()) {
+            $state.go("app.today");
+          }
+        });
+      };
+    });
+  // IIFE START //
 })();
-

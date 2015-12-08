@@ -36,19 +36,19 @@
         <div row row-center class="trip-buttons">
           <div class="col col-center">
 
-            <button id={{booking.id}}
+            <button id={{currentCustomer[0].phone}}
               class="button button-outline button-light"
               ng-click="">
               <span class="currentrip-txt-btn">CONTACT CLIENT</span>
               <i class="ion-iphone current-trip-icons"></i>
             </button>
 
-            <button id="swipe-toStart" class="button button-block button-balanced"
+            <button id="startTrip" class="button button-block button-balanced swipe-toStart"
                       on-swipe-right="onSwipeRight()">
                 SLIDE RIGHT to START TRIP
             </button>
 
-            <button id={{booking.id}}
+            <button id="endTrip"
              class="button button-outline button-light End-Trip"
              ng-click="endTrip()">
             <span class="currentrip-txt-btn">END TRIP</span>

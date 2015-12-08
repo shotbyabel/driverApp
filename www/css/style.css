@@ -150,7 +150,7 @@ padding-top: 0%;
 
 
 
-.button.button-balanced#swipe-toStart{
+.button.button-balanced.swipe-toStart{
 font-size: 1.25em;
 background: darkgreen;
 
@@ -378,6 +378,10 @@ margin-bottom: 0%;
   display: inline-block;
   width: 100%;
   height: 300px;
+}
+
+#endTrip {
+  display: none;
 }
 
 /*map.current-map{
