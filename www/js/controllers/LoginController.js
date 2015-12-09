@@ -32,7 +32,7 @@
           }
       //new login logic using UserService object line 61 UserService
           if (UserService.isAdmin()) {
-            $state.go("app.calendar");
+            $state.go("app.easyBook");
           }
       //new login logic using UserService object line 54 UserService
           if (UserService.isDriver()) {
