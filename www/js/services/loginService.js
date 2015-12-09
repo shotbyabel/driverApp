@@ -3,30 +3,31 @@
 
   angular.module('starter').service('LoginService', function($q, UserService, $http, $ionicPopup, $state) {
     //**2** 
-    var self = this;//initiating loginService inside here its self
+    var self = this; //initiating loginService inside here its self
 
-    self.login = function(userLogin, userPw) {//line 27 from longinController.. -
+    self.login = function(userLogin, userPw) { //line 27 from longinController.. -
       var deferred = $q.defer();
-//**1**moved from LoginController
+      //**1**moved from LoginController
       $http.get("http://localhost/apinew/login" + "/" + userLogin + "/" + userPw)
-        .success(function(res) {
-          if (!res) {
+        .success(function(result) {
+          if (!result.result) {
             deferred.resolve(false);
-            return false;//no UX message in Services, Best to put in controllers!
+            return false; //no UX message in Services, Best to put in controllers!
           }
-          console.log(res);
-          UserService.save(res);//login user here
+          console.log(result);
+          UserService.save(result.data); //login user here
           console.log("Login Credentials Submitted Succesfully!");
           deferred.resolve(true);
         }).error(function(data) {
+          alert('Something went wrong');
           deferred.resolve(data);
         })
 
       return deferred.promise;
-    };//login()
+    }; //login()
 
 
-//**use logout function in menu.html & controller.js 
+    //**use logout function in menu.html & controller.js 
     self.logout = function() {
       var confirmPopup = $ionicPopup.confirm({
         title: 'EXIT?',
@@ -35,8 +36,8 @@
       confirmPopup.then(function(res) {
         console.log(res);
         if (res) {
-          $http.get("http://localhost/users/logout");//PHP route from back-end
-          UserService.clear();//clear storage - cache -check to see if user is empty with window.localStorage
+          $http.get("http://localhost/users/logout"); //PHP route from back-end
+          UserService.clear(); //clear storage - cache -check to see if user is empty with window.localStorage
           $state.go("login");
         }
       });
