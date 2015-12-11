@@ -50,22 +50,10 @@ gulp.task('git-check', function(done) {
   done();
 });
 
-///images file locations
-
-//var www = 'www/',
-    //dest = 'build/',
-
-//images = {
-
-  //in: www + 'img/*.*', 
-  //out: dest + 'img/'
-
-//};
-
-// manage images
-//gulp.task('img', function() {
-  //return gulp.src(img.in)
-    //.pipe(gulp.dest(img.out));
-  //});
+//images file locations
+gulp.task('img', function() {
+return gulp.src('./image/**/*.png')
+  .pipe(gulp.dest('./www/img'));
+  });
 
 

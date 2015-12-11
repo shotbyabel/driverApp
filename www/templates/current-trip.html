@@ -7,10 +7,14 @@
 
   <ion-content>
 
-      <div class="item item-avatar" id="tripditz1" >
-        <h4 class="title">Hello</h4>
-        <h4 class="title">{{currentCustomer[0].first_name + " " + currentCustomer[0].last_name}}</h4>
-      </div>
+        <h4 class="title text-center">{{currentCustomer[0].first_name + " " + currentCustomer[0].last_name}}
+          <a
+            id={{currentCustomer[0].phone}}
+            class="button button-small button-clear button-outline button-light"
+            ng-href=tel:{{currentCustomer[0].phone}}>
+              <i class="ion-iphone current-trip-icons"></i>
+          </a>
+        </h4>
 
       <div class="item item-body">
 
@@ -18,16 +22,16 @@
         <map id='map'></map>
       </div>
 
-      <div>
-        <p class="modal-text" id="options-text">
-          <i class="ion-location modalIcons"></i>
+      <div class="tripDetail-fonts">
+        <p>
           PICKUP LOCATION
         </p>
 
-        <div class="tripDetail-fonts">{{currentBooking.departing_address}}</div>
+        <div class="tripDetail-fonts">
+          {{currentBooking.departing_address}}
+        </div>
 
-        <p class="modal-text text-center" id="options-text">
-          <i class="ion-location modalIcons"></i>
+        <p>
           DROPOFF LOCATION
         </p>
 
@@ -36,20 +40,13 @@
         <div row row-center class="trip-buttons">
           <div class="col col-center">
 
-            <button id={{currentCustomer[0].phone}}
-              class="button button-outline button-light"
-              ng-click="">
-              <span class="currentrip-txt-btn">CONTACT CLIENT</span>
-              <i class="ion-iphone current-trip-icons"></i>
-            </button>
-
             <button id="startTrip" class="button button-block button-balanced swipe-toStart"
                       on-swipe-right="onSwipeRight()">
-                SLIDE RIGHT to START TRIP
+                SLIDE to START TRIP
             </button>
 
             <button id="endTrip"
-             class="button button-outline button-light End-Trip"
+             class="button button-full button-assertive End-Trip"
              ng-click="endTrip()">
             <span class="currentrip-txt-btn">END TRIP</span>
              <i class="ion-ios-close current-trip-icons"></i>
@@ -62,8 +59,9 @@
 
   </ion-content>
 
+<!-- FUTURE IMPLEMENTATION
   <ion-footer-bar class="bar-stable">
     <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
-  </ion-footer-bar>
+  </ion-footer-bar> -->
 
 </ion-view>
