@@ -11,84 +11,37 @@ angular.module('starter')
   $scope.currentBooking = BookingsService.currentBooking;
   $scope.currentCustomer = BookingsService.currentCustomer;
 
-  console.log($scope);
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
 
-  var options = {timeout: 10000, enableHighAccuracy: true};
-
-  $cordovaGeolocation.getCurrentPosition(options).then(function(position){
-
-    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    var mapOptions = {
-      center: latLng,
-      zoom: 10,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    var geocoder = new google.maps.Geocoder();
-
-    var departing = $scope.currentBooking.departing_address;
-    var arrival = $scope.currentBooking.arrival_address;
-
-    geocoder.geocode({'address': departing}, function(res, status) {
-      if(status === google.maps.GeocoderStatus.OK) {
-        var marker = new google.maps.Marker({
-          map: $scope.map,
-          position: res[0].geometry.location
-        });
-        var infoWindow = new google.maps.InfoWindow({
-          content: "Departing Address"
-        });
-        google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.open($scope.map, marker);
-        });
+  function calculateAndDisplayRoute(directionsService, directionsDisplay, departing, arrival) {
+    directionsService.route({
+      origin: departing,
+      destination: arrival,
+      travelMode: google.maps.TravelMode.DRIVING
+    }, function(response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
       } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+        window.alert('Directions request failed due to ' + status);
       }
-    })
-
-    geocoder.geocode({'address': arrival}, function(res, status) {
-      if(status === google.maps.GeocoderStatus.OK) {
-        var marker = new google.maps.Marker({
-          map: $scope.map,
-          position: res[0].geometry.location
-        });
-        var infoWindow = new google.maps.InfoWindow({
-          content: "Arrival Address"
-        });
-        google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.open($scope.map, marker);
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    })
-
-    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-    //Wait until the map is loaded
-    google.maps.event.addListenerOnce($scope.map, 'idle', function(){
-
-      $ionicLoading.hide();
-
-      var marker = new google.maps.Marker({
-          map: $scope.map,
-          animation: google.maps.Animation.DROP,
-          position: latLng
-      });
-
-      var infoWindow = new google.maps.InfoWindow({
-          content: "This is You!"
-      });
-
-      google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.open($scope.map, marker);
-      });
-
     });
+  }
 
-  }, function(error){
-    console.log("Could not get location");
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 7,
+    center: {lat: 34.1017614, lng: -118.3450541}
   });
+
+  directionsDisplay.setMap(map);
+
+  $ionicLoading.hide();
+
+  var departing = $scope.currentBooking.departing_address;
+  var arrival = $scope.currentBooking.arrival_address;
+
+  calculateAndDisplayRoute(directionsService, directionsDisplay, departing, arrival);
+
 
   $scope.centerOnMe = function() {
     if(!$scope.map) {
