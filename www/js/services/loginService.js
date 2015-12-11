@@ -10,12 +10,13 @@
       //**1**moved from LoginController
       $http.get("http://localhost/apinew/login" + "/" + userLogin + "/" + userPw)
         .success(function(result) {
-          if (!result.result) {
+          if (!result.result) { //result is return boolean of the API 
+            // if (result === '') { *did not work*//
             deferred.resolve(false);
             return false; //no UX message in Services, Best to put in controllers!
           }
           console.log(result);
-          UserService.save(result.data); //login user here
+          UserService.save(result.data); //**added`.data` login user here**data is the data the API returns (User Object)
           console.log("Login Credentials Submitted Succesfully!");
           deferred.resolve(true);
         }).error(function(data) {
