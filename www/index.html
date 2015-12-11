@@ -8,6 +8,8 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="lib/fullcalendar/dist/fullcalendar.css"/>
+
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -29,13 +31,22 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="js/app.js"></script>
     <script src="lib/ngstorage/ngStorage.min.js"></script>
+    // <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+    <!-- jquery, moment, and angular have to get included before fullcalendar -->
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/moment/min/moment.min.js"></script>
+    <!-- <script type="text/javascript" src="lib/angular/angular.min.js"></script> -->
+    <script type="text/javascript" src="lib/angular-ui-calendar/src/calendar.js"></script>
+    <script type="text/javascript" src="lib/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="lib/fullcalendar/dist/gcal.js"></script>
+
+    
+
     <script src="js/ionic.ion.showwhen.js"></script>
-
-
-
     <script src="js/controllers/BookingsController.js"></script>
     <script src="js/controllers/DriverLocController.js"></script>
     <script src="js/services/bookingService.js"></script>
@@ -49,8 +60,6 @@
     <script src="js/mapDirective.js"></script>
     <script src="js/controllers.js"></script>
     <!-- <script src="js/services/loginService.js"></script> -->
-
-
   </head>
 
   <body ng-app="starter">
