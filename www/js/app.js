@@ -147,8 +147,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'st
     views: {
       'menuContent': {
         templateUrl: 'templates/calendar.html',
-        controller: 'CalendarCtrl'
-      },
+        controller: 'BookingsCalendarCtrl'
+
+      }
     },
     params: {
       auth: 'none'
