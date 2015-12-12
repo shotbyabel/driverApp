@@ -28,12 +28,12 @@
           Today
         </ion-item>
 
-        <!--OWNER EDITION ONLY --> 
+        <!--OWNER EDITION ONLY -->
         <!-- inject UserService n chain function found in UserService.js line: 62 -->
         <ion-item menu-close href="#/app/easyBook" ng-if="UserService.isAdmin()">
           <i class="ion-android-add-circle"></i>
             EasyBook
-          </ion-item> 
+          </ion-item>
         <!-- update the sideMenuCtl controller to include checkCurrentTrip function controller.js line 22 -->
         <ion-item menu-close ng-click="checkCurrentTrip()" >
           <i class="icon ion-model-s"></i>

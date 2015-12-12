@@ -11,25 +11,26 @@ angular.module('starter.controllers', [])
 
 })
 
-//sideMenuCtl holds logic for Side Menu links and functions.. 
-.controller('sideMenuCtl', function($scope, $state, UserService, LoginService, $ionicPopup) {
+//sideMenuCtl holds logic for Side Menu links and functions..
+.controller('sideMenuCtl', function($scope, $state, UserService, LoginService, BookingsService, $ionicPopup) {
   $scope.state = $state;
   $scope.UserService = UserService;
 
   $scope.logout = function() {
     LoginService.logout(); //inject the LoginService run logout function loginService.js line: 30
   };
-//new pop up 
+//new pop up
   $scope.checkCurrentTrip = function() {
-    var currentTripPopup = $ionicPopup.confirm({
-      title: 'Start a Trip!',
-      template: 'You must start a trip first!'
-    });
-    currentTripPopup.then(function(res) {
-      if (res) {
-        return;
-      }
-    });
+    if(!BookingsService.currentBooking) {
+      var currentTripPopup = $ionicPopup.confirm({
+        title: 'Start a Trip!',
+        template: 'You must start a trip first!'
+      });
+      currentTripPopup.then(function(res) {
+        if (res) return;
+      });
+    }else
+      $state.go('app.current-trip');
   }
 })
 

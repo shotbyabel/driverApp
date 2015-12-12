@@ -7,7 +7,7 @@
 
       $ionicSideMenuDelegate.canDragContent(false);
 
-      $scope.loginForm = {}//values bind directly to object.. so we dont have scope issues 
+      $scope.loginForm = {}//values bind directly to object.. so we dont have scope issues
 
       $scope.onSubmit = function() {
         var userLogin = $scope.loginForm.Username;
@@ -21,10 +21,11 @@
         $ionicLoading.show({
           template: 'Fetching your passengers...'
         });
-        
+
         //**4**inject LoginService - $http get req. was moved to LogingService
         // we are calling login() from loginService line 8
         LoginService.login(userLogin, userPw).then(function(response) {
+          console.log(response);
           $ionicLoading.hide();//$ionicLoading
           if (!response) {//if LoginService = false..
             alert('Invalid credentials!');
