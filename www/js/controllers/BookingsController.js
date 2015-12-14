@@ -9,6 +9,7 @@
   $ionicSideMenuDelegate.canDragContent(true);
   console.log($scope);
   $scope.today = [];
+  // $scope.cars = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
 //To be used when we want to do something on the page load
@@ -23,12 +24,12 @@
     console.log("Success!");
     console.log(data);
     if(data){
+
       $scope.today = BookingsService.bookings;
       $scope.customers = BookingsService.bookingsCustomers;
       $scope.user = UserService.user;
-   
       $scope.cars = BookingsService.bookingsCars;
-      console.log($scope.cars[0][0].brand + " " + $scope.cars[0][0].model);
+      // console.log($scope.cars[0][0].brand + " " + $scope.cars[0][0].model);
       $scope.dailyPassengers = BookingsService.bookings.length;
       }
 

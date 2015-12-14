@@ -7,7 +7,7 @@
       var self = this;
       self.bookings = [];
       self.bookingsCustomers = [];
-      self.bookingsCars =[];
+      // self.bookingsCars = [];
 
       //GET FROM ARRAY
       self.getBookings = function() {
@@ -20,8 +20,8 @@
             console.log(data); //entire bookings object console log
             self.bookings = data[0]; //first array, bookings
             self.bookingsCustomers = data[1]; //second array the customer info
-            self.bookingsOptions = data[2];
-            self.bookingsCars = data[3];
+            self.bookingsOptions = data[2];// options
+            self.bookingsCars = data[3];//cars
             deferred.resolve(true);
           })
           .error(function error(msg) {

@@ -14,9 +14,7 @@
         $scope.currentBooking = BookingsService.currentBooking;
         $scope.currentCustomer = BookingsService.currentCustomer;
         $scope.currentBookingOptions = BookingsService.currentBookingOptions;
-        $scope.currentBookingCars = BookingsService.currentBookingCars;
-        // console.log($scope.currentBookingCars);
-
+        // $scope.currentBookingCars = BookingsService.currentBookingCars;
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
 
