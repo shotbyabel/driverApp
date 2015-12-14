@@ -17,6 +17,7 @@
 
   // console.log('here');
   console.log(UserService);
+  console.log(UserService.img);
   BookingsService.driver_id = UserService.driver.id;
   BookingsService.getBookings().then(function success (data) {
     console.log("Success!");
@@ -24,8 +25,10 @@
     if(data){
       $scope.today = BookingsService.bookings;
       $scope.customers = BookingsService.bookingsCustomers;
-      $scope.user = UserService.user
-      // console.log($scope.customers);
+      $scope.user = UserService.user;
+   
+      $scope.cars = BookingsService.bookingsCars;
+      console.log($scope.cars[0][0].brand + " " + $scope.cars[0][0].model);
       $scope.dailyPassengers = BookingsService.bookings.length;
       }
 
@@ -54,11 +57,13 @@ $scope.dayofWeek = days[today.getDay()];
     $scope.modal.hide();
   };
 
-  // Open the trip-details modal
+  // Open current-trip view with trip details
   $scope.tripInfo = function() {
       $scope.bookingIndex = event.target.id;
       BookingsService.currentBooking = $scope.today[$scope.bookingIndex];
       BookingsService.currentCustomer = $scope.customers[$scope.bookingIndex];
+      BookingsService.currentBookingOptions = BookingsService.bookingsOptions[$scope.bookingIndex];
+      BookingsService.currentBookingCars = BookingsService.bookingsCars[$scope.bookingIndex];
       $state.go('app.current-trip');
       // UserService.isDriver <-- 
   };

@@ -1,0 +1,35 @@
+<ion-modal-view class="contact-modal">
+
+  <ion-header-bar dark class="bar-dark" id="modal-bar">
+    <h4 class="title"></h4>
+    <div class="buttons">
+      <button class="button button-outline"
+              ng-click="closeContactClient()">
+              <i class="ion-close-round ionicIcons"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-header">
+    <ion-item class="items-bg" id="modalDetails">
+
+    <h4 class="title text-center">CLICK TO CALL
+      <a
+            id={{currentCustomer[0].phone}}
+            class="button button-small button-clear button-outline button-light"
+            ng-href=tel:{{currentCustomer[0].phone}}
+            >
+              <i class="ion-iphone current-trip-icons"></i>
+          </a>
+            </h4>
+    <i class="ion-iphone current-trip-icons contact-client-iphone"></i>
+    <h4 class="title text-center">QUICK TEXT</h4>
+
+    <p>"Your driver is 5 minutes away"</p>
+    <p>"Your driver is 10 minutes away"</p>
+    <p>"Your driver has arrived"</p>
+
+    </ion-item>
+  </ion-content>
+
+</ion-modal-view>

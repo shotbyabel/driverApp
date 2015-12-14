@@ -59,6 +59,10 @@
         <ion-item menu-close>
         <i class="ion-log-out" ng-click="logout()"></i>
           Logout
+          <div>{{UserService.first_name + " " + UserService.last_name}}</div>
+          <!-- <img ng-src="{{UserService.img}}"> -->
+          
+          <img class="user-avatar" ng-src="http://localhost/img/users/ABELdriver.png">
         </ion-item>
 
       </ion-list>

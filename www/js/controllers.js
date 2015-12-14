@@ -1,3 +1,6 @@
+(function() {
+  "use strict";
+
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicSideMenuDelegate, $ionicModal, $ionicPopup, $timeout, $state) {
@@ -32,8 +35,10 @@ angular.module('starter.controllers', [])
     }else
       $state.go('app.current-trip');
   }
+
 })
 
 .controller('PassListCtrl', function($scope, $stateParams) {
 
 })
+})();
