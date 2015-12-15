@@ -165,7 +165,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'st
     views: {
       'menuContent': {
         templateUrl: 'templates/profile.html',
-        controller: 'BookingsCtrl'
+        controller: 'ProfileCtrl'
       }
     },
     params: {
