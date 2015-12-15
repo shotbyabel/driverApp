@@ -13,17 +13,24 @@
   <ion-content class="has-header">
     <ion-item class="items-bg" id="modalDetails">
 
-    <h4 class="title text-center">CLICK TO CALL
+    <h4 class="title text-center">CLICK TO CALL</h4>
       <a
-            id={{currentCustomer[0].phone}}
-            class="button button-small button-clear button-outline button-light"
-            ng-href=tel:{{currentCustomer[0].phone}}
-            >
-              <i class="ion-iphone current-trip-icons"></i>
-          </a>
-            </h4>
-    <i class="ion-iphone current-trip-icons contact-client-iphone"></i>
+        id={{currentCustomer[0].phone}}
+        class="button button-small button-clear button-outline button-light"
+        ng-href=tel:{{currentCustomer[0].phone}}>
+        <i class="ion-iphone current-trip-icons contact-client-iphone"></i>
+      </a>
+    
+    
+
     <h4 class="title text-center">QUICK TEXT</h4>
+
+      <a
+        id={{currentCustomer[0].phone}}
+        class="button button-small button-clear button-outline button-light"
+        ng-click="sendSMS()">
+        <i class="ion-android-textsms current-trip-icons "></i>
+      </a>    
 
     <p>"Your driver is 5 minutes away"</p>
     <p>"Your driver is 10 minutes away"</p>
