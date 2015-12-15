@@ -377,9 +377,10 @@ border-bottom-style:outset;
 border-bottom:1px solid grey;
 }
 
-.profile-inputs{
+#profile-inputs{
 margin-left:10%;
 margin-right:0%;
+background-color: transparent;
 
 }
 
@@ -410,6 +411,9 @@ font-size: 1.5em;
   display: none;
 }
 
+i.icon-large {
+  font-size: 35px;
+}
 /*map.current-map{
 padding-top: 20%;
 }*/

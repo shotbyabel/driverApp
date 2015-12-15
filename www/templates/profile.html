@@ -1,46 +1,73 @@
 <ion-view view-title="Driver Profile">
   <ion-content>
 
-    <div class="list card profile-card">
-      <div class="item item-thumbnail-left">
-        <img class="profile-pic" src="">
+    <label class="item item-input item-stacked-label items-bg-profile">
+      <div class="list card profile-card">
+        <div class="item item-thumbnail-left">
+          <img class="profile-pic" src={{user.img}}>
+        </div>
       </div>
-    </div>
+    </label>
 
+    <form name="updateProfForm" class="profile-form" id="profForm"  ng-submit="updateConfirm(updateProfFrom)">
 
+      <div class="list">
 
-    <ion-list class="list-position profile-list">
+        <label class="item item-input item-stacked-label items-bg-profile">
+          <i class="ion-person ionicIcons icon-large"></i>
+          <span class="input-label profile-fonts">NAME</span>
+          <input id="profile-inputs"
+            class="profile"
+            type="text"
+            ng-model="profUpdateForm.Fullname"
+            placeholder={{user.Fullname}} />
+        </label>
 
-      <ion-item class="items-bg-profile">
-      <i class="ion-person ionicIcons"></i>
-       <span class="profile-fonts">NAME</span>
-        <div>{{user.name}}</div>
-        </ion-item>
-
-          <ion-item class="items-bg-profile">
-          <i class="ion-email ionicIcons"></i>
+        <label class="item item-input item-stacked-label items-bg-profile">
+          <i class="ion-email ionicIcons icon-large"></i>
           <span class="profile-fonts">EMAIL</span>
-            <h3>{{user.email}}</h3>
-            </ion-item>
+          <input id="profile-inputs"
+            class="profile"
+            type="email"
+            ng-model="profUpdateForm.email"
+            placeholder={{user.email}} />
+        </label>
 
-          <ion-item class="items-bg-profile">
-          <i class="ion-ios-locked ionicIcons"></i>
+        <label class="item item-input item-stacked-label items-bg-profile">
+          <i class="ion-ios-locked ionicIcons icon-large"></i>
           <span class="profile-fonts">PASSWORD</span>
-            <div class="profile-inputs">{{user.password}}*******</div>
-          </ion-item>
+          <input id="profile-inputs"
+            class="profile"
+            type="password"
+            ng-model="profUpdateForm.password"
+            placeholder='*******'/>
+        </label>
 
-          <ion-item class="items-bg-profile">
-          <i class="ion-iphone ionicIcons"></i>
+        <label class="item item-input item-stacked-label items-bg-profile">
+          <i class="ion-iphone ionicIcons icon-large"></i>
           <span class="profile-fonts">PHONE</span>
-            <div>{{user.phone}}</div>
-          </ion-item>
+          <input id="profile-inputs"
+            class="profile"
+            type="tel"
+            ng-model="profUpdateForm.phone"
+            placeholder={{user.phone}} />
+        </label>
 
-      <ion-item class="items-bg-profile">
-      <i class="ion-location ionicIcons"></i>
-        <span class="profile-fonts">ADDRESS</span>
-          <div>{{user.address}}</div>
-      </ion-item>
+        <label class="item item-input item-stacked-label items-bg-profile">
+          <i class="ion-location ionicIcons icon-large"></i>
+          <span class="profile-fonts">ADDRESS</span>
+          <input id="profile-inputs"
+            class="profile"
+            type="text"
+            ng-model="profUpdateForm.address"
+            placeholder={{user.address}} />
+        </label>
 
-    </ion-list>
+      </div>
+
+  <!--**6** cleaned up this code---LOGIN button-->
+      <button class="button button-block button-passive" >Update Profile</button>
+
+    </form>
   </ion-content>
 </ion-view>
