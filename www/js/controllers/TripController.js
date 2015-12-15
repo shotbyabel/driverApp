@@ -4,7 +4,9 @@
 
   angular.module('starter')
     .controller('TripCtrl',
-      function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, $ionicModal, BookingsService, tripService, UserService, $ionicPopup) {
+      function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, $ionicModal, $cordovaSms, 
+                BookingsService, tripService, UserService, $ionicPopup) {
+
         $ionicSideMenuDelegate.canDragContent(true)
 
         $ionicLoading.show({
@@ -15,6 +17,9 @@
         $scope.currentCustomer = BookingsService.currentCustomer;
         $scope.currentBookingOptions = BookingsService.currentBookingOptions;
         // $scope.currentBookingCars = BookingsService.currentBookingCars;
+        // $scope.sms = {};
+
+
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -49,7 +54,7 @@
 
         calculateAndDisplayRoute(directionsService, directionsDisplay, departing, arrival);
         /////////////////////////////////
-        ////C O N T A C - C L I E NT
+        ////C O N T A C - C L I E N t - M O D A L
         $ionicModal.fromTemplateUrl('templates/contact-client.html', {
           scope: $scope,
           animation: 'slide-in-up'
@@ -85,6 +90,37 @@
             alert('Unable to get location: ' + error.message);
           });
         };
+
+        //////////////////////////////////////////////////////
+        /// SMS  ///
+        /////////////////////////////////////////////////////
+        document.addEventListener("deviceready", function() {
+        
+        $scope.sms = '3109679311';
+        var options = {
+        replaceLineBreaks: false, // true to replace \n by a new line, false by default
+        android: {
+        // intent: '' // send SMS with the native android SMS messaging
+          intent: '' // send SMS without open any other app
+        // intent: 'INTENT' // send SMS inside a default SMS app
+          }
+        };
+ 
+          $scope.sendSMS=function(){
+          console.log($scope.sms);
+          console.log($scope.sms);
+
+          $cordovaSms
+            .send($scope.sms, $scope.sms, options)
+              .then(function() {
+                console.log('YES');
+              }, function(error) {
+                console.log(error);
+              });
+            }      
+         });
+
+
         //////////////////////////////////////////////////////////////
         ///SWIPE-RIGHT from trip-details TO current-trip .state///////
         //////////////////////////////////////////////////////////////

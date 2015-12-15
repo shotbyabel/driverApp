@@ -25,16 +25,66 @@
 
     <h4 class="title text-center">QUICK TEXT</h4>
 
-      <a
+<!--       <a
         id={{currentCustomer[0].phone}}
         class="button button-small button-clear button-outline button-light"
         ng-click="sendSMS()">
         <i class="ion-android-textsms current-trip-icons "></i>
-      </a>    
+      </a>  -->
+          
+      <ion-list  class="title text-center modal-text">
 
-    <p>"Your driver is 5 minutes away"</p>
-    <p>"Your driver is 10 minutes away"</p>
-    <p>"Your driver has arrived"</p>
+        <div>
+          <a
+    
+            class="button button-large button-clear button-outline button-light"
+            ng-click="sendSMS()">Your driver is 5 minutes away
+            <i class="ion-android-textsms current-trip-icons "></i>
+          </a>
+        </div>
+        
+        <div>
+          <a
+
+            class="button button-large button-clear button-outline button-light"
+            ng-click="sendSMS()">Your driver is 10 minutes away
+            <i class="ion-android-textsms current-trip-icons "></i>
+          </a>
+        </div>
+
+        <div>
+          <a
+
+            class="button button-large button-clear button-outline button-light"
+            ng-click="sendSMS()">Your driver has arrived
+            <i class="ion-android-textsms current-trip-icons "></i>
+          </a>
+        </div>        
+
+      </ion-list>
+
+
+<!-- 
+        <ion-list>
+          <label class="item item-input">
+            <span class="input-label" >Number</span>
+            <input type="number" ng-model="sms.number">
+          </label>
+          
+          <label class="item item-input">
+            <span class="input-label">Message</span>
+            <input type="text" ng-model="sms.message">
+          </label>
+          
+          <button class="button button-full button-positive" ng-click="sendSms()">
+            Send
+          </button>
+        </ion-list> -->
+
+
+
+
+
 
     </ion-item>
   </ion-content>
