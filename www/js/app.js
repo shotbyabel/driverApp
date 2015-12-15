@@ -97,15 +97,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'st
     ///
   })
 
-  .state('app.trip-details', {
-    url: '/trip-details',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/trip-details.html',
-        controller: 'BookingsCtrl'
-      }
-    }
-  })
 
   .state('app.current-trip', {
     url: '/current-trip/',
@@ -113,6 +104,19 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'st
     views: {
       'menuContent': {
         templateUrl: 'templates/current-trip.html',
+        controller: 'TripCtrl'
+      }
+    },
+    params: {
+      auth: 'none'
+    }
+  })
+
+  .state('app.contact-client', {
+    url: '/contact-client',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/contact-client.html',
         controller: 'TripCtrl'
       }
     },
