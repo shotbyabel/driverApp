@@ -10,8 +10,8 @@
       $scope.profUpdateForm = {}
 
       $scope.onSubmit = function() {
-        var fullName = $scope.profUpdateForm.Fullname;
-        console.log(fullName);
+        var fullName = $scope.profUpdateForm;
+        profileService.update($scope.profUpdateForm);
       }
 
       $scope.updateConfirm = function(form) {
