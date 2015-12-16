@@ -175,6 +175,14 @@ font-size: 2.5em;
 font-weight: 200;
 }
 
+.date {
+
+text-align: center;
+color: darkgrey;
+font-size: 1em;
+font-weight: 200;
+}
+
 .today-client-bubble {
 
 display: -webkit-flex;
@@ -207,6 +215,7 @@ margin-left: 25%;
 .bubble {
 height: 35%;
 width: 35%;
+postion: absolute;
 }
 
 /*this number is generated from the BookingsController.js
@@ -224,7 +233,6 @@ margin-top: -25%;
 /*should include passenger names and times for trips*/
 .list-position {
   position: absolute;
-  top: 50%;
   width: 100%;
 }
 
@@ -332,7 +340,7 @@ text-align: center;
 
 i.contact-client-iphone{
 
-font-size: 3.5em;  
+font-size: 3.5em;
 
 
 }
@@ -377,9 +385,10 @@ border-bottom-style:outset;
 border-bottom:1px solid grey;
 }
 
-.profile-inputs{
+#profile-inputs{
 margin-left:10%;
 margin-right:0%;
+background-color: transparent;
 
 }
 
@@ -410,6 +419,9 @@ font-size: 1.5em;
   display: none;
 }
 
+i.icon-large {
+  font-size: 35px;
+}
 /*map.current-map{
 padding-top: 20%;
 }*/

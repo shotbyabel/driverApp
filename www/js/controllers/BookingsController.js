@@ -41,9 +41,11 @@
 //////////////////////////
 ///GET DAY OF THE WEEK///
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-var today = new Date;
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+$scope.date = new Date;
 
-$scope.dayofWeek = days[today.getDay()];
+$scope.dayofWeek = days[$scope.date.getDay()];
+$scope.month = months[$scope.date.getMonth()];
  //////////////////////////////////
  ///START trip-details modal
     $ionicModal.fromTemplateUrl('templates/trip-details.html', {
@@ -66,7 +68,7 @@ $scope.dayofWeek = days[today.getDay()];
       BookingsService.currentBookingOptions = BookingsService.bookingsOptions[$scope.bookingIndex];
       BookingsService.currentBookingCars = BookingsService.bookingsCars[$scope.bookingIndex];
       $state.go('app.current-trip');
-      // UserService.isDriver <-- 
+      // UserService.isDriver <--
   };
 });
  // IIFE START //
