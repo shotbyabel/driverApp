@@ -98,36 +98,44 @@ margin-left: 15%;*/
 
 }
 
+/*logout avatar*/
+img.user-avatar{
+border-radius: 50%;
+width: 3.50em;
+height: 3.50em;
+
+}
 
 /*************************/
 /*T R I P  -  D E T A I L S  - MODAL*/
 
-.trip-modal{
+.contact-modal{
+/*background-image: url("/img/modal-bg.png");  */
 background-color: black;
 opacity: .95;
 border-bottom: 1px;
 }
 
-#modal-bar{
+/*#modal-bar{
 background-color: black;
 opacity: 1;
 }
 
 #tripditz1{
 background-color: black;
-/*margin-top: 25%;*/
 
-}
 
-.item.item-body#currentTrip-map{
+}*/
+
+/*.item.item-body#currentTrip-map{
 text-align: center;
-}
+}*/
 
 p.modal-text {
-font-size: 0.85em;
+font-size: 0.95em;
 text-align: center;
 color: white;
-font-weight: 400;
+font-weight: 700;
 }
 
 h4.title{
@@ -137,12 +145,12 @@ font-variant: small-caps;
 
 }
 
-/*.items-bg#modalDetails{
+.items-bg#modalDetails{
 margin-top: 0%;
-}*/
+}
 
 .items-bg#modalDetails{
-margin-top: -5%;
+margin-top: 0%;
 padding-bottom: 0%;
 margin-bottom: 2%;
 padding-top: 0%;
@@ -164,6 +172,14 @@ background: darkgreen;
 text-align: center;
 color: white;
 font-size: 2.5em;
+font-weight: 200;
+}
+
+.date {
+
+text-align: center;
+color: darkgrey;
+font-size: 1em;
 font-weight: 200;
 }
 
@@ -189,17 +205,18 @@ display: flex;
 }
 
 /*iOS emulator CENTERED*/
-.bubble {
+/*.bubble {
 height: 50%;
 width: 50%;
 margin-left: 25%;
-}
+}*/
 
 /*ionic serve CENTERED*/
-/*.bubble {
+.bubble {
 height: 35%;
 width: 35%;
-}*/
+postion: absolute;
+}
 
 /*this number is generated from the BookingsController.js
 $scope.dailyPassengers = BookingsService.bookings.length;*/
@@ -216,7 +233,6 @@ margin-top: -25%;
 /*should include passenger names and times for trips*/
 .list-position {
   position: absolute;
-  top: 50%;
   width: 100%;
 }
 
@@ -322,6 +338,14 @@ font-weight: 500;
 text-align: center;
 }
 
+i.contact-client-iphone{
+
+font-size: 3.5em;
+
+
+}
+
+
 /*********************/
 /*S E T T I N G S*/
 
@@ -361,9 +385,10 @@ border-bottom-style:outset;
 border-bottom:1px solid grey;
 }
 
-.profile-inputs{
+#profile-inputs{
 margin-left:10%;
 margin-right:0%;
+background-color: transparent;
 
 }
 
@@ -394,6 +419,9 @@ font-size: 1.5em;
   display: none;
 }
 
+i.icon-large {
+  font-size: 35px;
+}
 /*map.current-map{
 padding-top: 20%;
 }*/

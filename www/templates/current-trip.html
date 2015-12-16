@@ -7,14 +7,13 @@
 
   <ion-content>
 
-        <h4 class="title text-center">{{currentCustomer[0].first_name + " " + currentCustomer[0].last_name}}
-          <a
-            id={{currentCustomer[0].phone}}
-            class="button button-small button-clear button-outline button-light"
-            ng-href=tel:{{currentCustomer[0].phone}}>
-              <i class="ion-iphone current-trip-icons"></i>
-          </a>
-        </h4>
+        <h4 class="title text-center">{{currentCustomer[0].first_name + " " + currentCustomer[0].last_name}}</h4>
+
+            <!-- ng-href=tel:{{currentCustomer[0].phone}} -->
+
+        
+
+        
 
       <div class="item item-body">
 
@@ -40,16 +39,33 @@
         <div row row-center class="trip-buttons">
           <div class="col col-center">
 
+
+        <p>
+          OPTIONS
+        </p>
+        <div ng-repeat = "option in currentBookingOptions">
+          <div class="tripDetail-fonts">{{option.add_request}}</div>
+          <div class="tripDetail-fonts">{{option.kids_nb}}</div>
+          
+        </div>
+
             <button id="startTrip" class="button button-block button-balanced swipe-toStart"
                       on-swipe-right="onSwipeRight()">
-                SLIDE to START TRIP
+                SLIDE to start trip
             </button>
 
             <button id="endTrip"
              class="button button-full button-assertive End-Trip"
-             ng-click="endTrip()">
+             ng-click="endTripConfirm()">
             <span class="currentrip-txt-btn">END TRIP</span>
              <i class="ion-ios-close current-trip-icons"></i>
+           </button>
+            
+            <button id=""
+             class="button button-full button-energized"
+             ng-click="contactCLient()">
+            <span class="currentrip-txt-btn">CONTACT CLIENT</span>
+             <i class="ion-iphone current-trip-icons"></i>
            </button>
 
           </div>
