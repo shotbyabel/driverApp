@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 .pane{
 
-background-image: url("/img/screenbgtemplate.png");
+background-image: url("../img/screenbgtemplate.png");
 }
 
 .temp{
@@ -69,7 +69,7 @@ input.ng-touched.ng-valid {
 
 .whole-menu{
 
-background-image: url("/img/driversidemenu.png");
+background-image: url("../img/driversidemenu.png");
 width: 100%;
 height: 100%;
 }

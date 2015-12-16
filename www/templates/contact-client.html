@@ -20,23 +20,20 @@
         ng-href=tel:{{currentCustomer[0].phone}}>
         <i class="ion-iphone current-trip-icons contact-client-iphone"></i>
       </a>
-    
-    
 
     <h4 class="title text-center">QUICK TEXT</h4>
 
-<!--       <a
+<!--  <a
         id={{currentCustomer[0].phone}}
-        class="button button-small button-clear button-outline button-light"
-        ng-click="sendSMS()">
-        <i class="ion-android-textsms current-trip-icons "></i>
+          class="button button-small button-clear button-outline button-light"
+          ng-click="sendSMS()">
+          <i class="ion-android-textsms current-trip-icons "></i>
       </a>  -->
           
       <ion-list  class="title text-center modal-text">
 
         <div>
-          <a
-    
+          <a 
             class="button button-large button-clear button-outline button-light"
             ng-click="sendSMS()">Your driver is 5 minutes away
             <i class="ion-android-textsms current-trip-icons "></i>
@@ -62,30 +59,6 @@
         </div>        
 
       </ion-list>
-
-
-<!-- 
-        <ion-list>
-          <label class="item item-input">
-            <span class="input-label" >Number</span>
-            <input type="number" ng-model="sms.number">
-          </label>
-          
-          <label class="item item-input">
-            <span class="input-label">Message</span>
-            <input type="text" ng-model="sms.message">
-          </label>
-          
-          <button class="button button-full button-positive" ng-click="sendSms()">
-            Send
-          </button>
-        </ion-list> -->
-
-
-
-
-
-
     </ion-item>
   </ion-content>
 
