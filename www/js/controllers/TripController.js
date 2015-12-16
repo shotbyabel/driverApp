@@ -4,8 +4,8 @@
 
   angular.module('starter')
     .controller('TripCtrl',
-      function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, $ionicModal, $cordovaSms, 
-                BookingsService, tripService, UserService, $ionicPopup) {
+      function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, $ionicModal, $cordovaSms,
+        BookingsService, tripService, UserService, $ionicPopup, $ionicPlatform) {
 
         $ionicSideMenuDelegate.canDragContent(true)
 
@@ -17,7 +17,7 @@
         $scope.currentCustomer = BookingsService.currentCustomer;
         $scope.currentBookingOptions = BookingsService.currentBookingOptions;
         // $scope.currentBookingCars = BookingsService.currentBookingCars;
-        // $scope.sms = {};
+        $scope.sms = {};
 
 
         var directionsService = new google.maps.DirectionsService;
@@ -94,33 +94,29 @@
         //////////////////////////////////////////////////////
         /// SMS  ///
         /////////////////////////////////////////////////////
-        document.addEventListener("deviceready", function() {
-        
-        $scope.sms = '3109679311';
-        var options = {
-        replaceLineBreaks: false, // true to replace \n by a new line, false by default
-        android: {
-        // intent: '' // send SMS with the native android SMS messaging
-          intent: '' // send SMS without open any other app
-        // intent: 'INTENT' // send SMS inside a default SMS app
-          }
-        };
- 
-          $scope.sendSMS=function(){
-          console.log($scope.sms);
-          console.log($scope.sms);
+        $scope.sendSMS = function() {
+          var options = {
+            replaceLineBreaks: false, // true to replace \n by a new line, false by default
+            android: {
+              // intent: '' // send SMS with the native android SMS messaging
+              intent: '' // send SMS without open any other app
+                // intent: 'INTENT' // send SMS inside a default SMS app
+            }
+          };
+          console.log('Passenger Tel:' + $scope.currentCustomer[0].phone);
 
-          $cordovaSms
-            .send($scope.sms, $scope.sms, options)
+          var number = "+13109679311";
+          var message = "This is a test message";
+          // return;
+          $ionicPlatform.ready(function() {
+            $cordovaSms.send(number, message, options)
               .then(function() {
                 console.log('YES');
               }, function(error) {
                 console.log(error);
               });
-            }      
-         });
-
-
+          });
+        };
         //////////////////////////////////////////////////////////////
         ///SWIPE-RIGHT from trip-details TO current-trip .state///////
         //////////////////////////////////////////////////////////////

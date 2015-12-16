@@ -9,8 +9,7 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="lib/fullcalendar/dist/fullcalendar.css"/>
-
+    <link rel="stylesheet" href="lib/fullcalendar/dist/fullcalendar.css">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -19,10 +18,8 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-
     <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbAwbJ96_eZDmKDO7zAqL0M66i6wi1KSE&sensor=true"></script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbAwbJ96_eZDmKDO7zAqL0M66i6wi1KSE&amp;sensor=true"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <!-- ngCordova GeoLocation -->
@@ -30,6 +27,9 @@
     <!-- ngCordova Calendar -->
     <script src="js/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
+    <script src="lib/angular-websocket/angular-websocket.js"></script>
+    <script src="lib/ionic-service-core/ionic-core.js"></script>
+    <script src="lib/ionic-service-push/ionic-push.js"></script>
 
     <!-- your app's js -->
     <script src="lib/ngstorage/ngStorage.min.js"></script>
@@ -48,6 +48,7 @@
     <script src="js/app.js"></script>
     <script src="js/ionic.ion.showwhen.js"></script>
     <script src="js/controllers/BookingsController.js"></script>
+    <script src="js/controllers/PushNotificationController.js"></script>
     <script src="js/controllers/BookingsCalendarController.js"></script>
     <script src="js/controllers/DriverLocController.js"></script>
     <script src="js/services/bookingService.js"></script>

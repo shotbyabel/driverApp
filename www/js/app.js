@@ -3,8 +3,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'starter.controllers', 'ionic.ion.showWhen'])
-
+angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'ionic.service.core',
+  'ionic.service.push', 'starter.controllers', 'ionic.ion.showWhen'])
+///
 .run(function($ionicPlatform, $rootScope, UserService) { //inject $rootScope, UserService in order to do route auth..
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -50,6 +51,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'st
   });
   ///////////// $stateChangeStart route auth - end
 })
+
+//identify PushNotification @ start up with ionic.io.service
+// .config(['$ionicAppProvider', function($ionicAppProvider) {
+//   $ionicAppProvider.identify({
+//     app_id: 'b58207b0',
+//     api_key: '984d80a1a9857fc14075de09405f8f1551f7dbacffd7faba',
+//     dev_push: true//only development PUSH notifications - need to set for production later
+//   });
+// }])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
