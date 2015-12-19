@@ -1,3 +1,5 @@
+// S W I T C H LINE 18 & 19 TO FALSE to turn LOGIN AUTH back on
+
 (function() {
   'use strict';
 
@@ -13,8 +15,8 @@
           console.log(result);
           if (!result.result) { //result is return boolean of the API
             // if (result === '') { *did not work*//
-            deferred.resolve(false);
-            return false; //no UX message in Services, Best to put in controllers!
+            deferred.resolve(true); //switch to false to check auth
+            return true; //no UX message in Services, Best to put in controllers! //switch to false to check auth
           }
           UserService.save(result.data); //**added`.data` login user here**data is the data the API returns (User Object)
           console.log("Login Credentials Submitted Succesfully!");
