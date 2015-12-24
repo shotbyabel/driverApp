@@ -3,8 +3,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'starter.controllers', 'ionic.ion.showWhen'])
-
+angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage', 'ui.calendar', 
+  'ionic.service.push', 'starter.controllers', 'ionic.ion.showWhen'])
+///
 .run(function($ionicPlatform, $rootScope, UserService) { //inject $rootScope, UserService in order to do route auth..
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -21,7 +22,47 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'st
     if (!window.plugins) {
       window.plugins = {};
     }
+
+/////////////////////////////////////////////////////////////////////////
+//// added from STEP->5: http://docs.ionic.io/v1.0/docs/push-from-scratch       
+      var push = new Ionic.Push({
+      "debug": true
+      });
+
+      push.register(function(token) {
+      console.log("Device token:",token.token);
+      });   
+
+      /*
+      NOTES:
+      For push notifications to work, each device that opens the app should be registered on the push notification sending server(Our case Ionic Push)
+      For apple, it registers on APNS, and for android it registers on GCM
+      The device token is the identifier that you use to target the push notification
+      So let's say you want to send a push notification to someone's phone, you have to save it's device token somewhere when it opens the app
+      and then use that to send it the push notification (The way we're doing now with Ionic Push)
+      */
+/////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////
+// // kick off the platform web client
+// Ionic.io();
+
+// // this will give you a fresh user or the previously saved 'current user'
+// var user = Ionic.User.current();
+
+// // if the user doesn't have an id, you'll need to give it one.
+// if (!user.id) {
+//   user.id = Ionic.User.anonymousId();
+//   // user.id = 'your-custom-user-id';
+// }
+
+// //persist the user
+// user.save();
+////////////////////////////////////////////
   });
+
+
   ///$stateChangeStart must fire on $tootScope level
   ///https://github.com/angular-ui/ui-router/wiki - reference
   $rootScope.$on("$stateChangeStart", function(event, toState) {
@@ -50,6 +91,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage', 'ui.calendar', 'st
   });
   ///////////// $stateChangeStart route auth - end
 })
+
+//identify PushNotification @ start up with ionic.io.service
+.config(['$ionicAppProvider', function($ionicAppProvider) {
+  $ionicAppProvider.identify({
+    app_id: 'b58207b0',
+    api_key: '984d80a1a9857fc14075de09405f8f1551f7dbacffd7faba',
+    dev_push: true//only development PUSH notifications - need to set for production later
+  });
+}])
+
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
