@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('starter').controller('LoginCtrl',
-    function($scope, $ionicSideMenuDelegate, $http, $state, $ionicLoading, UserService, LoginService) {
+    function($scope, $ionicSideMenuDelegate, $state, $ionicLoading, UserService, LoginService) {
 
       $ionicSideMenuDelegate.canDragContent(false);
 

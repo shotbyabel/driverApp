@@ -9,8 +9,10 @@
     self.updateDriverLocation = function(booking_id, user_id) {
         //create 'defer object'
         console.log(navigator);
-        var deferred = $q.defer();   
-        var url = "http://localhost/apinew/usergeolocation/";
+        var deferred = $q.defer();
+           
+        var url = "http://localhost/apinew/usergeolocation/";//LOCAL
+        // var url = "http://dev.afourc.ml/apinew/usergeolocation/";//DEVELOPMENT
 
         navigator.geolocation.getCurrentPosition(function(position) {
           var latitude = position.coords.latitude;
@@ -46,7 +48,7 @@
         ///CODE TO TRY & GET THE TIMER WORKING
         driverTripTimer = $interval(function(){
           self.updateDriverLocation(booking_id, user_id);
-        }, 7000)
+        }, 10000)
       }
 
       self.stopDriverTrip = function(booking_id, user_id){

@@ -15,7 +15,8 @@
         var deferred = $q.defer();
         console.log(self)
           //update to .user_id - got rid of getNames function
-        $http.get("http://localhost/apinew/bookings/" + self.driver_id)
+        // $http.get("http://localhost/apinew/bookings/" + self.driver_id)//LOCAL
+        $http.get("http://dev.afourc.ml/apinew/bookings/" + self.driver_id)//DEVELOPMENT
           .success(function success(data) {
             console.log(data); //entire bookings object console log
             self.bookings = data[0]; //first array, bookings
