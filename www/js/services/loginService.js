@@ -10,7 +10,8 @@
     self.login = function(userLogin, userPw) { //line 27 from longinController.. -
       var deferred = $q.defer();
       //**1**moved from LoginController
-      $http.get("http://localhost/apinew/login" + "/" + userLogin + "/" + userPw)
+      // $http.get("http://localhost/apinew/login" + "/" + userLogin + "/" + userPw) //LOCAL
+      $http.get("http://dev.afourc.ml/apinew/login" + "/" + userLogin + "/" + userPw) //DEV
         .success(function(result) {
           console.log(result);
           if (!result.result) { //result is return boolean of the API
