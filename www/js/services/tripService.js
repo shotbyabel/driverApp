@@ -11,8 +11,8 @@
     self.updateDriverLocation = function(booking_id, user_id) {
         //create 'defer object'
         var deferred = $q.defer();
-        // var url = "http://dev.afourc.ml/apinew/usergeolocation/"; //DEVELOPMENT
-        var url = "http://localhost/apinew/usergeolocation/"; //LOCAL
+        var url = "http://dev.afourc.ml/apinew/usergeolocation/"; //DEVELOPMENT
+        // var url = "http://localhost/apinew/usergeolocation/"; //LOCAL
 
 
         var options = {timeout: 10000, enableHighAccuracy: true};
