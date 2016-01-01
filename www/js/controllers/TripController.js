@@ -92,7 +92,7 @@
         };
 
         //////////////////////////////////////////////////////
-        /// SMS  ///
+        /// SMS  5 minutes away ///
         /////////////////////////////////////////////////////
         $scope.sendSMS = function() {
           var options = {
@@ -105,8 +105,9 @@
           };
           console.log('Passenger Tel:' + $scope.currentCustomer[0].phone);
 
-          var number = "+13109679311";
-          var message = "This is a test message";
+          // var number = "+13109679311";
+          var number = $scope.currentCustomer[0].phone;
+          var message = "Hello, Your driver is 5 minutes away.";
           // return;
           $ionicPlatform.ready(function() {
             $cordovaSms.send(number, message, options)
@@ -117,6 +118,20 @@
               });
           });
         };
+
+        ////////////////////////////////////////////////////////////////
+        ///TODO: create 2 more functions for the other SMS messages ///
+        ///////////////////////////////////////////////////////////////
+        /// 1. Can I use the same function>?
+        /// 2. function chain?        
+
+
+
+
+
+
+
+
         //////////////////////////////////////////////////////////////
         ///SWIPE-RIGHT from trip-details TO current-trip .state///////
         //////////////////////////////////////////////////////////////
