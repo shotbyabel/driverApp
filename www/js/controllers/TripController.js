@@ -92,21 +92,22 @@
         };
 
         //////////////////////////////////////////////////////
-        /// SMS  ///
+        /// SMS  5 minutes away ///
         /////////////////////////////////////////////////////
         $scope.sendSMS = function() {
           var options = {
             replaceLineBreaks: false, // true to replace \n by a new line, false by default
             android: {
-              // intent: '' // send SMS with the native android SMS messaging
-              intent: '' // send SMS without open any other app
-                // intent: 'INTENT' // send SMS inside a default SMS app
+    
+              intent: ''        // send SMS without open any other app
+           // intent: 'INTENT' // send SMS with the native android SMS messaging
             }
           };
           console.log('Passenger Tel:' + $scope.currentCustomer[0].phone);
 
-          var number = "+13109679311";
-          var message = "This is a test message";
+          // var number = "+13109679311";
+          var number = $scope.currentCustomer[0].phone;
+          var message = "Hello, Your driver is 5 minutes away.";
           // return;
           $ionicPlatform.ready(function() {
             $cordovaSms.send(number, message, options)
@@ -117,6 +118,20 @@
               });
           });
         };
+
+        ////////////////////////////////////////////////////////////////
+        ///TODO: create 2 more functions for the other SMS messages ///
+        ///////////////////////////////////////////////////////////////
+        /// 1. Can I use the same function>?
+        /// 2. function chain?        
+
+
+
+
+
+
+
+
         //////////////////////////////////////////////////////////////
         ///SWIPE-RIGHT from trip-details TO current-trip .state///////
         //////////////////////////////////////////////////////////////
