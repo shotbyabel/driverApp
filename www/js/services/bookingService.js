@@ -6,7 +6,7 @@
 
       var self = this;
       self.bookings = [];
-      self.bookingsCustomers = [];
+      self.bookingsCustomers = []; 
       // self.bookingsCars = [];
 
       //GET FROM ARRAY

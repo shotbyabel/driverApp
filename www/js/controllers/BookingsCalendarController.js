@@ -9,7 +9,7 @@
         alert('yo?');
         console.log(date);
         console.log(date.className.customerName); //pass bookingEvent data here?
-        console.log(jsEvent);
+        // console.log(jsEvent);
       }
 
       //source code
@@ -32,8 +32,9 @@
             //**10** add Date API --dates were not displaying: format fullCallendar understands dates
             start: new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate(),
               bookingDate.getHours(), bookingDate.getMinutes(), bookingDate.getSeconds()),
-            //SOURCODE 'className' to pass data in Calendar
-            className: {customerName: customers[i][0].first_name}
+            //SOURCODE 'className' to pass data in Calendar/Event
+            className: {customerName: customers[i][0].first_name + " " + customers[i][0].last_name}
+            // className: {customerName: customers[i][0].last_name}
           });
         }
         console.log($scope.bookingEvents); //
@@ -53,15 +54,14 @@
             //**9** if
             if (response) { //API call returns true we put in bookings var
               var bookings = BookingsService.bookings; //**5** save bookings object
-              var customers = BookingsService.bookingsCustomers;
+              var customers = BookingsService.bookingsCustomers; //***A** save the customers object
             }
-
+            // console.log(customers); TODO: 
             //call the functions on the bookings we got back
             prepareBookingEvents(bookings, customers); //**6** pass bookings here
+            //when done add bookings events to the event sources [] --
             $scope.eventSources.push($scope.bookingEvents); //push to EventSources array
           })
-          //when done add bookings events to the event sources [] --
-
-      })
+        })
     });
 })();
