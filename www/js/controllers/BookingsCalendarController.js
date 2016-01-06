@@ -3,13 +3,10 @@
 
   angular.module('starter').controller('BookingsCalendarCtrl',
     function($scope, UserService, BookingsService) {
-      // T O D O ///////////
-      // DATE CLICK EVENT - not working will show booking details
+
       function showBookingDetails(date, jsEvent, view) {
-        alert('yo?');
-        console.log(date);
-        console.log(date.className.customerName); //pass bookingEvent data here?
-        // console.log(jsEvent);
+        //Bind the customerName taken from the event to a scope variable to show it in the HTML
+        $scope.clickedCustomerName = date.className.customerName;
       }
 
       //source code
@@ -33,7 +30,10 @@
             start: new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate(),
               bookingDate.getHours(), bookingDate.getMinutes(), bookingDate.getSeconds()),
             //SOURCODE 'className' to pass data in Calendar/Event
-            className: {customerName: customers[i][0].first_name + " " + customers[i][0].last_name}
+            className: {
+              customerName: customers[i][0].first_name + " " + customers[i][0].last_name,
+              // start_date: 'Something' add more info here
+            }
             // className: {customerName: customers[i][0].last_name}
           });
         }
@@ -51,17 +51,17 @@
 
         BookingsService.driver_id = UserService.driver.id; //**2**from BookingController.js - Line 20
         BookingsService.getBookings().then(function(response) { //from line 21(returns promise)
-            //**9** if
-            if (response) { //API call returns true we put in bookings var
-              var bookings = BookingsService.bookings; //**5** save bookings object
-              var customers = BookingsService.bookingsCustomers; //***A** save the customers object
-            }
-            // console.log(customers); TODO: 
-            //call the functions on the bookings we got back
-            prepareBookingEvents(bookings, customers); //**6** pass bookings here
-            //when done add bookings events to the event sources [] --
-            $scope.eventSources.push($scope.bookingEvents); //push to EventSources array
-          })
+          //**9** if
+          if (response) { //API call returns true we put in bookings var
+            var bookings = BookingsService.bookings; //**5** save bookings object
+            var customers = BookingsService.bookingsCustomers; //***A** save the customers object
+          }
+          // console.log(customers); TODO: 
+          //call the functions on the bookings we got back
+          prepareBookingEvents(bookings, customers); //**6** pass bookings here
+          //when done add bookings events to the event sources [] --
+          $scope.eventSources.push($scope.bookingEvents); //push to EventSources array
         })
+      })
     });
 })();
