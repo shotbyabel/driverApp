@@ -1,0 +1,489 @@
+Package Control Messages
+========================
+
+Seti_UI
+-------
+
+  v10.1 (27-12-2015)
+  -------------------
+  
+  1. more fixes.
+  2. all schemes are removed, if u still want them back u can find em on `Mod` branch.
+  3. removed hover color from "all panels / sidebar folder".
+  4. changed minimap tint back to default.
+  5. "Seti_no_bar_undertabs" options removed & so the 4px tab it self.
+  6. Sass & SCSS lang files removed to avoid trouble with the main packages, depends on which package u install the icons will reflect that.
+  7. add new option "Seti_panel_nrml" incase u dont like the new quick panel design.
+  8. readme updated.
+
+  v10 (24-12-2015)
+  -------------------
+  
+  1. fixed php icon not showin on 3095.
+  2. "Seti_in_4_a_treat" / "Seti_rainbow" / "Seti_sb_wild" options removed.
+  3. many new options added, plz check readme.
+  4. you can now remove the tab scrolling arrows & drop down while maintaining the scrolling capability through "Seti_no_scroll_icons".
+  5. lots of fixes for both themes + some changes.
+  6. changed the "GoTo anything" & "Code Compilation DropDown" panel color to match the quick panel, i overlooked those the first time.
+  7. removed the (light/medium/dark) options, so now you will have the same theme color regardless of which tone your scheme have.
+  8. tab orange button option now works on Retina.
+  9. the Seti Scheme atm is a big mess , so all are removed except "Seti_monokai"
+  10. fixed blade icon not showing after the latest updates.
+  11. '.env' is now supported (install Generic Config package)
+  12. the sidebar group icons are now hidden by default, use "Seti_show_group_arrows" to bring them back.
+  13. restructured the theme folders for easier maintainability.
+  13. Readme updated.
+  
+  
+  ## if your flow got effected 'not in a good way' by the new update, plz let me know.
+  
+   ████     ████                                      ██████  ██             ██           ██
+  ░██░██   ██░██                          ██   ██    ██░░░░██░██            ░░           ░██
+  ░██░░██ ██ ░██  ██████   ██████ ██████ ░░██ ██    ██    ░░ ░██      ██████ ██  ██████ ██████ ██████████   ██████    ██████
+  ░██ ░░███  ░██ ░░░░░░██ ░░██░░█░░██░░█  ░░███    ░██       ░██████ ░░██░░█░██ ██░░░░ ░░░██░ ░░██░░██░░██ ░░░░░░██  ██░░░░
+  ░██  ░░█   ░██  ███████  ░██ ░  ░██ ░    ░██     ░██       ░██░░░██ ░██ ░ ░██░░█████   ░██   ░██ ░██ ░██  ███████ ░░█████
+  ░██   ░    ░██ ██░░░░██  ░██    ░██      ██      ░░██    ██░██  ░██ ░██   ░██ ░░░░░██  ░██   ░██ ░██ ░██ ██░░░░██  ░░░░░██
+  ░██        ░██░░████████░███   ░███     ██        ░░██████ ░██  ░██░███   ░██ ██████   ░░██  ███ ░██ ░██░░████████ ██████
+  ░░         ░░  ░░░░░░░░ ░░░    ░░░     ░░          ░░░░░░  ░░   ░░ ░░░    ░░ ░░░░░░     ░░  ░░░  ░░  ░░  ░░░░░░░░ ░░░░░░
+
+  v9.1 (08-07-2015)
+  -------------------
+  
+  1. changed the yellow/redish tabset colors to the default dark-blue to avoid the confusing.
+  2. changed the quick-panel colors check (https://github.com/ctf0/Seti_ST3/issues/152)
+  3. updated readme with the 2 theme versions ,plz stop issuing tickets for that.
+  4. Fix comment gulp and grunt snippet (thanx to rodriguezmanu).
+  5. changed active-guide color to be more visible.
+
+  v9 (13-06-2015)
+  -------------------
+  
+  1. add a new version of the theme with the original tabs + some other additional visual mods.
+     "now the original theme is named as (Seti_orig) and the new version is just (Seti)",
+     dont forget to restart ST after u apply any of the themes.
+  
+  2. changed code folding image color.
+  3. readme updated.
+
+  v8.4 (31-5-2015)
+  -------------------
+  
+  1. add 2 more options (Seti_sb_no_icons, Seti_sb_blank).
+  2. read me updated.
+
+  v8.3 (23-5-2015)
+  -------------------
+  
+  1. add 2 more options (Seti_orange_label,Seti_orange_button).
+  2. read me updated.
+
+  v8.2 (8-5-2015)
+  -------------------
+  
+  1. add 2 more options (Seti_no_blue_bar,Seti_blue_tab_label).
+  2. read me updated.
+
+  v8.1 (3-5-2015)
+  -------------------
+  
+  1. lighten the sidebar label colors thanx to  akloeber.
+  2. fixed the license lang file thanx to zot24.
+
+  v8 (22-3-2015)
+  -------------------
+  
+  1. add support to Linden Scripting Language by Builder's Brewery.
+  2. add support to Typescript by Lucas Matías Ciruzzi.
+  3. fixed update dialog text color by Chris54721.
+  4. fixed npm icon ,now its sharper.
+  5. Add style to tab_label transient by Fernando Daciuk.
+
+  v7.7 (22-2-2015)
+  -------------------
+  
+  1. add support to twig by soniagb89.
+  2. more clean-up.
+  3. better support for markdown in Seti_orig & Seti_monokai.
+
+  v7.6 (5-2-2015)
+  -------------------
+  
+  1. add applescript icon.
+  2. changed css & html icons. (if u prefer the old one ,plz do tell me).
+  3. the slim files now have the old html icon to distinguish them from the normal html.
+  4. add support for ".bowerrc" / "dockefile" / ".git".
+  5. removed the "Julia.tmLanguage" that was cuzing some issues with some users. (but the pref + icons are still there if u use this language)
+  6. for "Gruntfile/Gulpfile" ,if u use a formatter of any kind with this 2 files u may get an error because of the modification made to the language files ,simply use `view > open all with current extension as...` "JS/Coffee" and it should work.
+
+  v7.5 (3-2-2015)
+  -------------------
+  
+  1. added a new option "Seti_in_4_a_treat".
+
+  v7.2 (3-2-2015)
+  -------------------
+  
+  1. add support for ".git" ,the HL is handeld by (ShellScript) if u have a better option plz msg me.
+  
+  ** if u use (https://packagecontrol.io/packages/Dotfiles%20Syntax%20Highlighting) ,remove the '.git & dockerfile' extensions from the (Shell-Unix-Generic.sublime-settings) so the new icon can show-up.
+
+  v7.1 (2-2-2015)
+  -------------------
+  
+  1. "Seti_mouse_wheel_tabswitch" is now "mouse_wheel_tabswitch" as its a global setting comes with every theme.
+  
+  2. removed file_types folder as there is no need for it now.
+  
+  3. added a couple of syntax to (sass,scss,less,rail-slim) ext files to make sure they display the right icon ,so plz install them again.
+
+  v7 (1-2-2015)
+  -------------------
+  
+  1. BIG FAT thanx to lefoy (https://github.com/lefoy/cyanide-theme) & Centril (https://github.com/Centril),
+    pretty much all the icons now works, so make sure to show'em some love.
+  
+  ** some of the new icons are borrowed from their work + making/changing some other. "some icons may get changed later"
+  
+  2. no more need for the packages i made for "Less/Sass/SCSS" as now the included lang files fix that and does exactly what i was trying to do in the first place,
+    so u can install any of those packages from their original authors just like normal and everything will be working just fine.
+  
+  3. the new update doesn't require any special configuration, but u will notice that there is an extra panel of "Seti_UI"
+    with some languages in the language selector panel, you don't need to worry about it, rather simply ignore it..
+  
+  4. more file-types added to test with.
+  
+  5. some icons has gained/lost some weight.
+
+  v6.1 (31-1-2015)
+  -------------------
+  
+  1. added support for Angular.js template (*.ng.html).
+
+  v6 (31-1-2015)
+  -------------------
+  
+  1. added support for SublimeLinter.
+  2. indent guide are a bit brighter now.
+
+  v5.1 (11-1-2015)
+  -------------------
+  
+  1. changed search panel arrow.
+  2. added groovy support.
+  3. fixed search panel icons for retina.
+  4. updated msgs.
+
+  v5 (11-1-2015)
+  -------------------
+  
+  1. add options for different "line_padding" so u r free to use the default '0' and still get the same experience.
+  * if u use "0" don't add any of the new "Seti_pad_?" to ur settings.
+  * the new options affect (quick_panel, search_panel, gutter_fold_icons, auto_complete_panel.
+  * search_panel after setting new options needs to be dragged_up & down to fix its size. (its related to ST not the theme it self)
+   
+  2. for Retina Macs with fold icons wasn't showing ,now its fixed.
+  3. readme / install updated.
+  4. finally found how to make the search panel slimmer (ITS A NEW DAWN).
+  
+  
+  
+  *** try this
+  {
+    "line_padding_bottom": 0,
+    "line_padding_top": 0,
+    "caret_extra_bottom": 7,
+    "caret_extra_top": 7,
+  }
+
+  v4 (07-1-2015)
+  -------------------
+  
+  1. changed search buttons & icons colors.
+  2. made the quickpanel & auto-complete rows padding are a bit smaller.
+  3. add "Seti_rainbow" , and changed the quickpanel top bar color
+  4. the text on the right on the status bar are pushed a bit to the right.
+  5. fixed the "wholeword icon" postition.
+  6. readme & install updated
+  
+  .. if u want the old colors use the theme file from the "Mods" branch.
+  .. ((d[^_x]b)) Mizar B & Heever - Lost World (Original Mix)
+
+  v3.3.2 (06-1-2015)
+  -------------------
+  
+  1. add Seti_sb_tree_tiny & Seti_sb_tree_miny.
+  2. readme updated.
+
+  v3.3 (05-1-2015)
+  -------------------
+  
+  1. add more options to the sidebar tree.
+
+  v3.2 (03-1-2015)
+  -------------------
+  
+  - first things first >>
+  
+    ██      ██     ██     ███████  ███████  ██    ██   ████     ██ ████████ ██       ██   ██    ██ ████████     ██     ███████
+   ░██     ░██    ████   ░██░░░░██░██░░░░██░░██  ██   ░██░██   ░██░██░░░░░ ░██      ░██  ░░██  ██ ░██░░░░░     ████   ░██░░░░██
+   ░██     ░██   ██░░██  ░██   ░██░██   ░██ ░░████    ░██░░██  ░██░██      ░██   █  ░██   ░░████  ░██         ██░░██  ░██   ░██
+   ░██████████  ██  ░░██ ░███████ ░███████   ░░██     ░██ ░░██ ░██░███████ ░██  ███ ░██    ░░██   ░███████   ██  ░░██ ░███████
+   ░██░░░░░░██ ██████████░██░░░░  ░██░░░░     ░██     ░██  ░░██░██░██░░░░  ░██ ██░██░██     ░██   ░██░░░░   ██████████░██░░░██
+   ░██     ░██░██░░░░░░██░██      ░██         ░██     ░██   ░░████░██      ░████ ░░████     ░██   ░██      ░██░░░░░░██░██  ░░██
+   ░██     ░██░██     ░██░██      ░██         ░██     ░██    ░░███░████████░██░   ░░░██     ░██   ░████████░██     ░██░██   ░░██
+   ░░      ░░ ░░      ░░ ░░       ░░          ░░      ░░      ░░░ ░░░░░░░░ ░░       ░░      ░░    ░░░░░░░░ ░░      ░░ ░░     ░░
+  
+  
+  1. changed gutter number color ,if u want the old one tell me.
+  2. better support for json multi-level (5 levels down) for monakai by varemenos, other schemes should be done soon.
+
+  v3.0 (11-12-2014)
+  -------------------
+  
+  1. changed search panel colors ,if u prefer the old one please let me know.
+  2. install updated.
+  3. if u started to hate the gutter color , open ur fav scheme file and make gutter color = background color.
+
+  v2.3 (11-12-2014)
+  -------------------
+  
+  1. re-fixed the fold icons align.
+  2. install updated.
+  3. readme updated.
+
+  v2.2 (5-12-2014)
+  -------------------
+  
+  1. added option for sidebar entries padding.
+  2. theme file cleaned.
+  3. readme updated.
+
+  v2.1 (4-12-2014)
+  -------------------
+  
+  1. fold icons now have a better placement.
+  2. readme and install updated.
+
+  v2.0 (30-11-2014)
+  -------------------
+  
+  1. a better syntax HL has been released ,u can find it on PC under "Seti_UX".
+  2. readme updated.
+
+  v1.12.3 (27-11-2014)
+  -------------------
+  
+  1. fold.png is now moved to +res folder.
+  2. MD icon re-pos.
+  3. Readme updated.
+
+  v1.12.2 (25-11-2014)
+  -------------------
+  
+  1. markdown icon is fixed.
+  2. golang icon is changed ,if u want the old one ,msg me.
+  3. not-working folder is removed.
+  4. install updated.
+  5. if u know a tmlang for git files ,msg me.
+
+  v1.12.1 (25-11-2014)
+  -------------------
+  
+  1. cfm icon changed.
+  2. markdown icon changed.
+  3. readme updated.
+
+  v1.12 (23-11-2014)
+  -------------------
+  
+  1. fixed the typo in (Seti_mouse_wheel_tabswitche).
+  2. readme & install updated.
+  3. tabset button is now a bit wider. (those 3 bars on the top right).
+  4. new option for scrollbars with brighter color for those who didn't like the default one.
+  5. scrollbars option for thickening are more straight forward now.
+
+  v1.11.4 (19-11-2014)
+  -------------------
+  
+  1. readme updated.
+  2. scrollbars options are added for those who prefer a wider/bigger SB.
+
+  v1.11.3 (18-11-2014)
+  -------------------
+  
+  1. readme updated.
+  2. scrollbars are now thinner ,sorry as i just noticed how big & ugly they are on windows.
+  3. handlebars are now fully supported.
+
+  v1.11.2 (17-11-2014)
+  -------------------
+  
+  1. sorry for the last problem with images ,now saved.
+
+  v1.11.1 (15-11-2014)
+  -------------------
+  
+  1. php & md icons are not a bit bigger.
+  2. cfm & cfc icons are changed to the standards.
+  3. cleaned the install file & the settings options are now included.
+
+  v1.11 (13-11-2014)
+  -------------------
+  
+  1. more options added for easier customizing.
+
+  v1.10.1 (11-11-2014)
+  -------------------
+  
+  1.
+  ColdFusion support added.
+  
+  2.
+  i added another icon for the Opened_folder in-case the default one was too distractive for you ,
+  you can use either the default or the new ones ,just go to
+  (Seti_UI/+res/Open_Folder/dots) , copy the new files and overwrite the old ones @ (Seti_UI/icons)
+  
+  2.1.
+  if you want to remove the Opened_folder icon all together ,
+  there is a modified "Seti.sublime-theme" at the same folder (+res/Open_Folder/)
+  just overwrite the installed file on the root with this one. (it have everything except the Opened_folder icons)
+
+  v1.10 (10-11-2014)
+  -------------------
+  
+  1. a better folder structure for easier maintainability.
+  2. readme and instal updated.
+  3. ScreenShots updated.
+
+  v1.9.2 (6-11-2014)
+  -------------------
+  
+  1. git-gutter is added for those who needs it by Jonathan (https://github.com/jonathanhirz) ,like b4 you know what to do :).
+  2. diff 'to & from' now have a different color.
+
+  v1.9.1 (6-11-2014)
+  -------------------
+  
+  1. better syntax HL for diff (v1.9 re-fix).
+
+  v1.9 (6-11-2014)
+  -------------------
+  
+  1. fixed the diff highlight ,sorry i didnt notice that all scopes had the same color (white).
+  2. for those who still uses Monokai ,skechboy (https://github.com/skechboy) have made a port for you so show em some love.
+
+  v1.8.2 (5-11-2014)
+  -------------------
+  
+  1. re-fixed HTML scope.
+
+  v1.8.1 (5-11-2014)
+  -------------------
+  
+  1. fixed wrong icons for Html / Haml.
+  2. json still doesnt show its icon "at least on my pc" ,if any found a solution plz advice.
+
+  v1.8 (3-11-2014)
+  -------------------
+  
+  1. apacheconfig & blade support added ,don't forget to install the respective syntax.
+
+  v1.7.3 (3-11-2014)
+  -------------------
+  
+  1. A new branch created for those who wants to make changes to the main theme ,
+  it will contain only the different files to avoid confusion.
+  
+  2. added diff syntax.
+
+  v1.7.2 (1-11-2014)
+  -------------------
+  
+  1. updated readme.
+
+  v1.7.1 (19-10-2014)
+  -------------------
+  
+  1. fixed fold arrows orientation.
+
+  v1.7 (16-10-2014)
+  -------------------
+  
+  1. fixed right & left tabset arrows ,now it should look sharp on Retina's.
+
+  v1.6.3 (08-10-2014)
+  -------------------
+  
+  1. some couldn't get the (Golang & Jade) to work without the setting files so now they are included.
+
+  v1.6.1 (08-10-2014)
+  -------------------
+  
+  1. fixed theme showing corrupted graphics.
+
+  v1.6 (08-10-2014)
+  -------------------
+  
+  1. Golang & Jade icons added
+  
+  2. Changed the Seti folder name to Main for easier maintenance.
+  
+  3. Cleaned up more of the un-working file-types & related icons ,which can be found in "not-working" folder.
+
+  v1.5 (18-09-2014)
+  -------------------
+  
+  1. Added Seti_orig for those who wants the original scheme ,keep in mind that some scope still have different colors (St is not Atom)
+  
+  - you can install it by
+  ```
+  "color_scheme": "Packages/Seti_UI/Seti_orig.tmTheme",
+  ```
+  
+  2.if you don't like any of the included schemes ,i feel you & am already working on a much richer/better one so stay tuned.
+
+  v1.4.1 (16-09-2014)
+  -------------------
+  
+  1. fixed Rust scope.
+  2. changed quick panel row padding to work better with other plugins that use menus.
+
+  v1.4 (15-09-2014)
+  -------------------
+  
+  1. Added Rust File Icons
+  2. fixed theme folder name in readme.
+
+  v1.3 (12-09-2014)
+  -------------------
+  
+  1. Updated HTML definition to include more file types.
+
+  v1.2 (11-09-2014)
+  -------------------
+  1-manual install is back.
+  
+  2-scss icons are added.
+  
+  3-fixed global tag scope color
+  
+  4-added slim to html icon settings file.
+  
+  5-the html file will look different than the original Atom, I changed the scopes color intentionally for easier reading, please tell me if you want the old one.
+  
+  6-looking for a Jade icon, so if you have any ideas message me.
+
+  v1.1 (10-09-2014)
+  -------------------
+  1-No more manual install as its not recommended.
+  
+  2-Fixed package name + other files so it work as soon as u install it without probs.
+
+  v1.0 (9-09-2014)
+  -------------------
+  Hey there,
+  
+  
+  # Init Release
+  ==============
+  v1.0
