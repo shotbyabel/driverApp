@@ -3,65 +3,76 @@
 
   angular.module('starter').controller('BookingsCalendarCtrl',
     function($scope, UserService, BookingsService) {
+// Google api console clientID and apiKey
 
-      function showBookingDetails(date, jsEvent, view) {
-        //Bind the customerName taken from the event to a scope variable to show it in the HTML
-        $scope.clickedCustomerName = date.className.customerName;
-      }
+ var clientId = '252751we734600-se6610ol8twerwern886jj7gc5m2ugaai.apps.googleuserecontent.com';
+ var apiKey = 'AIzaSyCnk5CDEX3Pvwerwerwe0OpnVf4eW_Lmeere80';
 
-      //source code
-      $scope.calendarOptions = {
-        calendar: {
-          editable: true,
-          eventClick: showBookingDetails
-            // eventRender: $scope.eventRender
-        },
-      };
-      /////////////////////////////////
-      //**3**take bookings
-      function prepareBookingEvents(bookings, customers) {
-        for (var i = 0; i < bookings.length; i++) {
-          var bookingDate = new Date(bookings[i].departing_date);
-          //**7**
-          $scope.bookingEvents.push({ //bookingEvents holds all bookings
-            //**8** reference code from docs http://angular-ui.github.io/ui-calendar/
-            title: 'Trip',
-            //**10** add Date API --dates were not displaying: format fullCallendar understands dates
-            start: new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate(),
-              bookingDate.getHours(), bookingDate.getMinutes(), bookingDate.getSeconds()),
-            //SOURCODE 'className' to pass data in Calendar/Event
-            className: {
-              customerName: customers[i][0].first_name + " " + customers[i][0].last_name,
-              // start_date: 'Something' add more info here
-            }
-            // className: {customerName: customers[i][0].last_name}
-          });
+ // enter the scope of current project (this API must be turned on in the Google console)
+   var scopes = 'https://www.googleapis.com/auth/calendar';
+
+
+// OAuth2 functions
+     function handleClientLoad() {
+           gapi.client.setApiKey(apiKey);
+           window.setTimeout(checkAuth, 1);
         }
-        console.log($scope.bookingEvents); //
-      }
 
-      $scope.eventSources = []; //initialize eventSrouces as empty
+//To authenticate
+  function checkAuth() {
+    gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
+        }
 
-      //**1**.When you cache the route, controller only gets called once.
-      //Use this function to have code run everytime you enter the cached page
-      //Example get the User driver ID because maybe if someone other than the main account logged in
-      //it would still have that user's id.
-      $scope.$on('$ionicView.enter', function() {
-        $scope.bookingEvents = []; //**4** initialize to get bookings (prep a bookings event)
+// This is the resource we will pass while calling api function
+var resource = {
+            "summary": "My Event",
+            "start": {
+                "dateTime": 'today'
+            },
+            "end": {
+                "dateTime": 'twoHoursLater'
+            },
+            "description":"We are organizing events",
+            "location":"US",
+            "attendees":[
+            {
+                    "email":"attendee1@gmail.com",
+                    "displayName":"Jhon",
+                    "organizer":true,
+                    "self":false,
+                    "resource":false,
+                    "optional":false,
+                    "responseStatus":"needsAction",
+                    "comment":"This is my demo event",
+                    "additionalGuests":3
 
-        BookingsService.driver_id = UserService.driver.id; //**2**from BookingController.js - Line 20
-        BookingsService.getBookings().then(function(response) { //from line 21(returns promise)
-          //**9** if
-          if (response) { //API call returns true we put in bookings var
-            var bookings = BookingsService.bookings; //**5** save bookings object
-            var customers = BookingsService.bookingsCustomers; //***A** save the customers object
-          }
-          // console.log(customers); TODO: 
-          //call the functions on the bookings we got back
-          prepareBookingEvents(bookings, customers); //**6** pass bookings here
-          //when done add bookings events to the event sources [] --
-          $scope.eventSources.push($scope.bookingEvents); //push to EventSources array
-        })
-      })
-    });
+            },
+            {
+                "email":"attendee2@gmail.com",
+                    "displayName":"Marry",
+                    "organizer":true,
+                    "self":false,
+                    "resource":false,
+                    "optional":false,
+                    "responseStatus":"needsAction",
+                    "comment":"This is an official event",
+                    "additionalGuests":3
+            }
+            ],
+        };
+
+function makeApiCall(){
+gapi.client.load('calendar', 'v3', function () { // load the calendar api (version 3)
+                var request = gapi.client.calendar.events.insert
+                ({
+                    'calendarId': '24tn4fht2tr6m86efdiqqlsedk@group.calendar.google.com',
+// calendar ID which id of Google Calendar where you are creating events. this can be copied from your Google Calendar user view.
+
+                    "resource": resource  // above resource will be passed here
+                });
+}
+
+  );
+}
+});
 })();

@@ -1,21 +1,22 @@
 <ion-view view-title="calendar">
 
   <ion-content>
-    <h3 ng-click="displayDay()"></h3>
-    <!-- <button class="button" ng-click="createEvent()">Create Event</button> -->
-<!-- had to add ng-if because when data is passed to a directive(ui-calendar) ONLY takes its value once. 
-It does NOT do two-way binding.. "have to wait until we have EventSources" --> 
-<div ng-if="eventSources.length !== 0" ui-calendar="calendarOptions.calendar" ng-model="eventSources"></div>
 
-<!-- <div class="DailyCal-Count">{{dailyPassengers}}</div> -->
 
-<!-- TODO: continue to add more details of the bookings -->
-<div>
-  <ion-item>
-    {{ clickedCustomerName }}
-  </ion-item>
-</div>
 
+<div id="divifm">
+                    <iframe id="ifmCalendar"
+                    src="https://www.google.com/calendar/embed?
+                    height=550&amp;wkst=1&amp;bgcolor=%23FFFFFF&
+                    amp;src=24tn4fht2sssdssfdiqqlsedk%40group.calendar.google.com&
+                    amp;color=%238C500B&amp;ctz=Asia%2FCalcutta"
+                        style="border-width: 0" width="100%"
+                        height="300px" frameborder="0" scrolling="no">
+                    </iframe>
+                </div>
+
+<button id="btnCreateEvents" class="btn btn-primary text-center" onclick="makeApiCall();">
+                    +</button>
 
   </ion-content>
 </ion-view>
