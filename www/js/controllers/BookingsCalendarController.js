@@ -3,76 +3,122 @@
 
   angular.module('starter').controller('BookingsCalendarCtrl',
     function($scope, UserService, BookingsService) {
-// Google api console clientID and apiKey
 
- var clientId = '252751we734600-se6610ol8twerwern886jj7gc5m2ugaai.apps.googleuserecontent.com';
- var apiKey = 'AIzaSyCnk5CDEX3Pvwerwerwe0OpnVf4eW_Lmeere80';
+      // Your Client ID can be retrieved from your project in the Google
+      // Developer Console, https://console.developers.google.com
+      var CLIENT_ID = '800139382072-obdt29gob1vcama4biandhcn1jjq6tok.apps.googleusercontent.com';
 
- // enter the scope of current project (this API must be turned on in the Google console)
-   var scopes = 'https://www.googleapis.com/auth/calendar';
+      var SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
+/////////////////** For Testing Purposes */////////////////////
+      // var email = 'jaytee.sanchez@gmail.com';//
+//////////////////////////////////////////////////////////////
 
-// OAuth2 functions
-     function handleClientLoad() {
-           gapi.client.setApiKey(apiKey);
-           window.setTimeout(checkAuth, 1);
+      var email = UserService.email;
+      $scope.calendarUrl = "https://calendar.google.com/calendar/embed?src=" + email + "&ctz=America/Los_Angeles";
+
+      /**
+       * Check if current user has authorized this application.
+       */
+      $scope.checkAuth = function() {
+        gapi.auth.authorize(
+          {
+            'client_id': CLIENT_ID,
+            'scope': SCOPES.join(' ')
+          }, handleAuthResult);
+      }
+
+      /**
+       * Handle response from authorization server.
+       *
+       * @param {Object} authResult Authorization result.
+       */
+      var handleAuthResult = function(authResult) {
+        var authorizeDiv = document.getElementById('authorize-div');
+        if (authResult && !authResult.error) {
+          // Hide auth UI, then load client library.
+          authorizeDiv.style.display = 'none';
+          loadCalendarApi();
+        } else {
+          // Show auth UI, allowing the user to initiate authorization by
+          // clicking authorize button.
+          authorizeDiv.style.display = 'inline';
         }
+      }
 
-//To authenticate
-  function checkAuth() {
-    gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
-        }
+      /**
+       * Initiate auth flow in response to user clicking authorize button.
+       *
+       * @param {Event} event Button click event.
+       */
+      function handleAuthClick(event) {
+        gapi.auth.authorize(
+          {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
+          handleAuthResult);
+        return false;
+      }
 
-// This is the resource we will pass while calling api function
-var resource = {
-            "summary": "My Event",
-            "start": {
-                "dateTime": 'today'
-            },
-            "end": {
-                "dateTime": 'twoHoursLater'
-            },
-            "description":"We are organizing events",
-            "location":"US",
-            "attendees":[
-            {
-                    "email":"attendee1@gmail.com",
-                    "displayName":"Jhon",
-                    "organizer":true,
-                    "self":false,
-                    "resource":false,
-                    "optional":false,
-                    "responseStatus":"needsAction",
-                    "comment":"This is my demo event",
-                    "additionalGuests":3
+      /**
+       * Load Google Calendar client library. List upcoming events
+       * once client library is loaded.
+       */
+      function loadCalendarApi() {
+        gapi.client.load('calendar', 'v3', listUpcomingEvents);
+        var pre = document.getElementById('output');
+        var Calendar = document.createElement("iframe");
+        Calendar.src = $scope.calendarUrl;
+        Calendar.width="100%";
+        Calendar.height="350px";
+        Calendar.frameborder="0";
+        pre.appendChild(Calendar);
+      }
 
-            },
-            {
-                "email":"attendee2@gmail.com",
-                    "displayName":"Marry",
-                    "organizer":true,
-                    "self":false,
-                    "resource":false,
-                    "optional":false,
-                    "responseStatus":"needsAction",
-                    "comment":"This is an official event",
-                    "additionalGuests":3
+      /**
+       * Print the summary and start datetime/date of the next ten events in
+       * the authorized user's calendar. If no events are found an
+       * appropriate message is printed.
+       */
+      function listUpcomingEvents() {
+        var request = gapi.client.calendar.events.list({
+          'calendarId': 'primary',
+          'timeMin': (new Date()).toISOString(),
+          'showDeleted': false,
+          'singleEvents': true,
+          'maxResults': 10,
+          'orderBy': 'startTime'
+        });
+
+        request.execute(function(resp) {
+          var events = resp.items;
+          appendPre('Upcoming events:');
+
+          if (events.length > 0) {
+            for (var i = 0; i < events.length; i++) {
+              var event = events[i];
+              var when = event.start.dateTime;
+              if (!when) {
+                when = event.start.date;
+              }
+              appendPre(event.summary + ' (' + when + ')')
             }
-            ],
-        };
+          } else {
+            appendPre('No upcoming events found.');
+          }
 
-function makeApiCall(){
-gapi.client.load('calendar', 'v3', function () { // load the calendar api (version 3)
-                var request = gapi.client.calendar.events.insert
-                ({
-                    'calendarId': '24tn4fht2tr6m86efdiqqlsedk@group.calendar.google.com',
-// calendar ID which id of Google Calendar where you are creating events. this can be copied from your Google Calendar user view.
+        });
+      }
 
-                    "resource": resource  // above resource will be passed here
-                });
-}
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
+      function appendPre(message) {
+        var pre = document.getElementById('output');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+      }
 
-  );
-}
 });
 })();

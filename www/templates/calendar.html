@@ -3,22 +3,20 @@
   <ion-content>
 
 
+    <div id="authorize-div" style="display: inline">
+      <span>Authorize access to Google Calendar API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" ng-click="checkAuth()">
+        Authorize
+      </button>
+    </div>
 
-<div id="divifm">
-                    <iframe id="ifmCalendar"
-                    src="https://www.google.com/calendar/embed?
-                    height=550&amp;wkst=1&amp;bgcolor=%23FFFFFF&
-                    amp;src=24tn4fht2sssdssfdiqqlsedk%40group.calendar.google.com&
-                    amp;color=%238C500B&amp;ctz=Asia%2FCalcutta"
-                        style="border-width: 0" width="100%"
-                        height="300px" frameborder="0" scrolling="no">
-                    </iframe>
-                </div>
+    <pre id="output"></pre>
 
-<button id="btnCreateEvents" class="btn btn-primary text-center" onclick="makeApiCall();">
-                    +</button>
+
 
   </ion-content>
+
 </ion-view>
 
 
