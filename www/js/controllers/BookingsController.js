@@ -46,14 +46,6 @@ $scope.date = new Date;
 
 $scope.dayofWeek = days[$scope.date.getDay()];
 $scope.month = months[$scope.date.getMonth()];
- //////////////////////////////////
- ///START trip-details modal
-    $ionicModal.fromTemplateUrl('templates/trip-details.html', {
-    scope: $scope
-  }).then(function(modal) {
-
-    $scope.modal = modal;
-  });
 
   // Triggered in the login modal to close it
   $scope.closetripInfo = function() {

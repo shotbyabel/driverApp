@@ -1,4 +1,3 @@
-<!-- <body ng-app="starter" ng-controller="MapCtrl"> -->
 <ion-view view-title="ON TRIP">
 
   <ion-header-bar dark class="bar-dark">
@@ -7,13 +6,14 @@
 
   <ion-content>
 
+
         <h4 class="title text-center">{{currentCustomer[0].first_name + " " + currentCustomer[0].last_name}}</h4>
 
             <!-- ng-href=tel:{{currentCustomer[0].phone}} -->
 
-        
 
-        
+
+
 
       <div class="item item-body">
 
@@ -46,7 +46,7 @@
         <div ng-repeat = "option in currentBookingOptions">
           <div class="tripDetail-fonts">{{option.add_request}}</div>
           <div class="tripDetail-fonts">{{option.kids_nb}}</div>
-          
+
         </div>
 
             <button id="startTrip" class="button button-block button-balanced swipe-toStart"
@@ -60,7 +60,7 @@
             <span class="currentrip-txt-btn">END TRIP</span>
              <i class="ion-ios-close current-trip-icons"></i>
            </button>
-            
+
             <button id=""
              class="button button-full button-energized"
              ng-click="contactCLient()">
@@ -79,5 +79,4 @@
   <ion-footer-bar class="bar-stable">
     <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
   </ion-footer-bar> -->
-
 </ion-view>
