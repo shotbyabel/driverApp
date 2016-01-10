@@ -3,7 +3,7 @@
 
     <div class="list card profile-card">
       <div class="item item-thumbnail-left">
-        <img class="profile-pic" src="">
+        <img class="profile-pic" ng-src="{{ profileInfo.picture }}">
       </div>
     </div>
 
@@ -34,6 +34,13 @@
         <span class="profile-fonts">ADDRESS</span>
         <div>{{user.address_number}} {{user.address}} {{user.address_code_postal}}</div>
       </ion-item>
+
+      <br>
+
+      <button class="button button-outline"
+              ng-click="addPicture()">
+              <i class="icon ion-camera ionicIcons"> ADD PHOTO</i>
+      </button>
 
     </ion-list>
   </ion-content>
