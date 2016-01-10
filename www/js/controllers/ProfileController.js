@@ -4,17 +4,17 @@
 
   angular.module('starter')
     .controller('ProfileCtrl',
-      function ($scope, $http, $state, UserService, profileService, $ionicPopup, $cordovaCamera) {
+      function($scope, $http, $state, $ionicPopup, $cordovaCamera, UserService, profileService) {
+      
       $scope.user = UserService;
+      // $scope.profUpdateForm = {}
+      $scope.profileInfo = {};  //Line 38 : store photo imageData
 
-      $scope.profUpdateForm = {}
-
-      $scope.profileInfo = {};
-
-      $scope.onSubmit = function() {
-        var fullName = $scope.profUpdateForm;
-        profileService.update($scope.profUpdateForm);
-      }
+      // $scope.onSubmit = function() {
+      //   var fullName = $scope.profUpdateForm;
+      //   profileService.update($scope.profUpdateForm);
+      // }
+      
       /////////////////
       //camera
       ////////////////
@@ -27,9 +27,8 @@
           allowEdit: true,
           encodingType: window.Camera.EncodingType.JPEG,
           targetWidth: 240,
-          // popoverOptions: CameraPopoverOptions,
+          popoverOptions: CameraPopoverOptions,
           saveToPhotoAlbum: true
-
 
           };
 
@@ -48,17 +47,17 @@
       }
       ///////////////////////
 
-      $scope.updateConfirm = function(form) {
-        var endTripPopup = $ionicPopup.confirm({
-          title: "Are you sure?",
-          template: "You are about to Update your Profile."
-        });
-        endTripPopup.then(function(res) {
-          if (res) {
-            $scope.onSubmit(form)
-          }
-        })
-      }
+      // $scope.updateConfirm = function(form) {
+      //   var endTripPopup = $ionicPopup.confirm({
+      //     title: "Are you sure?",
+      //     template: "You are about to Update your Profile."
+      //   });
+      //   endTripPopup.then(function(res) {
+      //     if (res) {
+      //       $scope.onSubmit(form)
+      //     }
+      //   })
+      // }
 
 
   });

@@ -38,7 +38,7 @@
         //store the id for the trip to be used later..
 
         var deferred = $q.defer();
-        $http.get("http://localhost/apinew/bookings/" + bookingId + "/start_trip")
+        $http.get("http://dev.afourc.ml/apinew/bookings/" + bookingId + "/start_trip")
 
         .success(function(data) {
             console.log(data);
@@ -53,7 +53,7 @@
 
       self.endTrip = function(bookingId) {
         var deferred = $q.defer();
-        $http.get("http://localhost/apinew/bookings/" + bookingId + "/end_trip")
+        $http.get("http://dev.afourc.ml/apinew/bookings/" + bookingId + "/end_trip")
           .success(function(data) {
             console.log(data);
             deferred.resolve(true);

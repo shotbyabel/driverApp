@@ -19,16 +19,7 @@
       return deferred.promise;
     }
 
-
-
-
-
-
-
-
-
     });
-
 
  // IIFE START //
 })();
