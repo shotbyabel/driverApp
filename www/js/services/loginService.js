@@ -41,7 +41,7 @@
       confirmPopup.then(function(res) {
         console.log(res);
         if (res) {
-          $http.get("http://localhost/users/logout"); //PHP route from back-end
+          $http.get("http://dev.afourc.ml/users/logout"); //PHP route from back-end
           UserService.clear(); //clear storage - cache -check to see if user is empty with window.localStorage
           $state.go("login");
         }
