@@ -4,10 +4,12 @@
 
  angular.module('starter')
  .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q, $timeout,
-                                      BookingsService, tripService, UserService) {
+                                      BookingsService, tripService, UserService, calendarService) {
 
   $ionicSideMenuDelegate.canDragContent(true);
-  console.log($scope);
+
+
+
   $scope.today = [];
   // $scope.cars = [];
   $scope.test = 'scope test';
@@ -16,10 +18,8 @@
 //Example get data from server, etc..
   $scope.$on('$ionicView.enter', function(){
 
-  // console.log('here');
-  console.log(UserService);
-  console.log(UserService.img);
   BookingsService.driver_id = UserService.driver.id;
+
   BookingsService.getBookings().then(function success (data) {
     console.log("Success!");
     console.log(data);

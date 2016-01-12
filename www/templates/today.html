@@ -21,6 +21,16 @@
 
     <ion-list class="list-position">
 
+    <div id="authorize-div" style="display: inline">
+      <span>Authorize access to Google Calendar API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" ng-click="checkAuth()">
+        Authorize
+      </button>
+    </div>
+
+    <pre id="output"></pre>
+
 
       <ion-item  class="item-avatar items-bg"
                  ng-repeat="($index, booking) in today">
