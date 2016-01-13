@@ -2,7 +2,11 @@
   "use strict";
 
   angular.module('starter').controller('BookingsCalendarCtrl',
-    function($scope, UserService, BookingsService) {
+    function($scope, UserService, BookingsService, $ionicPopup) {
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////Google Calendar Code//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       // Your Client ID can be retrieved from your project in the Google
       // Developer Console, https://console.developers.google.com
@@ -10,11 +14,14 @@
 
       var SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
+      $scope.calEvents = [];
+
 /////////////////** For Testing Purposes */////////////////////
       // var email = 'jaytee.sanchez@gmail.com';//
 //////////////////////////////////////////////////////////////
 
       var email = UserService.email;
+
       $scope.calendarUrl = "https://calendar.google.com/calendar/embed?src=" + email + "&ctz=America/Los_Angeles";
 
       /**
@@ -35,10 +42,12 @@
        */
       var handleAuthResult = function(authResult) {
         var authorizeDiv = document.getElementById('authorize-div');
+        var bookingsButton = document.getElementById('bookings-button');
         if (authResult && !authResult.error) {
           // Hide auth UI, then load client library.
           authorizeDiv.style.display = 'none';
           loadCalendarApi();
+          bookingsButton.style.display = 'inline';
         } else {
           // Show auth UI, allowing the user to initiate authorization by
           // clicking authorize button.
@@ -95,6 +104,7 @@
           if (events.length > 0) {
             for (var i = 0; i < events.length; i++) {
               var event = events[i];
+              $scope.calEvents.push(event);
               var when = event.start.dateTime;
               if (!when) {
                 when = event.start.date;
@@ -119,6 +129,28 @@
         var textContent = document.createTextNode(message + '\n');
         pre.appendChild(textContent);
       }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      $scope.addEvents = function() {
+        var addEventsPopup = $ionicPopup.confirm({
+          title: "You are about to add your events to the Bookings View,",
+          template: "Are you Sure?"
+        });
+
+        addEventsPopup.then(function(res) {
+          if (res) {
+            $scope.calEvents.forEach(function(calEvent) {
+              BookingsService.bookings.push(calEvent);
+            })
+            var bookingsButton = document.getElementById('bookings-button');
+            bookingsButton.style.display = 'none';
+            alert("Success! Check Your Bookings View!")
+          }
+        })
+      }
+
 
 });
 })();

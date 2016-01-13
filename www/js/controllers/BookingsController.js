@@ -7,19 +7,21 @@
                                       BookingsService, tripService, UserService) {
 
   $ionicSideMenuDelegate.canDragContent(true);
-  console.log($scope);
+
+
   $scope.today = [];
   // $scope.cars = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
 //To be used when we want to do something on the page load
 //Example get data from server, etc..
-  $scope.$on('$ionicView.enter', function(){
+  $scope.$on('$ionicView.enter', onLoad());
 
-  // console.log('here');
-  console.log(UserService);
-  console.log(UserService.img);
+
+  function onLoad() {
+
   BookingsService.driver_id = UserService.driver.id;
+
   BookingsService.getBookings().then(function success (data) {
     console.log("Success!");
     console.log(data);
@@ -36,7 +38,7 @@
     }, function error (data) {
       console.log("Error!")
     });
-});
+  };
 
 //////////////////////////
 ///GET DAY OF THE WEEK///
