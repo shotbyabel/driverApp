@@ -1,4 +1,4 @@
-<ion-view view-title="TODAY">
+8<ion-view view-title="BOOKINGS">
   <ion-content>
 
     <h3 class="dayOftheWeek">{{dayofWeek}}</h3>
@@ -22,7 +22,7 @@
     <ion-list class="list-position">
 
       <ion-item  class="item-avatar items-bg"
-                 ng-repeat="($index, booking) in today">
+                 ng-repeat="($index, booking) in bookings">
         <img id={{$index}} value={{customers[$index][0].first_name}} {{customers[$index][0].last_name}}
              class="icon-man" src="img/icon-man-div.png" alt=""ng-click="tripInfo()">
 

@@ -9,7 +9,7 @@
   $ionicSideMenuDelegate.canDragContent(true);
 
 
-  $scope.today = [];
+  $scope.bookings = [];
   // $scope.cars = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
@@ -27,7 +27,7 @@
     console.log(data);
     if(data){
 
-      $scope.today = BookingsService.bookings;
+      $scope.bookings = BookingsService.bookings;
       $scope.customers = BookingsService.bookingsCustomers;
       $scope.user = UserService.user;
       $scope.cars = BookingsService.bookingsCars;
@@ -57,7 +57,7 @@ $scope.month = months[$scope.date.getMonth()];
   // Open current-trip view with trip details
   $scope.tripInfo = function() {
       $scope.bookingIndex = event.target.id;
-      BookingsService.currentBooking = $scope.today[$scope.bookingIndex];
+      BookingsService.currentBooking = $scope.bookings[$scope.bookingIndex];
       BookingsService.currentCustomer = $scope.customers[$scope.bookingIndex];
       BookingsService.currentBookingOptions = BookingsService.bookingsOptions[$scope.bookingIndex];
       BookingsService.currentBookingCars = BookingsService.bookingsCars[$scope.bookingIndex];
