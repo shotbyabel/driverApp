@@ -4,7 +4,7 @@
 
  angular.module('starter')
  .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q, $timeout,
-                                      BookingsService, tripService, UserService) {
+                                      BookingsService, tripService, UserService, $filter) {
 
   $ionicSideMenuDelegate.canDragContent(true);
 
@@ -26,19 +26,20 @@
     console.log("Success!");
     console.log(data);
     if(data){
-
       $scope.bookings = BookingsService.bookings;
+      console.log($scope.bookings);
       $scope.customers = BookingsService.bookingsCustomers;
       $scope.user = UserService.user;
       $scope.cars = BookingsService.bookingsCars;
       // console.log($scope.cars[0][0].brand + " " + $scope.cars[0][0].model);
-      $scope.dailyPassengers = BookingsService.bookings.length;
+      $scope.dailyPassengers = $scope.bookings.length;
       }
 
     }, function error (data) {
       console.log("Error!")
     });
   };
+
 
 //////////////////////////
 ///GET DAY OF THE WEEK///

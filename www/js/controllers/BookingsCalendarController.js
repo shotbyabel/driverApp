@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module('starter').controller('BookingsCalendarCtrl',
-    function($scope, UserService, BookingsService, $ionicPopup) {
+    function($scope, UserService, BookingsService, $ionicPopup, $filter) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////Google Calendar Code//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,6 +132,16 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      function sortDates(bookings) {
+        console.log('sorting...');
+        bookings.sort(function(a, b) {
+          if(a.summary && b.summary) return( new Date(a.start.date) - new Date(b.start.date));
+          if(a.summary && !b.summary) return( new Date(a.start.date) - new Date(b.driver_departing_time));
+          if(!a.summary && !b.summary) return( new Date(a.driver_departing_time) - new Date(b.driver_departing_time));
+          if(!a.summary && b.summary) return( new Date(a.driver_departing_time) - new Date(b.start.date));
+          return;
+        })
+      }
 
       $scope.addEvents = function() {
         var addEventsPopup = $ionicPopup.confirm({
@@ -143,6 +153,9 @@
           if (res) {
             $scope.calEvents.forEach(function(calEvent) {
               BookingsService.bookings.push(calEvent);
+              sortDates(BookingsService.bookings);
+              console.log(BookingsService.bookings);
+
             })
             var bookingsButton = document.getElementById('bookings-button');
             bookingsButton.style.display = 'none';
