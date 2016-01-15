@@ -1,91 +1,88 @@
 8<ion-view view-title="BOOKINGS">
-  <ion-content>
+<ion-content>
 
-    <h3 class="dayOftheWeek">{{dayofWeek}}</h3>
-    <h4 class="date">{{month}}{{date | date:' dd, yyyy'}}</h4>
+  <h3 class="dayOftheWeek">{{dayofWeek}}</h3>
+  <h4 class="date">{{month}}{{date | date:' dd, yyyy'}}</h4>
 
 
-      <div class="row responsive-sm">
-        <div class="col col-50" >
-          <div class="today-client-bubble" scroll="false">
-            <img class="bubble" src="img/todayscreenBubble.png" alt="">
-          </div>
+  <div class="row responsive-sm">
+    <div class="col col-50" >
+      <div class="today-client-bubble" scroll="false">
+        <img class="bubble" src="img/todayscreenBubble.png" alt="">
         </div>
       </div>
+    </div>
 
-      <div class="row responsive-sm">
-        <div class="col col-50" >
-          <div class="daily-count">{{dailyPassengers}}</div>
-        </div>
+    <div class="row responsive-sm">
+      <div class="col col-50" >
+        <div class="daily-count">{{dailyPassengers}}</div>
       </div>
+    </div>
 
-<!-- A C C O R D I O N - L I S T  -->
-      <ion-item ng-repeat="($index, booking) in bookings">
-        <ion-item class="item-stable" id="font-color"
-                ng-click="toggleGroup(group)"
-                ng-class="{active: isGroupShown(group)}">
-            <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp;
-            DATE display {{booking.driver_departing_time}}
-        </ion-item>
-        
-        <ion-item class="item-accordion"
-                  ng-repeat="item in bookings.items"
-                  ng-show="isGroupShown(group)">
-            Booking OR Event {{item}}
-        </ion-item>
+    <!-- A C C O R D I O N - L I S T  https://github.com/a8m/angular-filter#groupby-->
+    <ion-list>
+    <ion-item ng-repeat="(date, groupedBooking) in bookings | groupBy: 'groupByDateCode'">
+      <ion-item class="item-stable" id="font-color"
+        ng-click="toggleGroup(groupedBooking)"
+        ng-class="{active: isGroupShown(groupedBooking)}">
+        <i class="icon" ng-class="isGroupShown(groupedBooking) ? 'ion-minus' : 'ion-plus'"></i>
+        &nbsp;
+        DATE {{groupedBooking[0].driver_departing_time}}
       </ion-item>
-<!-- E N D  A C C O R D I O N - L I S T  -->
+      <ion-item class="item-accordion item-avatar items-bg"
+        ng-repeat="booking in groupedBooking"
+        ng-show="isGroupShown(groupedBooking)">
 
+        <img id={{$index}} value={{booking.details.customers[0].first_name}} {{booking.details.customers[0].last_name}}
+         class="icon-man" src="img/icon-man-div.png" alt=""ng-click="tripInfo($index)" />
 
+         <div class="passenger-info">
+          <h4 class="passenger-name">
+            {{booking.details.customers[0].first_name}} {{booking.details.customers[0].last_name}}
+          </h4>
+          <p class="passenger-details">
+            <b>
+              TIME:
+            </b>{{booking.driver_departing_time}}</br>
+            <b>
+              PICKUP: 
+            </b>{{booking.departing_address}}</br>
+            <b>
+              DEST: 
+            </b>{{booking.arrival_address }}</br>
+            <b>
+              CAR: 
+            </b>{{booking.details.cars[0].brand}} {{booking.details.cars[0].model}}
+          </p>
+        </br>
+      </div>
+    </ion-item>
+</ion-list>
 
+  <ion-list>
+  <ion-item class="item-divider">
+  DRIVER AVAILABILITY
+  </ion-item>
 
-
-      
-
-    <ion-list class="list-position">
-
-      <ion-item  class="item-avatar items-bg"
-                 ng-repeat="($index, booking) in bookings">
-        <img id={{$index}} value={{booking[1][0].first_name}} {{booking[1][0].last_name}}
-             class="icon-man" src="img/icon-man-div.png" alt=""ng-click="tripInfo()">
-
-          <div class="passenger-info">
-
- <!-- DISPLAYS BASED ON IF IT IS AN EVENT FROM GOOGLE CALENDAR OR BOOKINGS FROM THE DB -->
-
-            <text ng-if='booking.summary'>
-              <h4 class="passenger-name">
-                {{booking.summary}}
-              </h4>
-              <p class="passenger-details">
-                <b>
-                  START: </b>{{booking.start.date}}</br>
-                <b>
-                  END: </b>{{booking.end.date}}</br>
-                <b>
-                  LOCATION: </b>{{booking.location}}</br>
-              </p>
-            </text>
-
-            <text ng-if='booking[0].driver_id'>
-              <h4 class="passenger-name">
-                {{booking[1][0].first_name}} {{booking[1][0].last_name}}
-              </h4>
-              <p class="passenger-details">
-                  TIME: </b>{{booking[0].driver_departing_time}}</br>
-                <b>
-                  PICKUP: </b>{{booking[0].departing_address}}</br>
-                <b>
-                  DEST: </b>{{booking[0].arrival_address }}</br>
-                <b>
-                  CAR: </b>{{booking[2][0].brand}} {{booking[2][0].model}}</br>
-                <!-- <b>CAR: </b>{{bookingsCars.brand + " " + bookingsCars.model}}</br> -->
-            </text>
-  <!--                  END                                                     -->
-          </div>
-      </ion-item>
-    </ion-list>
+    <ion-item ng-repeat="event in googleCalendarEvents | orderBy: 'start.date'">
+    <text>
+            <h4 class="passenger-name">
+              {{event.summary}}
+            </h4>
+            <p class="passenger-details">
+              <b>
+                START:
+              </b>{{event.start.date}}</br>
+              <b>
+                END: 
+              </b>{{event.end.date}}</br>
+              <b>
+                LOCATION: 
+              </b>{{event.location}}</br>
+            </p>
+          </text>
+    </ion-item>
+  </ion-list>
 
   </ion-content>
 </ion-view>

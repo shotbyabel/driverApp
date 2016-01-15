@@ -28,18 +28,28 @@
         console.log(data);
         if (data) {
           $scope.user = UserService.user;
+          $scope.googleCalendarEvents = BookingsService.googleCalendarEvents;//added
 
           $scope.bookingsData = BookingsService.bookingsData;
+          console.log($scope.bookingsData);//new details shows up with the array of objects
           var customers = BookingsService.bookingsCustomers;
           var cars = BookingsService.bookingsCars;
           var options = BookingsService.bookingsOptions;
-
+///////////Before we had an array of arrays holding the different data. 
+////This was giving me trouble when I was trying to group bookings by date.
+///I saw some example of array of Objects, that have an array. checkout the console.log in line 48
           $scope.bookingsData.forEach(function(booking, index) {
-            var complete = [booking, customers[index], cars[index], options[index]];
-            $scope.combo.push(complete);//explain booking and combo
+            var complete = {
+              customers: customers[index], 
+              cars: cars[index], 
+              options: options[index]
+            };
+            booking.details = complete; //*N E W* access data in arrays this way .details
+            console.log(booking.details);//RESULT of new array organization
+            $scope.combo.push(booking);
           })
           $scope.bookings = $scope.combo; //all combined data attached to bookings?
-          BookingsService.bookings = $scope.bookings;
+          // BookingsService.bookings = $scope.bookings;
           $scope.dailyPassengers = $scope.bookings.length;
           console.log($scope.bookings);
 
@@ -49,8 +59,22 @@
         console.log("Error!")
       });
     };
-
-
+    ///B E F O R E - array of arrays
+    // [
+    //   [Booking]
+    //   [cars]
+    //   [..]
+    // ]
+    ////// R E F A C T O R - array of objects with arrays
+    // [
+    //   Booking: {
+    //     Booking data.
+    //     details: [
+    //       [cars],
+    //       [optios]
+    //     ]
+    //   }
+    // ]
 //////////////////////////
 ///GET DAY OF THE WEEK///
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -63,7 +87,6 @@ $scope.month = months[$scope.date.getMonth()];
 //DATES ACCORDION
     // $scope.bookings = [];
     // for (var i = 0; i < $scope.bookings.length; i++) { //number of all bookings NOT "10"
-
     //   $scope.bookings[i] = {
     //     name: i,
     //     items: []
@@ -93,12 +116,12 @@ $scope.month = months[$scope.date.getMonth()];
   };
 
   // Open current-trip view with trip details
-  $scope.tripInfo = function() {
-      $scope.bookingIndex = event.target.id;
-      BookingsService.currentBooking = $scope.bookings[$scope.bookingIndex][0];
-      BookingsService.currentCustomer = $scope.customers[$scope.bookingIndex];
-      BookingsService.currentBookingOptions = BookingsService.bookingsOptions[$scope.bookingIndex];
-      BookingsService.currentBookingCars = BookingsService.bookingsCars[$scope.bookingIndex];
+  $scope.tripInfo = function(index) {
+    // $scope.bookingIndex = event.target.id;
+      BookingsService.currentBooking = $scope.bookings[index];
+      BookingsService.currentCustomer = $scope.bookings[index].details.customers[0];//update from new line 41
+      BookingsService.currentBookingOptions = $scope.bookings[index].details.options[0];//update from new line 41
+      BookingsService.currentBookingCars = $scope.bookings[index].details.cars[0];//update from new line 41
       $state.go('app.current-trip');
       // UserService.isDriver <--
   };

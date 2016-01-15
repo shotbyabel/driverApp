@@ -130,7 +130,7 @@
         pre.appendChild(textContent);
       }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////J A Y T E E s  F A N C Y  S O R T I N G//////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       function sortDates(bookings) {
         console.log('sorting...');
@@ -153,13 +153,15 @@
         addEventsPopup.then(function(res) {
           if (res) {
             $scope.calEvents.forEach(function(calEvent) {
-              BookingsService.bookings.push(calEvent);
-              sortDates(BookingsService.bookings);
+              BookingsService.googleCalendarEvents.push(calEvent);//google cal events Seperated from bookings-can combine later.
+              //added to bookingService.js
+              // sortDates(BookingsService.googleCalendarEvents); //sorting with the OrderBy Angular Filter in Today.html 
 
             })
             var bookingsButton = document.getElementById('bookings-button');
             bookingsButton.style.display = 'none';
             alert("Success! Check Your Bookings View!")
+
           }
         })
       }

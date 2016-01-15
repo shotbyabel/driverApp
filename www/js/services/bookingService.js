@@ -7,6 +7,7 @@
       var self = this;
       self.bookings = [];
       self.bookingsCustomers = [];
+      self.googleCalendarEvents = [];//**NEW**
 
       function setBookingGroupDate(bookings) {
         for (var i = bookings.length - 1; i >= 0; i--) {
@@ -16,6 +17,7 @@
         };
 
         console.log(bookings);
+        // console.log(googleCalendarEvents);
         return bookings
       }
 
