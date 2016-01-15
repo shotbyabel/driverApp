@@ -7,7 +7,19 @@
       var self = this;
       self.bookings = [];
       self.bookingsCustomers = [];
-      // self.bookingsCars = [];
+      self.googleCalendarEvents = [];//**NEW**
+
+      function setBookingGroupDate(bookings) {
+        for (var i = bookings.length - 1; i >= 0; i--) {
+          var date = new Date(bookings[i].driver_departing_time);
+          var dateCode = date.getFullYear() + date.getMonth() + date.getDate();
+          bookings[i].groupByDateCode = dateCode;
+        };
+
+        console.log(bookings);
+        // console.log(googleCalendarEvents);
+        return bookings
+      }
 
       //GET FROM ARRAY
       self.getBookings = function() {
@@ -15,14 +27,17 @@
         var deferred = $q.defer();
         console.log(self)
           //update to .user_id - got rid of getNames function
-        // $http.get("http://localhost/apinew/bookings/" + self.driver_id)//LOCAL
-        $http.get("http://dev.afourc.ml/apinew/bookings/" + self.driver_id)//DEVELOPMENT
+          // $http.get("http://localhost/apinew/bookings/" + self.driver_id)//LOCAL
+        $http.get("http://dev.afourc.ml/apinew/bookings/" + self.driver_id) //DEVELOPMENT
           .success(function success(data) {
             console.log(data); //entire bookings object console log
-            self.bookingsData = data[0]; //first array, bookings
+            
+            self.bookingsData = setBookingGroupDate(data[0]); //first array, bookings
             self.bookingsCustomers = data[1]; //second array the customer info
-            self.bookingsOptions = data[2];// options
-            self.bookingsCars = data[3];//cars
+            self.bookingsOptions = data[2]; // options
+            self.bookingsCars = data[3]; //cars
+
+
             deferred.resolve(true);
           })
           .error(function error(msg) {
