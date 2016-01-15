@@ -9,6 +9,7 @@
     "ionic-platform-web-client": "~0.2.1"
   },
   "dependencies": {
-    "angular-ui-calendar": "~1.0.1"
+    "angular-ui-calendar": "~1.0.1",
+    "angular-filter": "~0.5.8"
   }
 }

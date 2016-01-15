@@ -4,7 +4,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage', 'ui.calendar', 
-  'ionic.service.push', 'starter.controllers', 'ionic.ion.showWhen'])
+  'ionic.service.push', 'starter.controllers', 'ionic.ion.showWhen', 'angular.filter'])
 ///
 .run(function($ionicPlatform, $rootScope, UserService) { //inject $rootScope, UserService in order to do route auth..
   $ionicPlatform.ready(function() {
@@ -173,17 +173,6 @@ angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage
     },
     params: {
       auth: 'none'
-    }
-  })
-
-  .state('app.bookings', {
-    url: '/bookings',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/bookings.html',
-        controller: 'BookingsCtrl',
-        controllerAs: 'vm'
-      }
     }
   })
 

@@ -61,17 +61,17 @@ $scope.dayofWeek = days[$scope.date.getDay()];
 $scope.month = months[$scope.date.getMonth()];
 /////////////////////////////////////////////
 //DATES ACCORDION
-    $scope.bookings = [];
-    for (var i = 0; i < $scope.bookings.length; i++) { //number of all bookings NOT "10"
+    // $scope.bookings = [];
+    // for (var i = 0; i < $scope.bookings.length; i++) { //number of all bookings NOT "10"
 
-      $scope.bookings[i] = {
-        name: i,
-        items: []
-      };
-      for (var j = 0; j < items.length; j++) { //number of rides of THAT date not 
-        $scope.bookings[i].items.push(i + '-' + j);
-      }
-    }
+    //   $scope.bookings[i] = {
+    //     name: i,
+    //     items: []
+    //   };
+    //   for (var j = 0; j < items.length; j++) { //number of rides of THAT date not 
+    //     $scope.bookings[i].items.push(i + '-' + j);
+    //   }
+    // }
     /*
      * if given group is the selected group, deselect it* else, select the given group
      */
