@@ -23,7 +23,7 @@
 
       <ion-item  class="item-avatar items-bg"
                  ng-repeat="($index, booking) in bookings">
-        <img id={{$index}} value={{customers[$index][0].first_name}} {{customers[$index][0].last_name}}
+        <img id={{$index}} value={{booking[1][0].first_name}} {{booking[1][0].last_name}}
              class="icon-man" src="img/icon-man-div.png" alt=""ng-click="tripInfo()">
 
           <div class="passenger-info">
@@ -44,18 +44,18 @@
               </p>
             </text>
 
-            <text ng-if='booking.driver_id'>
+            <text ng-if='booking[0].driver_id'>
               <h4 class="passenger-name">
-                {{customers[$index][0].first_name}} {{customers[$index][0].last_name}}
+                {{booking[1][0].first_name}} {{booking[1][0].last_name}}
               </h4>
               <p class="passenger-details">
-                  TIME: </b>{{booking.driver_departing_time}}</br>
+                  TIME: </b>{{booking[0].driver_departing_time}}</br>
                 <b>
-                  PICKUP: </b>{{booking.departing_address}}</br>
+                  PICKUP: </b>{{booking[0].departing_address}}</br>
                 <b>
-                  DEST: </b>{{booking.arrival_address }}</br>
+                  DEST: </b>{{booking[0].arrival_address }}</br>
                 <b>
-                  CAR: </b>{{cars[$index][0].brand}} {{cars[$index][0].model}}</br>
+                  CAR: </b>{{booking[2][0].brand}} {{booking[2][0].model}}</br>
                 <!-- <b>CAR: </b>{{bookingsCars.brand + " " + bookingsCars.model}}</br> -->
             </text>
   <!--                  END                                                     -->
