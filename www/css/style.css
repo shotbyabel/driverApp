@@ -266,6 +266,28 @@ font-weight: 400;
 font-size: 0.7em;
 }
 
+/*************************/
+/*ACCORDION EFFECT in  - New BOOKINGS S T A T E*/
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+
+#font-color{
+  color: white;
+}
+
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
 /**************************/
 /*L O G I N - I N P U T */
 

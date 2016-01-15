@@ -19,35 +19,36 @@
   $scope.$on('$ionicView.enter', onLoad());
 
 
-  function onLoad() {
+    function onLoad() {
 
-  BookingsService.driver_id = UserService.driver.id;
+      BookingsService.driver_id = UserService.driver.id;
 
-  BookingsService.getBookings().then(function success (data) {
-    console.log("Success!");
-    console.log(data);
-    if(data){
-      $scope.user = UserService.user;
+      BookingsService.getBookings().then(function success(data) {
+        console.log("Success!");
+        console.log(data);
+        if (data) {
+          $scope.user = UserService.user;
 
-      $scope.bookingsData = BookingsService.bookingsData;
-        var customers = BookingsService.bookingsCustomers;
-        var cars = BookingsService.bookingsCars;
-        var options = BookingsService.bookingsOptions;
-      $scope.bookingsData.forEach(function(booking, index){
-        var complete = [booking, customers[index], cars[index], options[index]];
-        $scope.combo.push(complete);
-      })
-      $scope.bookings = $scope.combo;
-        BookingsService.bookings = $scope.bookings;
-      $scope.dailyPassengers = $scope.bookings.length;
-      console.log($scope.bookings);
-      // console.log($scope.cars[0][0].brand + " " + $scope.cars[0][0].model);
-      }
+          $scope.bookingsData = BookingsService.bookingsData;
+          var customers = BookingsService.bookingsCustomers;
+          var cars = BookingsService.bookingsCars;
+          var options = BookingsService.bookingsOptions;
 
-    }, function error (data) {
-      console.log("Error!")
-    });
-  };
+          $scope.bookingsData.forEach(function(booking, index) {
+            var complete = [booking, customers[index], cars[index], options[index]];
+            $scope.combo.push(complete);//explain booking and combo
+          })
+          $scope.bookings = $scope.combo; //all combined data attached to bookings?
+          BookingsService.bookings = $scope.bookings;
+          $scope.dailyPassengers = $scope.bookings.length;
+          console.log($scope.bookings);
+
+        }
+
+      }, function error(data) {
+        console.log("Error!")
+      });
+    };
 
 
 //////////////////////////
@@ -58,7 +59,34 @@ $scope.date = new Date;
 
 $scope.dayofWeek = days[$scope.date.getDay()];
 $scope.month = months[$scope.date.getMonth()];
+/////////////////////////////////////////////
+//DATES ACCORDION
+    $scope.bookings = [];
+    for (var i = 0; i < $scope.bookings.length; i++) { //number of all bookings NOT "10"
 
+      $scope.bookings[i] = {
+        name: i,
+        items: []
+      };
+      for (var j = 0; j < items.length; j++) { //number of rides of THAT date not 
+        $scope.bookings[i].items.push(i + '-' + j);
+      }
+    }
+    /*
+     * if given group is the selected group, deselect it* else, select the given group
+     */
+    $scope.toggleGroup = function(group) {
+      if ($scope.isGroupShown(group)) {
+        $scope.shownGroup = null;
+      } else {
+        $scope.shownGroup = group;
+      }
+    };
+    $scope.isGroupShown = function(group) {
+      return $scope.shownGroup === group;
+    };
+
+///////////////////////////////////////////////
   // Triggered in the login modal to close it
   $scope.closetripInfo = function() {
     $scope.modal.hide();

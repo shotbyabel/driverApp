@@ -7,7 +7,6 @@
       var self = this;
       self.bookings = [];
       self.bookingsCustomers = [];
-      // self.bookingsCars = [];
 
       //GET FROM ARRAY
       self.getBookings = function() {

@@ -19,6 +19,30 @@
         </div>
       </div>
 
+<!-- A C C O R D I O N - L I S T  -->
+      <ion-item ng-repeat="($index, booking) in bookings">
+        <ion-item class="item-stable" id="font-color"
+                ng-click="toggleGroup(group)"
+                ng-class="{active: isGroupShown(group)}">
+            <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            DATE display {{booking.driver_departing_time}}
+        </ion-item>
+        
+        <ion-item class="item-accordion"
+                  ng-repeat="item in bookings.items"
+                  ng-show="isGroupShown(group)">
+            Booking OR Event {{item}}
+        </ion-item>
+      </ion-item>
+<!-- E N D  A C C O R D I O N - L I S T  -->
+
+
+
+
+
+      
+
     <ion-list class="list-position">
 
       <ion-item  class="item-avatar items-bg"
