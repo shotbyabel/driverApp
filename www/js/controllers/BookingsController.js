@@ -13,6 +13,7 @@
   // $scope.cars = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
+  $scope.combo = [];
 //To be used when we want to do something on the page load
 //Example get data from server, etc..
   $scope.$on('$ionicView.enter', onLoad());
@@ -26,13 +27,21 @@
     console.log("Success!");
     console.log(data);
     if(data){
-      $scope.bookings = BookingsService.bookings;
-      console.log($scope.bookings);
-      $scope.customers = BookingsService.bookingsCustomers;
       $scope.user = UserService.user;
-      $scope.cars = BookingsService.bookingsCars;
-      // console.log($scope.cars[0][0].brand + " " + $scope.cars[0][0].model);
+
+      $scope.bookingsData = BookingsService.bookingsData;
+        var customers = BookingsService.bookingsCustomers;
+        var cars = BookingsService.bookingsCars;
+        var options = BookingsService.bookingsOptions;
+      $scope.bookingsData.forEach(function(booking, index){
+        var complete = [booking, customers[index], cars[index], options[index]];
+        $scope.combo.push(complete);
+      })
+      $scope.bookings = $scope.combo;
+        BookingsService.bookings = $scope.bookings;
       $scope.dailyPassengers = $scope.bookings.length;
+      console.log($scope.bookings);
+      // console.log($scope.cars[0][0].brand + " " + $scope.cars[0][0].model);
       }
 
     }, function error (data) {
@@ -58,7 +67,7 @@ $scope.month = months[$scope.date.getMonth()];
   // Open current-trip view with trip details
   $scope.tripInfo = function() {
       $scope.bookingIndex = event.target.id;
-      BookingsService.currentBooking = $scope.bookings[$scope.bookingIndex];
+      BookingsService.currentBooking = $scope.bookings[$scope.bookingIndex][0];
       BookingsService.currentCustomer = $scope.customers[$scope.bookingIndex];
       BookingsService.currentBookingOptions = BookingsService.bookingsOptions[$scope.bookingIndex];
       BookingsService.currentBookingCars = BookingsService.bookingsCars[$scope.bookingIndex];

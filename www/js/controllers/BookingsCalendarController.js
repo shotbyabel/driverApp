@@ -134,11 +134,12 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       function sortDates(bookings) {
         console.log('sorting...');
+        console.log(bookings);
         bookings.sort(function(a, b) {
-          if(a.summary && b.summary) return( new Date(a.start.date) - new Date(b.start.date));
-          if(a.summary && !b.summary) return( new Date(a.start.date) - new Date(b.driver_departing_time));
-          if(!a.summary && !b.summary) return( new Date(a.driver_departing_time) - new Date(b.driver_departing_time));
-          if(!a.summary && b.summary) return( new Date(a.driver_departing_time) - new Date(b.start.date));
+          if(!a[0] && !b[0]) return( new Date(a.start.date) - new Date(b.start.date));
+          if(!a[0] && b[0]) return( new Date(a.start.date) - new Date(b[0].driver_departing_time));
+          if(a[0] && b[0]) return( new Date(a[0].driver_departing_time) - new Date(b[0].driver_departing_time));
+          if(a[0] && !b[0]) return( new Date(a[0].driver_departing_time) - new Date(b.start.date));
           return;
         })
       }
@@ -154,7 +155,6 @@
             $scope.calEvents.forEach(function(calEvent) {
               BookingsService.bookings.push(calEvent);
               sortDates(BookingsService.bookings);
-              console.log(BookingsService.bookings);
 
             })
             var bookingsButton = document.getElementById('bookings-button');

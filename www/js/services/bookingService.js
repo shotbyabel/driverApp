@@ -6,7 +6,7 @@
 
       var self = this;
       self.bookings = [];
-      self.bookingsCustomers = []; 
+      self.bookingsCustomers = [];
       // self.bookingsCars = [];
 
       //GET FROM ARRAY
@@ -19,7 +19,7 @@
         $http.get("http://dev.afourc.ml/apinew/bookings/" + self.driver_id)//DEVELOPMENT
           .success(function success(data) {
             console.log(data); //entire bookings object console log
-            self.bookings = data[0]; //first array, bookings
+            self.bookingsData = data[0]; //first array, bookings
             self.bookingsCustomers = data[1]; //second array the customer info
             self.bookingsOptions = data[2];// options
             self.bookingsCars = data[3];//cars
