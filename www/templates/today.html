@@ -21,20 +21,20 @@
 
     <!-- A C C O R D I O N - L I S T  https://github.com/a8m/angular-filter#groupby-->
     <ion-list>
-    <ion-item ng-repeat="(date, groupedBooking) in bookings | groupBy: 'groupByDateCode'">
+    <ion-item ng-repeat="(date, groupedBooking) in bookings | groupBy: 'groupByDateCode'"> <!-- bookingService.js line 15 -23 -->
       <ion-item class="item-stable" id="font-color"
         ng-click="toggleGroup(groupedBooking)"
         ng-class="{active: isGroupShown(groupedBooking)}">
-        <i class="icon" ng-class="isGroupShown(groupedBooking) ? 'ion-minus' : 'ion-plus'"></i>
+        <i class="current-trip-icons" ng-class="isGroupShown(groupedBooking) ? 'ion-ios-minus' : 'ion-ios-plus'"></i>
         &nbsp;
-        DATE {{groupedBooking[0].driver_departing_time | date: 'medium'}}
+        {{groupedBooking[0].driver_departing_time | customDateFilter}}
       </ion-item>
       <ion-item class="item-accordion item-avatar items-bg"
         ng-repeat="booking in groupedBooking"
         ng-show="isGroupShown(groupedBooking)">
 
         <img id={{$index}} value={{booking.details.customers[0].first_name}} {{booking.details.customers[0].last_name}}
-         class="icon-man" src="img/icon-man-div.png" alt=""ng-click="tripInfo($index)" />
+         <i class="icon-man" src="img/icon-man-div.png" alt=""ng-click="tripInfo($index)" />
 
          <div class="passenger-info">
           <h4 class="passenger-name">
@@ -54,14 +54,14 @@
               CAR: 
             </b>{{booking.details.cars[0].brand}} {{booking.details.cars[0].model}}
           </p>
-        </br>
       </div>
     </ion-item>
 </ion-list>
 
   <ion-list>
   <ion-item class="item-divider">
-  DRIVER AVAILABILITY
+<!--   DRIVER AVAILABILITY -->
+          <span am-time-ago="message.time"></span>
   </ion-item>
 
     <ion-item ng-repeat="event in googleCalendarEvents | orderBy: 'start.date'">
@@ -81,7 +81,7 @@
               </b>{{event.location}}</br>
             </p>
           </text>
-          
+
     </ion-item>
   </ion-list>
 

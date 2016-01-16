@@ -3,6 +3,17 @@
  'use strict';
 
  angular.module('starter')
+
+.filter('customDateFilter', function() {
+  return function(input) {
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novemeber', 'December'];
+    var weekdays = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+    var inputDate = new Date(input);
+
+    return weekdays[inputDate.getDay()] + ", " + months[inputDate.getMonth()] + ", " + inputDate.getDate();
+  };
+})
+
  .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q, $timeout,
                                       BookingsService, tripService, UserService, $filter) {
 
@@ -45,11 +56,19 @@
               options: options[index]
             };
             booking.details = complete; //*N E W* access data in arrays this way .details
-            console.log(booking.driver_departing_time);
+            // console.log(booking.driver_departing_time);
             // console.log(booking.details);//RESULT of new array organization
 
             $scope.combo.push(booking);
           })
+
+          // $scope.message = {
+          //   text: 'hello world!',
+          //   time: new Date()
+          
+          //   };
+
+
           $scope.bookings = $scope.combo; //all combined data attached to bookings?
           // BookingsService.bookings = $scope.bookings;
           $scope.dailyPassengers = $scope.bookings.length;

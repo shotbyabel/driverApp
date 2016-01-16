@@ -9,15 +9,16 @@
       self.bookingsCustomers = [];
       self.googleCalendarEvents = [];//**NEW**
 
+      // adds groupByDateCode to the bookings.//
+      // take the driver_departing_time of each booking and transform it into a {date object} 
+      // take the date year and date month and date day and add them up together to form a code. 
       function setBookingGroupDate(bookings) {
         for (var i = bookings.length - 1; i >= 0; i--) {
           var date = new Date(bookings[i].driver_departing_time);
           var dateCode = date.getFullYear() + date.getMonth() + date.getDate();
           bookings[i].groupByDateCode = dateCode;
         };
-
-        console.log(bookings);
-        // console.log(googleCalendarEvents);
+        // console.log(bookings);
         return bookings
       }
 
@@ -25,7 +26,7 @@
       self.getBookings = function() {
         //create 'defer object'
         var deferred = $q.defer();
-        console.log(self)
+        // console.log(self)
           //update to .user_id - got rid of getNames function
           // $http.get("http://localhost/apinew/bookings/" + self.driver_id)//LOCAL
         $http.get("http://dev.afourc.ml/apinew/bookings/" + self.driver_id) //DEVELOPMENT
