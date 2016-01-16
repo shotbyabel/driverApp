@@ -288,6 +288,10 @@ font-size: 0.7em;
   display: block !important;
 }
 
+i.icon-accordion {
+width: 4.5em;
+}
+
 /**************************/
 /*L O G I N - I N P U T */
 

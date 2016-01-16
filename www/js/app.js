@@ -4,9 +4,10 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage', 'ui.calendar', 
-  'ionic.service.push', 'starter.controllers', 'ionic.ion.showWhen', 'angular.filter'])
+  'ionic.service.push', 'starter.controllers', 'ionic.ion.showWhen', 'angular.filter', 'angularMoment'])
 ///
-.run(function($ionicPlatform, $rootScope, UserService) { //inject $rootScope, UserService in order to do route auth..
+.run(function($ionicPlatform, $rootScope, amMoment, UserService) { //inject $rootScope, UserService in order to do route auth..
+  amMoment.changeLocale('de');
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
