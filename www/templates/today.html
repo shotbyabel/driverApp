@@ -27,7 +27,7 @@
         ng-class="{active: isGroupShown(groupedBooking)}">
         <i class="icon" ng-class="isGroupShown(groupedBooking) ? 'ion-minus' : 'ion-plus'"></i>
         &nbsp;
-        DATE {{groupedBooking[0].driver_departing_time}}
+        DATE {{groupedBooking[0].driver_departing_time | date: 'medium'}}
       </ion-item>
       <ion-item class="item-accordion item-avatar items-bg"
         ng-repeat="booking in groupedBooking"
@@ -81,6 +81,7 @@
               </b>{{event.location}}</br>
             </p>
           </text>
+          
     </ion-item>
   </ion-list>
 

@@ -31,7 +31,7 @@
           $scope.googleCalendarEvents = BookingsService.googleCalendarEvents;//added
 
           $scope.bookingsData = BookingsService.bookingsData;
-          console.log($scope.bookingsData);//new details shows up with the array of objects
+          // console.log($scope.bookingsData);//new details shows up with the array of objects
           var customers = BookingsService.bookingsCustomers;
           var cars = BookingsService.bookingsCars;
           var options = BookingsService.bookingsOptions;
@@ -45,13 +45,15 @@
               options: options[index]
             };
             booking.details = complete; //*N E W* access data in arrays this way .details
-            console.log(booking.details);//RESULT of new array organization
+            console.log(booking.driver_departing_time);
+            // console.log(booking.details);//RESULT of new array organization
+
             $scope.combo.push(booking);
           })
           $scope.bookings = $scope.combo; //all combined data attached to bookings?
           // BookingsService.bookings = $scope.bookings;
           $scope.dailyPassengers = $scope.bookings.length;
-          console.log($scope.bookings);
+          // console.log($scope.bookings);
 
         }
 

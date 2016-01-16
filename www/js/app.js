@@ -4,7 +4,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage', 'ui.calendar', 
-  'ionic.service.push', 'starter.controllers', 'ionic.ion.showWhen', 'angular.filter'])
+  'ionic.service.push', 'starter.controllers', 'ionic.ion.showWhen', 'angular.filter', 'angularMoment'])
 ///
 .run(function($ionicPlatform, $rootScope, UserService) { //inject $rootScope, UserService in order to do route auth..
   $ionicPlatform.ready(function() {
