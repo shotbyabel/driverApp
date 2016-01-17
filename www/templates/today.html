@@ -21,20 +21,22 @@
 
     <!-- A C C O R D I O N - L I S T  https://github.com/a8m/angular-filter#groupby-->
     <ion-list>
-    <ion-item ng-repeat="(date, groupedBooking) in bookings | groupBy: 'groupByDateCode'"> <!-- bookingService.js line 15 -23 -->
+    <!-- ADDED orderBy FIRST before it groups them-->
+    <ion-item ng-repeat="(date, groupedBooking) in bookings | orderBy: 'groupByDateCode' | groupBy: 'groupByDateCode'"> <!-- bookingService.js line 15 -23 -->
       <ion-item class="item-stable" id="font-color"
         ng-click="toggleGroup(groupedBooking)"
         ng-class="{active: isGroupShown(groupedBooking)}">
         <i class="current-trip-icons" ng-class="isGroupShown(groupedBooking) ? 'ion-ios-minus' : 'ion-ios-plus'"></i>
         &nbsp;
-        {{groupedBooking[0].driver_departing_time | customDateFilter}}
+        <!--Displays the date in our format  and the number of bookings per date-->
+        {{groupedBooking[0].driver_departing_time | customDateFilter}}, {{ groupedBooking.length }} Bookings 
       </ion-item>
       <ion-item class="item-accordion item-avatar items-bg"
         ng-repeat="booking in groupedBooking"
         ng-show="isGroupShown(groupedBooking)">
-
-        <img id={{$index}} value={{booking.details.customers[0].first_name}} {{booking.details.customers[0].last_name}}
-         <i class="icon-man" src="img/icon-man-div.png" alt=""ng-click="tripInfo($index)" />
+<!-- UPDATE tripInfo(index) to tripInfo(booking) - because  -->
+        <img id="{{$index}}" value="{{booking.details.customers[0].first_name}} {{booking.details.customers[0].last_name}}"
+         class="icon-man" src="img/icon-man-div.png" alt="" ng-click="tripInfo(booking)" />
 
          <div class="passenger-info">
           <h4 class="passenger-name">
