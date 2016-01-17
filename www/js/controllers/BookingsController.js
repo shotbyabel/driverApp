@@ -3,14 +3,23 @@
  'use strict';
 
  angular.module('starter')
-
+// C U S T O M - D A T E  F I L T E R //
 .filter('customDateFilter', function() {
   return function(input) {
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novemeber', 'December'];
     var weekdays = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
     var inputDate = new Date(input);
 
-    return weekdays[inputDate.getDay()] + ", " + months[inputDate.getMonth()] + ", " + inputDate.getDate();
+// SHOW "Today" on today's date instead of actual date O_o
+    var showToday = new Date();
+
+    if( inputDate.getDate() === showToday.getDate()
+      && inputDate.getMonth() === showToday.getMonth()
+      && inputDate.getFullYear() === showToday.getFullYear()){
+      return "Today";
+    } ////'Today if ends'
+
+    return weekdays[inputDate.getDay()] + ", " + months[inputDate.getMonth()] + ", " + inputDate.getDate();   
   };
 })
 
@@ -19,16 +28,13 @@
 
   $ionicSideMenuDelegate.canDragContent(true);
 
-
   $scope.bookings = [];
-  // $scope.cars = [];
   $scope.test = 'scope test';
   $scope.dailyPassengers = null;
   $scope.combo = [];
 //To be used when we want to do something on the page load
 //Example get data from server, etc..
   $scope.$on('$ionicView.enter', onLoad());
-
 
     function onLoad() {
 
@@ -61,13 +67,6 @@
 
             $scope.combo.push(booking);
           })
-
-          // $scope.message = {
-          //   text: 'hello world!',
-          //   time: new Date()
-          
-          //   };
-
 
           $scope.bookings = $scope.combo; //all combined data attached to bookings?
           // BookingsService.bookings = $scope.bookings;
@@ -105,17 +104,7 @@ $scope.date = new Date;
 $scope.dayofWeek = days[$scope.date.getDay()];
 $scope.month = months[$scope.date.getMonth()];
 /////////////////////////////////////////////
-//DATES ACCORDION
-    // $scope.bookings = [];
-    // for (var i = 0; i < $scope.bookings.length; i++) { //number of all bookings NOT "10"
-    //   $scope.bookings[i] = {
-    //     name: i,
-    //     items: []
-    //   };
-    //   for (var j = 0; j < items.length; j++) { //number of rides of THAT date not 
-    //     $scope.bookings[i].items.push(i + '-' + j);
-    //   }
-    // }
+//GROUP DATES - ACCORDION
     /*
      * if given group is the selected group, deselect it* else, select the given group
      */
@@ -137,12 +126,13 @@ $scope.month = months[$scope.date.getMonth()];
   };
 
   // Open current-trip view with trip details
-  $scope.tripInfo = function(index) {
+  $scope.tripInfo = function(booking) {
     // $scope.bookingIndex = event.target.id;
-      BookingsService.currentBooking = $scope.bookings[index];
-      BookingsService.currentCustomer = $scope.bookings[index].details.customers[0];//update from new line 41
-      BookingsService.currentBookingOptions = $scope.bookings[index].details.options[0];//update from new line 41
-      BookingsService.currentBookingCars = $scope.bookings[index].details.cars[0];//update from new line 41
+      // console.log(index);
+      BookingsService.currentBooking = booking;  
+      BookingsService.currentCustomer = booking.details.customers[0];//update from new line 41
+      BookingsService.currentBookingOptions = booking.details.options[0];//update from new line 41
+      BookingsService.currentBookingCars = booking.details.cars[0];//update from new line 41
       $state.go('app.current-trip');
       // UserService.isDriver <--
   };

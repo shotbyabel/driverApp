@@ -7,21 +7,52 @@
       function($scope, $state, $cordovaGeolocation, $ionicSideMenuDelegate, $ionicLoading, $ionicModal, $cordovaSms,
         BookingsService, tripService, UserService, $ionicPopup, $ionicPlatform) {
 
-        $ionicSideMenuDelegate.canDragContent(true)
+        $scope.$on('$ionicView.enter', function() { //added as debugger because MAYBE our code is taking the location BEFORE 
+                                                    //it's filled with the bookings inside the service - NOT the issue but it dont hurt to have it.
 
-        $ionicLoading.show({
-          template: 'Loading Your Trip Info...'
-        });
+          $ionicSideMenuDelegate.canDragContent(true)
 
-        $scope.currentBooking = BookingsService.currentBooking;
-        $scope.currentCustomer = BookingsService.currentCustomer;
-        $scope.currentBookingOptions = BookingsService.currentBookingOptions;
-        // $scope.currentBookingCars = BookingsService.currentBookingCars;
-        $scope.sms = {};
+          $ionicLoading.show({
+            template: 'Loading Your Trip Info...'
+          });
+          //use to bind tripDetails arrival & departure addresses curren-trip.html
+          $scope.currentBooking = BookingsService.currentBooking;
+          $scope.currentCustomer = BookingsService.currentCustomer;
+          $scope.currentBookingOptions = BookingsService.currentBookingOptions;
+          // $scope.currentBookingCars = BookingsService.currentBookingCars;
+          $scope.sms = {};
 
 
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
+          var directionsService = new google.maps.DirectionsService;
+          var directionsDisplay = new google.maps.DirectionsRenderer;
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 7,
+            center: {
+              lat: 34.1017614,
+              lng: -118.3450541
+            }
+          });
+
+          directionsDisplay.setMap(map);
+
+          $ionicLoading.hide();
+
+          var departing = $scope.currentBooking.departing_address;//
+          var arrival = $scope.currentBooking.arrival_address;//
+
+          calculateAndDisplayRoute(directionsService, directionsDisplay, departing, arrival);
+          /////////////////////////////////
+          ////C O N T A C - C L I E N t - M O D A L
+          $ionicModal.fromTemplateUrl('templates/contact-client.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+
+          }).then(function(modal) {
+            $scope.modal = modal;
+          });
+
+        }); //ionicView.enter
 
         function calculateAndDisplayRoute(directionsService, directionsDisplay, departing, arrival) {
           directionsService.route({
@@ -36,32 +67,6 @@
             }
           });
         }
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
-          center: {
-            lat: 34.1017614,
-            lng: -118.3450541
-          }
-        });
-
-        directionsDisplay.setMap(map);
-
-        $ionicLoading.hide();
-
-        var departing = $scope.currentBooking.departing_address;
-        var arrival = $scope.currentBooking.arrival_address;
-
-        calculateAndDisplayRoute(directionsService, directionsDisplay, departing, arrival);
-        /////////////////////////////////
-        ////C O N T A C - C L I E N t - M O D A L
-        $ionicModal.fromTemplateUrl('templates/contact-client.html', {
-          scope: $scope,
-          animation: 'slide-in-up'
-
-        }).then(function(modal) {
-          $scope.modal = modal;
-        });
 
         $scope.contactCLient = function() {
           $scope.modal.show();
@@ -97,7 +102,7 @@
         $scope.sendSMS = function(buttonIndex) {
           var number = $scope.currentCustomer[0].phone;
 
-        ///In case we need the platform seperation, use below code
+          ///In case we need the platform seperation, use below code
           // var options ={
           //   replaceLineBreaks: false
           // }
