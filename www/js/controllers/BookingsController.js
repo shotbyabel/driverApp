@@ -16,10 +16,10 @@
     if( inputDate.getDate() === showToday.getDate()
       && inputDate.getMonth() === showToday.getMonth()
       && inputDate.getFullYear() === showToday.getFullYear()){
-      return "Today";
+      return "TODAY";
     } ////'Today if ends'
 
-    return weekdays[inputDate.getDay()] + ", " + months[inputDate.getMonth()] + ", " + inputDate.getDate();   
+    return weekdays[inputDate.getDay()] + " " + months[inputDate.getMonth()] + " " + inputDate.getDate();   
   };
 })
 

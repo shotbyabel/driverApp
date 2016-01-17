@@ -23,13 +23,16 @@
     <ion-list>
     <!-- ADDED orderBy FIRST before it groups them-->
     <ion-item ng-repeat="(date, groupedBooking) in bookings | orderBy: 'groupByDateCode' | groupBy: 'groupByDateCode'"> <!-- bookingService.js line 15 -23 -->
-      <ion-item class="item-stable" id="font-color"
+      <ion-item class="item-stable"
         ng-click="toggleGroup(groupedBooking)"
         ng-class="{active: isGroupShown(groupedBooking)}">
-        <i class="current-trip-icons" ng-class="isGroupShown(groupedBooking) ? 'ion-ios-minus' : 'ion-ios-plus'"></i>
+        <i class="today-icon-sytles" ng-class="isGroupShown(groupedBooking) ? 'ion-ios-minus' : 'ion-ios-plus'"></i>
         &nbsp;
         <!--Displays the date in our format  and the number of bookings per date-->
-        {{groupedBooking[0].driver_departing_time | customDateFilter}}, {{ groupedBooking.length }} Bookings 
+        
+        <span id="dates-fonts-styles">{{groupedBooking[0].driver_departing_time | customDateFilter}}</span>
+        <div class="bookings-badge">{{ groupedBooking.length }}</div>
+        
       </ion-item>
       <ion-item class="item-accordion item-avatar items-bg"
         ng-repeat="booking in groupedBooking"
