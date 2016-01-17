@@ -230,6 +230,31 @@ margin-top: 0%;
 /*margin-bottom: 29%;*/
 }
 
+.today-icon-sytles{
+  color: white;
+  font-size: 2.0em;
+}
+
+.bookings-badge {
+    background: grey;
+    font-size: 1em;
+    font-weight: 500;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    /* margin: 0 5px 20px 0; */
+    padding: 0px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    color: white;
+    /* float: right; */
+    margin-top: -30px;
+    margin-left: 250px;
+}
+
+
 /*should include passenger names and times for trips*/
 .list-position {
   position: absolute;
@@ -275,8 +300,10 @@ font-size: 0.7em;
   transition: 0.09s all linear;
 }
 
-#font-color{
-  color: white;
+#dates-fonts-styles{
+font-size: 1.05em;
+color: white;
+font-weight: 700;
 }
 
 .list .item.item-accordion.ng-hide {
