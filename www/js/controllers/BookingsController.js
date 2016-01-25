@@ -4,11 +4,14 @@
 
  angular.module('starter')
 // C U S T O M - D A T E  F I L T E R //
+// C U S T O M - D A T E  F I L T E R //
 .filter('customDateFilter', function() {
   return function(input) {
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novemeber', 'December'];
     var weekdays = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-    var inputDate = new Date(input);
+   
+    var dateArray = input.split(/[- :]/);
+    var inputDate = new Date(dateArray[0], dateArray[1]-1, dateArray[2], dateArray[3], dateArray[4], dateArray[5]);
 
 // SHOW "Today" on today's date instead of actual date O_o
     var showToday = new Date();
@@ -19,9 +22,10 @@
       return "TODAY";
     } ////'Today if ends'
 
-    return weekdays[inputDate.getDay()] + " " + months[inputDate.getMonth()] + " " + inputDate.getDate();   
+    return weekdays[inputDate.getDay()] + ", " + months[inputDate.getMonth()] + ", " + inputDate.getDate();   
   };
 })
+
 
  .controller("BookingsCtrl", function($scope, $ionicSideMenuDelegate, $stateParams, $state, $ionicModal, $q, $timeout,
                                       BookingsService, tripService, UserService, $filter) {

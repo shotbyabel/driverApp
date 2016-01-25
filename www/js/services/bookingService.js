@@ -14,7 +14,9 @@
       function setBookingGroupDate(bookings) {
         //*2*Go through each booking
         for (var i = bookings.length - 1; i >= 0; i--) {
-          var date = new Date(bookings[i].driver_departing_time); //*3*Create date from drvier_departing_date
+          
+          var arr = bookings[i].driver_departing_time.split(/[- :]/);
+          var date = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
           var dateWithoutHour = new Date(date.getFullYear(), date.getMonth(), date.getDate()); //*4* create same date but w/o the hr to minimize the differences
           var dateCode = dateWithoutHour.getTime(); //Get timeStamps to have same filed for all and same type to be able to order and GROUP
           bookings[i].groupByDateCode = dateCode; //add it back to respective booking[index]
