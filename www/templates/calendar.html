@@ -1,25 +1,47 @@
 <ion-view view-title="calendar">
 
   <ion-content>
+    <h3 ng-click="displayDay()"></h3>
+    <!-- <button class="button" ng-click="createEvent()">Create Event</button> -->
+<!-- had to add ng-if because when data is passed to a directive(ui-calendar) ONLY takes its value once. 
+It does NOT do two-way binding.. "have to wait until we have EventSources" --> 
 
+<div ng-if="eventSources.length !== 0" ui-calendar="calendarOptions.calendar" ng-model="eventSources"></div>
 
-    <div id="authorize-div" style="display: inline">
-      <span>Authorize access to Google Calendar API</span>
-      <!--Button for the user to click to initiate auth sequence -->
-      <button id="authorize-button" ng-click="checkAuth()">
-        Authorize
-      </button>
-    </div>
+<!-- <div class="DailyCal-Count">{{dailyPassengers}}</div> -->
 
-    <pre id="output"></pre>
+<!-- TODO: continue to add more details of the bookings -->
+<div class="passenger-info">
+  <ion-item>
+    <h4 class="passenger-name">
+    {{ clickedCustomerName }}
+    </h4>
+    
+    <p class="passenger-details">
+      <b>{{ clickedCustomerTest }}</br>
 
-    <button id="bookings-button" style="display: none" ng-click="addEvents()">Add Events to Bookings</button>
-
+  </ion-item>
+</div>
 
 
   </ion-content>
-
 </ion-view>
+
+
+
+<!-- <ion-view view-title="calendar">
+  <ion-content>
+    <div id="authorize-div" style="display: inline">
+      <span>Authorize access to Google Calendar API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+<!--       <button id="authorize-button" ng-click="checkAuth()">
+        Authorize
+      </button>
+    </div>
+    <pre id="output"></pre>
+    <button id="bookings-button" style="display: none" ng-click="addEvents()">Add Events to Bookings</button>
+  </ion-content>
+</ion-view> -->
 
 
 

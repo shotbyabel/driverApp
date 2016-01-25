@@ -15,9 +15,9 @@
 
     <h4 class="title text-center">CLICK TO CALL</h4>
       <a
-        id={{currentCustomer[0].phone}}
+        id={{currentBooking.details.customers[0].phone}}
         class="button button-small button-clear button-outline button-light"
-        ng-href=tel:{{currentCustomer[0].phone}}>
+        ng-href=tel:{{currentBooking.details.customers[0].phone}}>
         <i class="ion-iphone current-trip-icons contact-client-iphone"></i>
       </a>
 

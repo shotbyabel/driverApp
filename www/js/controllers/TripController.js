@@ -100,19 +100,17 @@
         /// SMS to Passenger ///
         /////////////////////////////////////////////////////
         $scope.sendSMS = function(buttonIndex) {
-          var number = $scope.currentCustomer[0].phone;
 
+          var number = $scope.currentBooking.details.customers[0].phone;
           ///In case we need the platform seperation, use below code
           // var options ={
           //   replaceLineBreaks: false
           // }
-
           // if($ionicPlatform.isAndroid()){
           //   options.android = {
           //     intent: ''
           //   }
           // }
-
           var options = {
             // true to replace \n by a new line, false by default
             replaceLineBreaks: false,
@@ -124,7 +122,7 @@
             }
           };
 
-          console.log('Passenger Tel:' + $scope.currentCustomer[0].phone);
+          console.log('Passenger Tel:' + $scope.currentBooking.details.customers[0].phone);
           var message = '';
 
           switch (buttonIndex) {
