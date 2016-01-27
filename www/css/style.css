@@ -297,7 +297,7 @@ font-size: 0.7em;
   line-height: 38px;
   padding-top: 0;
   padding-bottom: 0;
-  transition: 0.09s all linear;
+  transition: 0.20s all linear;
 }
 
 #dates-fonts-styles{
@@ -475,6 +475,7 @@ font-size: 1.5em;
 
 i.icon-large {
   font-size: 35px;
+  /*display: inline-block;*/
 }
 /*map.current-map{
 padding-top: 20%;
@@ -483,4 +484,5 @@ padding-top: 20%;
 /*.scroll {
   height: 80%;
 }*/
+
 
