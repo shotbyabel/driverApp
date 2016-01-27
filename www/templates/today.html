@@ -22,11 +22,13 @@
     <!-- A C C O R D I O N - L I S T  https://github.com/a8m/angular-filter#groupby-->
     <ion-list>
     <!-- ADDED orderBy FIRST before it groups them-->
+     <!-- (key, value) in myObjct https://docs.angularjs.org/api/ng/directive/ngRepeat -->
     <ion-item ng-repeat="(date, groupedBooking) in bookings | orderBy: 'groupByDateCode' | groupBy: 'groupByDateCode'"> <!-- bookingService.js line 15 -23 -->
+    <!-- OLD VALUE PASSED ng-click="toggleGroup(groupedBooking)" now passing date instead, date is an integer easier for function to ===-->
       <ion-item class="item-stable"
-        ng-click="toggleGroup(groupedBooking)"
-        ng-class="{active: isGroupShown(groupedBooking)}">
-        <i class="today-icon-sytles" ng-class="isGroupShown(groupedBooking) ? 'ion-ios-minus' : 'ion-ios-plus'"></i>
+        ng-click="toggleGroup(date)"
+        ng-class="{active: isGroupShown(date)}">
+        <i class="today-icon-sytles" ng-class="isGroupShown(date) ? 'ion-ios-minus' : 'ion-ios-plus'"></i>
         &nbsp;
         <!--Displays the date in our format  and the number of bookings per date-->
         
@@ -37,7 +39,7 @@
       </ion-item>
       <ion-item class="item-accordion item-avatar items-bg"
         ng-repeat="booking in groupedBooking"
-        ng-show="isGroupShown(groupedBooking)">
+        ng-show="isGroupShown(date)">
 <!-- UPDATE tripInfo(index) to tripInfo(booking) - because  -->
         <img id="{{$index}}" value="{{booking.details.customers[0].first_name}} {{booking.details.customers[0].last_name}}"
          class="icon-man" src="img/icon-man-div.png" alt="" ng-click="tripInfo(booking)" />
