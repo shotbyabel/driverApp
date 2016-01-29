@@ -431,6 +431,11 @@ font-weight: 700;
 color: darkgrey;
 }
 
+div.userPhone-style{
+text-decoration: none;
+
+}
+
 .items-bg-profile {
 padding-top: 5%;
 background: transparent;

@@ -201,6 +201,20 @@ angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage
     }
   })
 
+  .state('app.earnings-stats', {
+    url: '/earnings-stats',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/earnings-stats.html',
+        controller: ''
+
+      }
+    },
+    params: {
+      auth: 'none'
+    }
+  })
+
   .state('app.profile', {
     url: '/profile',
     views: {
