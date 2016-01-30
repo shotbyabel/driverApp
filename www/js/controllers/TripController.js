@@ -116,9 +116,9 @@
             replaceLineBreaks: false,
             android: {
               // send SMS without open any other app
-              intent: ''
+              // intent: ''
                 // send SMS with the native android SMS messaging
-                // intent: 'INTENT'
+                intent: 'INTENT'
             }
           };
 
