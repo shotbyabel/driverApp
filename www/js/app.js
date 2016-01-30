@@ -106,7 +106,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-  .state('app', {
+    .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -114,26 +114,26 @@ angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage
   })
 
   .state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'LoginCtrl',
-    params: {
-      auth: 'none'
-    }
-  })
-//will update for admin today view (all bookings)
-  .state('app.today', {
-    url: '/today', //old */:user_id/:driver_id*
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/today.html',
-        controller: 'BookingsCtrl',
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl',
+      params: {
+        auth: 'none'
       }
-    },
-    params: {
-      auth: 'none'
-    }
-  })
+    })
+    //will update for admin today view (all bookings)
+    .state('app.today', {
+      url: '/today', //old */:user_id/:driver_id*
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/today.html',
+          controller: 'BookingsCtrl',
+        }
+      },
+      params: {
+        auth: 'none'
+      }
+    })
 
   .state('app.easyBook', {
     url: '/easyBook',
@@ -188,12 +188,54 @@ angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage
   })
 
   .state('app.calendar', {
-    url: '/calendar',
+      url: '/calendar',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/calendar.html',
+          controller: 'BookingsCalendarCtrl'
+
+        }
+      },
+      params: {
+        auth: 'none'
+      }
+    })
+    // E A R N I N Gs and S T A Ts
+    .state('app.earnings-stats-day', {
+      url: '/earnings-stats-day',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/earnings-stats-day.html',
+          controller: 'EarnStatCtrl'
+        }
+      },
+      params: {
+        auth: 'none'
+      }
+    })
+    //* WEEK*//
+    .state('app.earnings-stats-week', {
+      url: '/earnings-stats-week',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/earnings-stats-week.html',
+          controller: 'EarnStatCtrl'
+        }
+      },
+      params: {
+        auth: 'none'
+      }
+    })
+
+  //* MONTH*//
+  .state('app.earnings-stats-month', {
+    url: '/earnings-stats-month',
     views: {
       'menuContent': {
-        templateUrl: 'templates/calendar.html',
-        controller: 'BookingsCalendarCtrl'
 
+
+        templateUrl: 'templates/earnings-stats-month.html',
+        controller: 'EarnStatCtrl'
       }
     },
     params: {
@@ -201,20 +243,9 @@ angular.module('starter', ['ionic','ionic.service.core', 'ngCordova', 'ngStorage
     }
   })
 
-  .state('app.earnings-stats', {
-    url: '/earnings-stats',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/earnings-stats.html',
-        controller: ''
 
-      }
-    },
-    params: {
-      auth: 'none'
-    }
-  })
 
+  //////////////////////////
   .state('app.profile', {
     url: '/profile',
     views: {

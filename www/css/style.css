@@ -10,6 +10,10 @@ text-align: center;
 background: none;
 }
 
+.appleLinks div {
+  color:#000000;}
+
+.appleLinksWhite div {color:#ffffff;}
 /*************************/
 /*L O G I N  - S T A T E*/
 
@@ -297,7 +301,7 @@ font-size: 0.7em;
   line-height: 38px;
   padding-top: 0;
   padding-bottom: 0;
-  transition: 0.20s all linear;
+  transition: 0.10s all linear;
 }
 
 #dates-fonts-styles{
@@ -464,6 +468,36 @@ font-size: 1.5em;
 }
 
 
+/*E A R N I N Gs & S T A Ts*/
+
+ul.drive-stats-list{
+margin: 0%;  
+}
+
+.driver-stats-items{
+  text-align: center;
+  font: white;
+  font-size: 2.25em;
+}
+
+a.icon.ion-chevron-left,
+a.icon.ion-chevron-right{
+  text-decoration: none;
+  color: white;
+}
+
+div.day-wk-mnt{
+/*padding-top: 10px;*/
+text-align: center;
+font-size: 1.50em;
+color: white;
+margin-right: 15%;
+
+}
+
+.item.item-dates{
+padding-top: 3%;  
+}
 
 /*********************/
 /*M A P  - S T A T E*/
