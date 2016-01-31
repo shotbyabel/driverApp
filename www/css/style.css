@@ -1,24 +1,27 @@
 /* Empty. Add your own CSS if you like */
 .pane{
 
-background-image: url("../img/screenbgtemplate.png");
+  background-image: url("../img/screenbgtemplate.png");
 }
 
 .temp{
 
-text-align: center;
-background: none;
+  text-align: center;
+  background: none;
 }
 
 .appleLinks div {
-  color:#000000;}
+  color:#000000 !important;
+}
 
-.appleLinksWhite div {color:#ffffff;}
+.appleLinksWhite div {
+  color:#ffffff !important;
+}
 /*************************/
 /*L O G I N  - S T A T E*/
 
 .driver-logo{
-text-align: center;
+  text-align: center;
 }
 
 div.input-fields{
@@ -26,26 +29,26 @@ div.input-fields{
 }
 
 #sign-in-btn {
-border: none;
-background-color: #4d5b7e !important;
-border-radius: 85px !important;
-margin-top: 8%;
+  border: none;
+  background-color: #4d5b7e !important;
+  border-radius: 85px !important;
+  margin-top: 8%;
 }
 
 #signIn-psw-inputs{
-color: white;
-border: none;
-border-radius: 85px !important;
-background-color: #39383d !important;
+  color: white;
+  border: none;
+  border-radius: 85px !important;
+  background-color: #39383d !important;
 }
 
 .psw-input{
-border-radius: 85px;
+  border-radius: 85px;
 
 }
 
 div.login-form-iPhone5fix{
-margin-top: -10%;
+  margin-top: -10%;
 
 }
 
@@ -73,15 +76,15 @@ input.ng-touched.ng-valid {
 
 .whole-menu{
 
-background-image: url("../img/driversidemenu.png");
-width: 100%;
-height: 100%;
+  background-image: url("../img/driversidemenu.png");
+  width: 100%;
+  height: 100%;
 }
 
 .driver-menu .list{
-/*background-color: transparent !important;*/
-margin-top: 60%;
-margin-left: 15%;
+  /*background-color: transparent !important;*/
+  margin-top: 60%;
+  margin-left: 15%;
 
 }
 
@@ -92,7 +95,7 @@ margin-left: 15%;
   padding-top: 0%;
   /*position: static;*/
 
-/*replaced from MAIN IONIC SCSS FILE #6020 (used to by white)*/
+  /*replaced from MAIN IONIC SCSS FILE #6020 (used to by white)*/
 }
 
 .menu-categories{
@@ -104,9 +107,9 @@ margin-left: 15%;*/
 
 /*logout avatar*/
 img.user-avatar{
-border-radius: 50%;
-width: 3.50em;
-height: 3.50em;
+  border-radius: 50%;
+  width: 3.50em;
+  height: 3.50em;
 
 }
 
@@ -114,10 +117,10 @@ height: 3.50em;
 /*T R I P  -  D E T A I L S  - MODAL*/
 
 .contact-modal{
-/*background-image: url("/img/modal-bg.png");  */
-background-color: black;
-opacity: .95;
-border-bottom: 1px;
+  /*background-image: url("/img/modal-bg.png");  */
+  background-color: black;
+  opacity: .95;
+  border-bottom: 1px;
 }
 
 /*#modal-bar{
@@ -136,35 +139,35 @@ text-align: center;
 }*/
 
 p.modal-text {
-font-size: 0.95em;
-text-align: center;
-color: white;
-font-weight: 700;
+  font-size: 0.95em;
+  text-align: center;
+  color: white;
+  font-weight: 700;
 }
 
 h4.title{
-color: white;
-font-size: 1.85em;
-font-variant: small-caps;
+  color: white;
+  font-size: 1.85em;
+  font-variant: small-caps;
 
 }
 
 .items-bg#modalDetails{
-margin-top: 0%;
+  margin-top: 0%;
 }
 
 .items-bg#modalDetails{
-margin-top: 0%;
-padding-bottom: 0%;
-margin-bottom: 2%;
-padding-top: 0%;
+  margin-top: 0%;
+  padding-bottom: 0%;
+  margin-bottom: 2%;
+  padding-top: 0%;
 }
 
 
 
 .button.button-balanced.swipe-toStart{
-font-size: 1.25em;
-background: darkgreen;
+  font-size: 1.25em;
+  background: darkgreen;
 
 }
 
@@ -173,46 +176,28 @@ background: darkgreen;
 
 .dayOftheWeek {
 
-text-align: center;
-color: white;
-font-size: 2.5em;
-font-weight: 200;
+  text-align: center;
+  color: white;
+  font-size: 2.5em;
+  font-weight: 200;
 }
 
 .date {
 
-text-align: center;
-color: darkgrey;
-font-size: 1em;
-font-weight: 200;
+  text-align: center;
+  color: darkgrey;
+  font-size: 1em;
+  font-weight: 200;
 }
 
-.today-client-bubble {
 
-display: -webkit-flex;
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-align: center;
--ms-flex-align: center;
-         align-items: center;
--webkit-align-items: center;
--webkit-box-pack: center;
-    -ms-flex-pack: center;
-        justify-content: center;
--webkit-justify-content: center;
--webkit-box-orient: vertical;
--webkit-box-direction: normal;
-    -ms-flex-direction: column;
-          flex-direction: column;
--webkit-flex-direction: column;
-}
+/*
 
 /*iOS emulator CENTERED*/
 .bubble {
-height: 50%;
-width: 50%;
-margin-left: 25%;
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
 }
 
 /*ionic serve CENTERED*/
@@ -224,15 +209,25 @@ postion: absolute;
 
 /*this number is generated from the BookingsController.js
 $scope.dailyPassengers = BookingsService.bookings.length;*/
+
+/*TODO: FIX bookings count because position absolute makes the number drop
+when booings are expanded..*/
 div.daily-count {
-font-size: 4.25em;
-color: white;
-text-align: center;
-/*MIGHT NEED TO UPDATE THIS margin-top*/
-margin-top: 0%;
-/*margin-left: 44%;*/
-/*margin-bottom: 29%;*/
+/*  top: 20%;*/
+  font-size: 4em;
+  color: white;
+  text-align: center;
+  /*MIGHT NEED TO UPDATE THIS margin-top*/
+  margin-top: -35%; /*// REFACTOR THIS*/
+  /*margin-left: 44%;*/
+  /*margin-bottom: 29%;*/
+
 }
+/*NOT REALLY WORKING*/
+  .Today-bookingsCount{
+  /*  position: absolute;*/
+    top: 20%;
+  }
 
 .today-icon-sytles{
   color: white;
@@ -240,22 +235,22 @@ margin-top: 0%;
 }
 
 .bookings-badge {
-    background: grey;
-    font-size: 1em;
-    font-weight: 500;
-    height: 22px;
-    width: 22px;
-    text-align: center;
-    line-height: 22px;
-    /* margin: 0 5px 20px 0; */
-    padding: 0px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-    color: white;
-    /* float: right; */
-    margin-top: -30px;
-    margin-left: 250px;
+  background: grey;
+  font-size: 1em;
+  font-weight: 500;
+  height: 22px;
+  width: 22px;
+  text-align: center;
+  line-height: 22px;
+  /* margin: 0 5px 20px 0; */
+  padding: 0px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  color: white;
+  /* float: right; */
+  margin-top: -30px;
+  margin-left: 250px;
 }
 
 
@@ -268,31 +263,31 @@ margin-top: 0%;
 
 /*ion items class rows with no BG*/
 .items-bg {
-background: transparent;
-border-top: none;
-border-bottom-style:outset;
-border-bottom:1px solid grey;
+  background: transparent;
+  border-top: none;
+  border-bottom-style:outset;
+  border-bottom:1px solid grey;
 }
 
 /*later on we can pass photos here instead of icons*/
 .icon-man {
-width: 4.5em;
+  width: 4.5em;
 }
 
 .passenger-info{
-padding-top:5%;
+  padding-top:5%;
 }
 
 h4.passenger-name {
-font-size: 1.05em;
-color: white;
-font-weight: 700;
+  font-size: 1.05em;
+  color: white;
+  font-weight: 700;
 }
 
 p.passenger-details {
-color: white;
-font-weight: 400;
-font-size: 0.7em;
+  color: white;
+  font-weight: 400;
+  font-size: 0.7em;
 }
 
 /*************************/
@@ -305,9 +300,9 @@ font-size: 0.7em;
 }
 
 #dates-fonts-styles{
-font-size: 1.05em;
-color: white;
-font-weight: 700;
+  font-size: 1.05em;
+  color: white;
+  font-weight: 700;
 }
 
 .list .item.item-accordion.ng-hide {
@@ -320,19 +315,19 @@ font-weight: 700;
 }
 
 i.icon-accordion {
-width: 4.5em;
+  width: 4.5em;
 }
 
 /**************************/
 /*L O G I N - I N P U T */
 
 .input-fields {
-border-radius: 50%;
-margin-top: 85%;
+  border-radius: 50%;
+  margin-top: 85%;
 }
 
 input.input-color {
-color: white;
+  color: white;
 }
 
 /**************************/
@@ -340,11 +335,11 @@ color: white;
 - S T A T E*/
 
 .current-trip-details {
-color: white;
-/*font-size: 1em;*/
-background-color: black;
-height: 25%;
-width: 100%;
+  color: white;
+  /*font-size: 1em;*/
+  background-color: black;
+  height: 25%;
+  width: 100%;
 }
 /*PROFILE ion ICONS*/
 
@@ -353,52 +348,52 @@ font-size: 1.50em;
 }*/
 
 .current-trip-icons{
-font-size: 1.50em;
-margin-top: 2%;
+  font-size: 1.50em;
+  margin-top: 2%;
 
 }
 
 .trip-buttons{
-text-align: center;
+  text-align: center;
 }
 
 span.currentrip-txt-btn{
-font-size: 1.05em;
-font-weight: 300;
-margin-right: 0%;
-/*font-variant: small-caps;*/
+  font-size: 1.05em;
+  font-weight: 300;
+  margin-right: 0%;
+  /*font-variant: small-caps;*/
 /*margin-top: 0%;
 margin-left: 0%;
 padding-top: 4%;*/
 }
 
 i.modalIcons{
-font-size: 1.50em;
-color: darkgrey;
-margin-left: 25%;
+  font-size: 1.50em;
+  color: darkgrey;
+  margin-left: 25%;
 }
 
 .trip-text{
-text-align: center;
-/*font-variant: small-caps;*/
-font-weight: 700;
-margin-top: 5%;
+  text-align: center;
+  /*font-variant: small-caps;*/
+  font-weight: 700;
+  margin-top: 5%;
 }
 
 p.modal-text#options-text{
-padding-top: 5%;
+  padding-top: 5%;
 
 }
 
 div.tripDetail-fonts{
-color: darkgrey;
-font-weight: 500;
-text-align: center;
+  color: darkgrey;
+  font-weight: 500;
+  text-align: center;
 }
 
 i.contact-client-iphone{
 
-font-size: 3.5em;
+  font-size: 3.5em;
 
 
 }
@@ -413,57 +408,57 @@ li.item {
 }
 
 ul.list{
-margin-top: 50%;
+  margin-top: 50%;
 }
 
 div.profile-card{
-background-color: #60759e;
+  background-color: #60759e;
 }
 
 img .profile-pic{
-text-align: center;
+  text-align: center;
 }
 
 /*********************/
 /*P R O F I L E  - S T A T E*/
 
 span.profile-fonts{
-margin-left: 5%;
-margin-top: 2%;
-font-size: 0.65em;
-font-weight: 700;
-color: darkgrey;
+  margin-left: 5%;
+  margin-top: 2%;
+  font-size: 0.65em;
+  font-weight: 700;
+  color: darkgrey;
 }
 
-div.userPhone-style{
-text-decoration: none;
-
+div.userPhone-style a{
+  text-decoration: none !important;
+  color: #FFF !important;
 }
 
 .items-bg-profile {
-padding-top: 5%;
-background: transparent;
-border-top: none;
-border-bottom-style:outset;
-border-bottom:1px solid grey;
+  padding-top: 5%;
+  background: transparent;
+  border-top: none;
+  border-bottom-style:outset;
+  border-bottom:1px solid grey;
 }
 
 #profile-inputs{
-margin-left:10%;
-margin-right:0%;
-background-color: transparent;
+  margin-left:10%;
+  margin-right:0%;
+  background-color: transparent;
 
 }
 
 .profile-list{
-margin-top: -10%;
-margin-bottom: 0%;
+  margin-top: -10%;
+  margin-bottom: 0%;
 }
 
 .DailyCal-Count{
 
-color: white;
-font-size: 1.5em;
+  color: white;
+  font-size: 1.5em;
 
 }
 
@@ -471,7 +466,7 @@ font-size: 1.5em;
 /*E A R N I N Gs & S T A Ts*/
 
 ul.drive-stats-list{
-margin: 0%;  
+  margin: 0%;  
 }
 
 .driver-stats-items{
@@ -487,16 +482,16 @@ a.icon.ion-chevron-right{
 }
 
 div.day-wk-mnt{
-/*padding-top: 10px;*/
-text-align: center;
-font-size: 1.50em;
-color: white;
-margin-right: 15%;
+  /*padding-top: 10px;*/
+  text-align: center;
+  font-size: 1.50em;
+  color: white;
+  margin-right: 15%;
 
 }
 
 .item.item-dates{
-padding-top: 3%;  
+  padding-top: 3%;  
 }
 
 /*********************/
@@ -522,6 +517,6 @@ padding-top: 20%;
 
 /*.scroll {
   height: 80%;
-}*/
+  }*/
 
 
