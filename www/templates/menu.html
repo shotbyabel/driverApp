@@ -23,11 +23,9 @@
       </ion-item> -->
 
         <ion-item menu-close href="#/app/today">
-
         <i class="icon ion-clock"></i>
           Bookings
         </ion-item>
-
         <!--OWNER EDITION ONLY -->
         <!-- inject UserService n chain function found in UserService.js line: 62 -->
         <ion-item menu-close href="#/app/easyBook" ng-if="UserService.isAdmin()">
@@ -59,16 +57,19 @@
         <i class="icon ion-gear-b"></i>
           Settings
         </ion-item>
+        <hr>
 
 <!-- update the sideMenuCtl controller to include logout function controller.js line 19 / function from loginService.js -->
-        <ion-item menu-close>
-        <i class="ion-log-out" ng-click="logout()"></i>
+        <ion-item menu-close ng-click="logout()">
+        <i class="ion-log-out"></i>
           Logout
+         </ion-item>
+        <ion-item menu-close href="#/app/profile">        
           <div>{{UserService.first_name + " " + UserService.last_name}}</div>
           <!-- <img ng-src="{{UserService.img}}"> -->
-
+          <br>
           <img class="user-avatar" ng-src="http://dev.afourc.ml/img/users/ABELdriver.png">
-        </ion-item>
+       </ion-item>
 
       </ion-list>
     </ion-content>
