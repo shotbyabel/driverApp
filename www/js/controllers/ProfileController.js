@@ -23,7 +23,7 @@
         var options = {
           quality: 50,
           destinationType: window.Camera.DestinationType.FILE_URI,
-          sourceType: window.Camera.PictureSourceType.CAMERA, //window.PHOTOLIBRARY to test on emulator
+          sourceType: window.Camera.PictureSourceType.CAMERA || , //window.PHOTOLIBRARY to test on emulator
           allowEdit: true,
           encodingType: window.Camera.EncodingType.JPEG,
           targetWidth: 240,
